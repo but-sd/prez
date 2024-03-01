@@ -23,10 +23,10 @@ jobs:
         run: npm install -g @marp-team/marp-cli
 
       - name: Build slide
-        run: marp -o prez/index.html general.md
+        run: marp -o docs/index.html general.md
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./prez
+          publish_dir: ./docs
