@@ -9,7 +9,7 @@ footer: Alexandre GIRARD - **BUT SD**
 
 ---
 
-Guide git : [prez/guide-git](./guide-git.md)
+Guide git : [prez/guide-git](https://but-sd.github.io/prez/guide-git)
 
 --- 
 
