@@ -33,10 +33,10 @@ jobs:
         env:
           MARP_USER: root:root
 
-      - name: Marp Build (README.pdf)
+      - name: Marp Build Git (pdf)
         uses: docker://marpteam/marp-cli:v3.0.2
         with:
-          args: README.md --allow-local-files -o build/README.pdf
+          args: guide-git.md --allow-local-files -o build/guide-git.pdf
         env:
           MARP_USER: root:root
 

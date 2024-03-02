@@ -6,13 +6,30 @@ backgroundImage: url('https://marp.app/assets/hero-background.jpg')
 
 ---
 
-![bg opacity:.5](https://w.forfun.com/fetch/97/972947fb63ad7c4d69065b23114a6875.jpeg)
+![bg vertical](https://w.forfun.com/fetch/97/972947fb63ad7c4d69065b23114a6875.jpeg)
+![bg opacity:.5](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEYiY42u5l90WKXcXDjOc6LfXTg9FEvZLyKA&usqp=CAU)
 
-# Alexandre GIRARD
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+#  Alexandre GIRARD
 ## Conseiller en Nouvelles Technologies @ MAIF
-### alexandre.girard@maif.fr
+###### alexandre.girard@maif.fr
 
 --- 
+
+# Gestion de la forge logicielle de la MAIF
+
+Ensemble des outils pour le développement logiciel mis à disposition des équipes de développement
+
+- **Github** : gestion des dépôts de code source
+- **Jenkins** : intégration continue
+- **SonarQube** : qualité du code
+- **Nexus** : gestion des artefacts
+---
 
 # Ce que nous allons voir ensemble
 
@@ -48,4 +65,5 @@ TODO : ajouter des images de l'application web
 
 Différents supports de cours sont disponibles :
 
-- [Git](https://but-sd.github.io/prez/guide-git)
+
+- Git [https://but-sd.github.io/prez/guide-git](https://but-sd.github.io/prez/guide-git) - [version pdf](https://but-sd.github.io/prez/guide-git.pdf)
