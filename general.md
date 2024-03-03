@@ -67,4 +67,6 @@ TODO : ajouter lien vers l'application web
 Différents supports de cours sont disponibles :
 
 
-- Git [https://but-sd.github.io/prez/git](https://but-sd.github.io/prez/git) - [version pdf](https://but-sd.github.io/prez/git.pdf)
+- Git: 
+    - Présentation: [https://but-sd.github.io/prez/git](https://but-sd.github.io/prez/git) - [version pdf](https://but-sd.github.io/prez/git.pdf)
+    - Guide: [https://but-sd.github.io/guide-git/](https://but-sd.github.io/guide-git/)
