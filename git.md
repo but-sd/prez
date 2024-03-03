@@ -5,7 +5,7 @@ size: 16:9
 paginate: true
 backgroundImage: url('https://marp.app/assets/hero-background.jpg')
 header: 'Guide - git'
-footer: Alexandre GIRARD - **Guide git**
+footer: Alexandre GIRARD
 ---
 
 ![bg](https://images8.alphacoders.com/430/430944.jpg)
@@ -47,20 +47,22 @@ Le terme **V**ersion **C**ontrol **S**ystem (VCS) est parfois utilisé.
 
 ---
 
-# **G**it - Comparaison
-
 ![Git Comparison](img/compare-git-svn-mercurial-since-2004.png)
 
 Comparaison entre **git**, **mercurial** et **subversion** en terme de recherche Google depuis 2004
+
+Source : https://www.google.com/trends/explore?date=all&q=git,mercurial,subversion
 
 ---
 
 # **G**it - installation
 
+Afin de vérifier que **git** est bien installé, ouvrir un terminal et taper la commande `git --version`
+
+Si **git** n'est pas installé, télécharger et installer la dernière version depuis le site officiel :
+
 - Windows : https://git-scm.com/download/win
 - MacOS : https://git-scm.com/download/mac
-
-Afin de vérifier que **git** est bien installé, ouvrir un terminal et taper la commande `git --version`
 
 ---
 # **G**it - terminologie
