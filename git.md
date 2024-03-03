@@ -16,7 +16,7 @@ footer: Alexandre GIRARD - **Guide git**
 
 Outil qui permet de suivre les modifications apportées à une collection de fichiers.
 
-Le terme **V**ersion **C**ontrol **S**ystem (VCS) est souvent utilisé de manière interchangeable. La différence est que le VCS n'est pas orienté développement logiciel, il peut être utilisé pour suivre les modifications apportées à n'importe quel type de fichier (texte, binaire, image, vidéo...).
+Le terme **V**ersion **C**ontrol **S**ystem (VCS) est parfois utilisé.
 
 ---
 
@@ -30,7 +30,7 @@ Le terme **V**ersion **C**ontrol **S**ystem (VCS) est souvent utilisé de maniè
 
 ---
 
-# Distributed Version Control System
+# **D**istributed **V**ersion **C**ontrol **S**ystem
 
 - Système de gestion de version distribué
 - Chaque utilisateur possède une copie complète de l'historique du projet
@@ -39,15 +39,30 @@ Le terme **V**ersion **C**ontrol **S**ystem (VCS) est souvent utilisé de maniè
 ---
 # **G**it - https://git-scm.com/
 
-- Système de gestion de version distribué (DVCS)
-- Créé par Linus Torvalds en 2005
+- Système de gestion de version distribué créé par Linus Torvalds en 2005, le créateur de Linux
 - Rapide, simple, léger, performant, open source
-- Utilisé par de nombreux projets open source et entreprises
+- Utilisé par de nombreux projets open source et en entreprise
 - Services en ligne (GitHub, GitLab, Bitbucket, Azure DevOps) viennent ajouter des fonctionnalités (gestion de projet, CI/CD, wiki, issues, pull requests...)
-- Intégration dans les IDE (VSCode, IntelliJ, Eclipse...)
+- Intégration dans les IDEs (VSCode, IntelliJ, Eclipse...)
 
 ---
 
+# **G**it - Comparaison
+
+![Git Comparison](img/compare-git-svn-mercurial-since-2004.png)
+
+Comparaison entre **git**, **mercurial** et **subversion** en terme de recherche Google depuis 2004
+
+---
+
+# **G**it - installation
+
+- Windows : https://git-scm.com/download/win
+- MacOS : https://git-scm.com/download/mac
+
+Afin de vérifier que **git** est bien installé, ouvrir un terminal et taper la commande `git --version`
+
+---
 # **G**it - terminologie
 
 - **Repository** : répertoire de stockage des fichiers et de l'historique des modifications, c'est ici que **git** stocke toutes les informations nécessaires pour suivre les modifications apportées au projet, généralement dans un répertoire caché `.git`
