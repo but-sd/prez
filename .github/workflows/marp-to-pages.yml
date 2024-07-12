@@ -29,7 +29,7 @@ jobs:
       - name: Marp Build - Git
         uses: docker://marpteam/marp-cli:v3.0.2
         with:
-          args: html-to-app.md -o build/html-to-app.html
+          args: --html html-to-app.md -o build/html-to-app.html
         env:
           MARP_USER: root:root
 
