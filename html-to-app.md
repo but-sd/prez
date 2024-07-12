@@ -88,11 +88,9 @@ Il est possible de valider une page HTML en utilisant le service en ligne [valid
 
 # Problématique
 
-* Page web statique basique
-
-* Développement "complexe" 
-
-## Il est temps de s'outiller
+Bien que la page développée soit relativement simple, on rencontre déjà quelques problèmes :
+* Difficulté à voir dans la page les différents éléments
+* Pour voir une modification, il faut recharger la page
 
 ---
 
@@ -114,6 +112,10 @@ Par exemple, un IDE peut proposer :
 
 ---
 
-<img src="img/html-to-app/vs-code.png" alt="Visual Studio Code" style="width: 100%">
+<img src="img/html-to-app/vs-code.png" alt="Visual Studio Code" style="width: 80%">
 
 ---
+
+# Visual Studio Code - plugins
+
+* **Live Server** : permet de lancer un serveur local pour visualiser le rendu de la page web
