@@ -61,6 +61,8 @@ Mélangeant un peu de théorie et surtout beaucoup de pratique
 
 <!-- ---
 
+TODO Ajouter image / lien vers l'application web finale
+
 # Différents supports de cours disponibles :
 
 
