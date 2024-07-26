@@ -88,7 +88,8 @@ Mettre en oeuvre les différents concepts manipulés au cours du développement 
 
 # Version 0.1.0 - Objectif
 
-```mermaid
+
+<!-- ```mermaid
 gitGraph
     checkout main
     commit id:"initial"
@@ -96,7 +97,9 @@ gitGraph
     commit id:"hello-world"
     commit id:"characters"
     commit id:"style" tag: "v0.1.0"
-```
+``` -->
+
+<img src="img/git-graph/version-0.1.0.png" alt="Version 0.1.0" style="width: 30%;">
 
 * Gestion de version - __semver__
 * Préparation du projet
@@ -120,7 +123,9 @@ gitGraph
 
 # Version 0.2.0 - Objectif (suite)
 
-```mermaid
+<img src="img/git-graph/version-0.2.0.png" alt="Version 0.2.0" style="width: 70%;">
+
+<!-- ```mermaid
 gitGraph
     checkout main
     commit tag: "v0.1.0"
@@ -139,4 +144,4 @@ gitGraph
     checkout main
     merge develop
     commit tag: "v0.2.0"
-```
+``` -->

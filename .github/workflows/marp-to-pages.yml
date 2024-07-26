@@ -23,10 +23,17 @@ jobs:
       - name: Copy images directory (if exists)
         run: if [[ -d slides/img ]]; then cp -R slides/img build/img; fi
 
-      - name: Marp Build (slides)
+      - name: Marp Build (slides) - HTML
         uses: docker://marpteam/marp-cli:v3.0.2
         with:
           args: --html --input-dir slides --output build
+        env:
+          MARP_USER: root:root
+      
+      - name: Marp Build (slides) - PDF
+        uses: docker://marpteam/marp-cli:v3.0.2
+        with:
+          args: --pdf --allow-local-files --html --input-dir slides --output build
         env:
           MARP_USER: root:root
       # - name: Marp Build (README)
