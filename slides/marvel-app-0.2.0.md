@@ -70,7 +70,7 @@ Lors de la création d'une branche, celle-ci est dupliquée à partir de la bran
 ---
 
 # git - Branches (exemple)
-
+<!-- 
 ```mermaid
 gitGraph
    commit
@@ -95,6 +95,9 @@ gitGraph
    branch branch3
    commit
 ```
+ -->
+
+ <img src="./img/git-graph/version-0.2.0-branchs.png" width="100%">
 
 ---
 
@@ -140,8 +143,8 @@ Le fait de travailler sur des branches **feature** permet de travailler sur plus
 
 Nous sommes maintenant sur les branches **feature-style** et **feature-data**. Nous pouvons travailler sur ces branches en parallèle pour ajouter les fonctionnalités de style et de données.
 
-
-```mermaid
+<img src="./img/git-graph/version-0.2.0-flow-1.png" width="45%">
+<!-- ```mermaid
 gitGraph
     checkout main
     commit tag: "v0.1.0"
@@ -151,7 +154,8 @@ gitGraph
     branch feature-data
     checkout feature-style
     checkout feature-data
-```
+``` -->
+
 ---
 
 # gitflow - Mise en pratique (suite)
@@ -203,7 +207,9 @@ gitGraph
 
 L'état des branches après les modifications de style devrait être le suivant:
 
-```mermaid
+<img src="./img/git-graph/version-0.2.0-flow-2.png" width="45%">
+
+<!-- ```mermaid
 gitGraph
     checkout main
     commit tag: "v0.1.0"
@@ -214,7 +220,7 @@ gitGraph
     checkout feature-style
     commit id: "style"
     checkout feature-data
-```
+``` -->
 
 ---
 
@@ -259,7 +265,9 @@ L'extension **Git Graph** de **Visual Studio Code** permet de visualiser les bra
 
 L'état des branches après les modifications de données devrait être le suivant:
 
-```mermaid
+<img src="./img/git-graph/version-0.2.0-flow-3.png" width="45%">
+
+<!-- ```mermaid
 gitGraph
     checkout main
     commit tag: "v0.1.0"
@@ -272,7 +280,7 @@ gitGraph
     checkout feature-data
     commit id: "data"
     commit id: "characters"
-```
+``` -->
 
 ---
 
@@ -369,6 +377,12 @@ Nous sommes maintenant prêts à fusionner la branche **develop** avec la branch
 # git - Merge (suite)
 
 <img src="./img/background/marvel-app/marvel-app-0.2.0-9.png" width="100%">
+
+---
+
+# git - Merge (suite)
+
+<img  src="./img/git-graph/version-0.2.0-flow-4.png" width="70%">
 
 ---
 
