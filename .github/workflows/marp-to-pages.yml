@@ -18,41 +18,41 @@ jobs:
         run: mkdir -p build
 
       - name: Copy images directory (if exists)
-        run: if [[ -d img ]]; then cp -R img build/img; fi
+        run: if [[ -d img ]]; then cp -R slides/img build/img; fi
 
       - name: Marp Build (README)
         uses: docker://marpteam/marp-cli:v3.0.2
         with:
-          args: general.md -o build/general.html
+          args: slides/general.md -o build/general.html
         env:
           MARP_USER: root:root
-      - name: Marp Build - Git
-        uses: docker://marpteam/marp-cli:v3.0.2
-        with:
-          args: --html html-to-app.md -o build/html-to-app.html
-        env:
-          MARP_USER: root:root
+      # - name: Marp Build - Git
+      #   uses: docker://marpteam/marp-cli:v3.0.2
+      #   with:
+      #     args: --html html-to-app.md -o build/html-to-app.html
+      #   env:
+      #     MARP_USER: root:root
 
-      - name: Marp Build - Git
-        uses: docker://marpteam/marp-cli:v3.0.2
-        with:
-          args: git.md -o build/git.html
-        env:
-          MARP_USER: root:root
+      # - name: Marp Build - Git
+      #   uses: docker://marpteam/marp-cli:v3.0.2
+      #   with:
+      #     args: git.md -o build/git.html
+      #   env:
+      #     MARP_USER: root:root
 
-      - name: Marp Build Git (pdf)
-        uses: docker://marpteam/marp-cli:v3.0.2
-        with:
-          args: git.md --allow-local-files -o build/git.pdf
-        env:
-          MARP_USER: root:root
+      # - name: Marp Build Git (pdf)
+      #   uses: docker://marpteam/marp-cli:v3.0.2
+      #   with:
+      #     args: git.md --allow-local-files -o build/git.pdf
+      #   env:
+      #     MARP_USER: root:root
 
-      - name: Marp Build (README.pptx)
-        uses: docker://marpteam/marp-cli:v3.0.2
-        with:
-          args: README.md --allow-local-files -o build/README.pptx
-        env:
-          MARP_USER: root:root
+      # - name: Marp Build (README.pptx)
+      #   uses: docker://marpteam/marp-cli:v3.0.2
+      #   with:
+      #     args: README.md --allow-local-files -o build/README.pptx
+      #   env:
+      #     MARP_USER: root:root
 
       - name: Check if docs folder exists
         id: docs-folder-exists
