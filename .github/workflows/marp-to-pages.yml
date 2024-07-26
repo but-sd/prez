@@ -26,7 +26,7 @@ jobs:
       - name: Marp Build (slides)
         uses: docker://marpteam/marp-cli:v3.0.2
         with:
-          args: --input-dir slides --output build
+          args: --html --input-dir slides --output build
         env:
           MARP_USER: root:root
       # - name: Marp Build (README)
