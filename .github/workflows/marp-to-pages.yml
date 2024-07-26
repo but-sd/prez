@@ -17,6 +17,9 @@ jobs:
       - name: Ensure build dir exists
         run: mkdir -p build
 
+      - name: Copy index.html
+        run: cp index.html build/index.html
+        
       - name: Copy images directory (if exists)
         run: if [[ -d img ]]; then cp -R slides/img build/img; fi
 
