@@ -26,7 +26,7 @@ jobs:
       - name: Marp Build (README)
         uses: docker://marpteam/marp-cli:v3.0.2
         with:
-          args: --html ./slides
+          args: --html ./slides/general.md -o build/general.html
         env:
           MARP_USER: root:root
       # - name: Marp Build - Git
