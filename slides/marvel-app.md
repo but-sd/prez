@@ -145,3 +145,47 @@ gitGraph
     merge develop
     commit tag: "v0.2.0"
 ``` -->
+
+---
+
+# Version 0.3.0 - Objectif
+
+* Transformation de la page statique en application web dynamique
+  * Utilisation de __React__ pour créer des composants réutilisables
+* Détection d'un bug dans la version 0.3.0
+  * Création d'une branche de type correctif
+
+---
+
+# Version 0.3.1 - Objectif (suite)
+
+<img src="img/git-graph/version-0.3.1.png" alt="Version 0.3.1" style="width: 70%;">
+
+<!-- ```mermaid
+gitGraph
+    checkout main
+    commit tag: "v0.2.0"
+    branch develop
+    checkout develop
+    branch feature-react
+    checkout feature-react
+    commit id: "add-react"
+    commit id: "static list"
+    commit id: "dynamic list"
+    commit id: "CharactersList"
+    commit id: "NumbersOfCharacters"
+    checkout develop
+    merge feature-react
+    checkout main
+    merge develop
+    commit tag: "v0.3.0"
+    branch hot-fix
+    commit id: "fix"
+    checkout main
+    merge hot-fix
+    checkout develop
+    merge main
+``` -->
+
+---
+
