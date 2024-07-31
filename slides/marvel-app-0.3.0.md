@@ -144,7 +144,7 @@ footer: "Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.gir
     </ul>
   </div>
   <div class="column">
-    <img src="./img/background/marvel-app/marvel-app-0.3.0-1.png" width="100%">
+    <img src="./img/marvel-app/marvel-app-0.3.0-1.png" width="100%">
   </div>
 </div>
 
@@ -223,7 +223,7 @@ export default App
 
 L'état actuel de la branche `feature/react` devrait ressembler à ceci:
 
-<img src="./img/background/marvel-app/marvel-app-0.3.0-2.png" width="60%">
+<img src="./img/marvel-app/marvel-app-0.3.0-2.png" width="60%">
 
 ---
 
@@ -247,7 +247,7 @@ L'état actuel de la branche `feature/react` devrait ressembler à ceci:
 
 # git - Etat final
 
-<img src="./img/background/marvel-app/marvel-app-0.3.0-3.png" width="60%">
+<img src="./img/marvel-app/marvel-app-0.3.0-3.png" width="60%">
 
 ---
 
@@ -275,7 +275,7 @@ L'état actuel de la branche `feature/react` devrait ressembler à ceci:
 
 La modification a été faite sur la branche `hotfix/0.3.1` et a été mergée dans la branche `main`. L'état actuel des branches devrait ressembler à ceci:
 
-<img src="./img/background/marvel-app/marvel-app-0.3.0-4.png" width="60%">
+<img src="./img/marvel-app/marvel-app-0.3.0-4.png" width="60%">
 
 ---
 
@@ -292,5 +292,5 @@ La modification a été faite sur la branche `hotfix/0.3.1` et a été mergée d
 
 L'état final des branches devrait ressembler à ceci:
 
-<img src="./img/background/marvel-app/marvel-app-0.3.0-5.png" width="60%">
+<img src="./img/marvel-app/marvel-app-0.3.0-5.png" width="60%">
 

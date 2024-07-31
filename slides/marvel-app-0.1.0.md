@@ -142,7 +142,7 @@ Exemple de versionnement sémantique:
         </li>
   </div>
   <div class="column">
-    <img src="./img/background/marvel-app/marvel-app-0.1.0-1.png" width="100%">
+    <img src="./img/marvel-app/marvel-app-0.1.0-1.png" width="100%">
   </div>
 </div>
 
@@ -162,7 +162,7 @@ Exemple de versionnement sémantique:
     </ul>
   </div>
   <div class="column">
-    <img src="./img/background/marvel-app/marvel-app-0.1.0-2.png" width="100%">
+    <img src="./img/marvel-app/marvel-app-0.1.0-2.png" width="100%">
   </div>
 
 ---
@@ -172,7 +172,7 @@ Exemple de versionnement sémantique:
 - Visualiser la liste des commits avec la commande:
     - `git log --oneline`
 - La liste devrait équivalente à:
-<img src="./img/background/marvel-app/marvel-app-0.1.0-3.png" width="100%">
+<img src="./img/marvel-app/marvel-app-0.1.0-3.png" width="100%">
 
 ---
 
@@ -193,7 +193,7 @@ Exemple de versionnement sémantique:
 
 Dans vscode, les tags sont visibles dans la vue __Source Control__:
 
-<img src="./img/background/marvel-app/marvel-app-0.1.0-4.png" width="100%">
+<img src="./img/marvel-app/marvel-app-0.1.0-4.png" width="100%">
 
 ---
 
@@ -209,7 +209,7 @@ Dans vscode, les tags sont visibles dans la vue __Source Control__:
 
 - Visualiser les commits sur GitHub:
 
-<img src="./img/background/marvel-app/marvel-app-0.1.0-5.png" width="100%">
+<img src="./img/marvel-app/marvel-app-0.1.0-5.png" width="100%">
 
 ---
 
@@ -217,4 +217,4 @@ Dans vscode, les tags sont visibles dans la vue __Source Control__:
 
 - Visualiser les tags sur GitHub:
 
-<img src="./img/background/marvel-app/marvel-app-0.1.0-6.png" width="100%">
+<img src="./img/marvel-app/marvel-app-0.1.0-6.png" width="100%">

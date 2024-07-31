@@ -175,7 +175,7 @@ gitGraph
     </ul>
   </div>
   <div class="column">
-    <img src="./img/background/marvel-app/marvel-app-0.2.0-1.png" width="100%">
+    <img src="./img/marvel-app/marvel-app-0.2.0-1.png" width="100%">
   </div>
 </div>
 
@@ -198,7 +198,7 @@ gitGraph
     </ul>
   </div>
   <div class="column">
-    <img src="./img/background/marvel-app/marvel-app-0.2.0-2.png" width="100%">
+    <img src="./img/marvel-app/marvel-app-0.2.0-2.png" width="100%">
   </div>
 
 ---
@@ -228,7 +228,7 @@ gitGraph
 
 L'extension **Git Graph** de **Visual Studio Code** permet de visualiser les branches et les commits.
 
-<img src="./img/background/marvel-app/marvel-app-0.2.0-3.png" width="100%">
+<img src="./img/marvel-app/marvel-app-0.2.0-3.png" width="100%">
 
 ---
 
@@ -286,7 +286,7 @@ gitGraph
 
 # gitflow - Mise en pratique (suite)
 
-<img src="./img/background/marvel-app/marvel-app-0.2.0-4.png" width="100%">
+<img src="./img/marvel-app/marvel-app-0.2.0-4.png" width="100%">
 
 ---
 
@@ -309,7 +309,7 @@ gitGraph
 
 # git - Merge (suite)
 
-<img src="./img/background/marvel-app/marvel-app-0.2.0-5.png" width="100%">
+<img src="./img/marvel-app/marvel-app-0.2.0-5.png" width="100%">
 
 ---
 
@@ -321,7 +321,7 @@ gitGraph
 
 # git - Merge (suite)
 
-<img src="./img/background/marvel-app/marvel-app-0.2.0-6.png" width="100%">
+<img src="./img/marvel-app/marvel-app-0.2.0-6.png" width="100%">
 
 ---
 
@@ -338,7 +338,7 @@ Ayant terminé les 2 fonctionnalités, nous pouvons supprimer les branches **fea
 
 # git - Merge (suite)
 
-<img src="./img/background/marvel-app/marvel-app-0.2.0-7.png" width="100%">
+<img src="./img/marvel-app/marvel-app-0.2.0-7.png" width="100%">
 
 ---
 
@@ -363,7 +363,7 @@ Nous sommes maintenant prêts à fusionner la branche **develop** avec la branch
 
 # git - Merge (suite)
 
-<img src="./img/background/marvel-app/marvel-app-0.2.0-8.png" width="100%">
+<img src="./img/marvel-app/marvel-app-0.2.0-8.png" width="100%">
 
 ---
 
@@ -376,7 +376,7 @@ Nous sommes maintenant prêts à fusionner la branche **develop** avec la branch
 
 # git - Merge (suite)
 
-<img src="./img/background/marvel-app/marvel-app-0.2.0-9.png" width="100%">
+<img src="./img/marvel-app/marvel-app-0.2.0-9.png" width="100%">
 
 ---
 
