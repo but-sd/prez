@@ -189,3 +189,31 @@ gitGraph
 
 ---
 
+# Version 0.4.0 - Objectif
+
+* Création de plusieurs pages (Home, About, Contact)
+* Utilisation de react-router pour gérer la navigation entre les pages
+* Mise en oeuvre d'un layout pour les pages (header, footer, etc...)
+
+---
+
+# Version 0.4.0 - Objectif (suite)
+
+<img src="img/git-graph/version-0.4.0.png" alt="Version 0.4.0" style="width: 70%;">
+
+<!-- ```mermaid
+gitGraph
+    checkout main
+    commit tag: "v0.3.0"
+    branch develop
+    checkout develop
+    branch feature-routers
+    checkout feature-routers
+    commit id: "create-pages"
+    commit id: "use-router"
+    checkout develop
+    merge feature-routers
+    checkout main
+    merge develop
+    commit tag: "V.0.4.0"
+``` -->

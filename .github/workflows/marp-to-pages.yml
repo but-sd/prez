@@ -23,6 +23,9 @@ jobs:
       - name: Copy images directory (if exists)
         run: if [[ -d slides/img ]]; then cp -R slides/img build/img; fi
 
+      - name: Copy assets directory (if exists)
+        run: if [[ -d slides/assets ]]; then cp -R slides/assets build/assets; fi
+
       - name: Marp Build (slides) - HTML
         uses: docker://marpteam/marp-cli:v3.0.2
         with:
