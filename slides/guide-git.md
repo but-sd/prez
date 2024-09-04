@@ -38,28 +38,28 @@ Le terme **V**ersion **C**ontrol **S**ystem (VCS) est parfois utilisé.
 
 # Objectifs d'un **S**ource **C**ontrol **M**anagement
 
-- Suivre les modifications apportées à un projet (quand, qui)
-- Inclure un message descriptif pour chaque modification pour expliquer le pourquoi
-- Permettre de revenir à une version antérieure du projet ou d'un fichier
-- Travailler en parallèle sur différentes branches de développement (__feature__, __bugfix__...) par des personnes différentes sans affecter la branche principale (__main__, __develop__...)
-- Marquer des versions stables du projet (__release__)
+* Suivre les modifications apportées à un projet (quand, qui)
+* Inclure un message descriptif pour chaque modification pour expliquer le pourquoi
+* Permettre de revenir à une version antérieure du projet ou d'un fichier
+* Travailler en parallèle sur différentes branches de développement (__feature__, __bugfix__...) par des personnes différentes sans affecter la branche principale (__main__, __develop__...)
+* Marquer des versions stables du projet (__release__)
 
 ---
 
 # **D**istributed **V**ersion **C**ontrol **S**ystem
 
-- Système de gestion de version distribué
-- Chaque utilisateur possède une copie complète de l'historique du projet
-- Permet de travailler en local sans connexion à un serveur contrairement aux anciens systèmes de gestion de version centralisés (CVS, Subversion), qui nécessitent une connexion permanente au serveur
+* Système de gestion de version distribué
+* Chaque utilisateur possède une copie complète de l'historique du projet
+* Permet de travailler en local sans connexion à un serveur contrairement aux anciens systèmes de gestion de version centralisés (CVS, Subversion), qui nécessitent une connexion permanente au serveur
 
 ---
 # **Git** - https://git-scm.com/
 
-- Système de gestion de version distribué créé par Linus Torvalds en 2005, le créateur de Linux
-- Rapide, simple, léger, performant, open source
-- Utilisé par de nombreux projets open source et en entreprise
-- Services en ligne (GitHub, GitLab, Bitbucket, Azure DevOps) viennent ajouter des fonctionnalités (gestion de projet, CI/CD, wiki, issues, pull requests...)
-- Intégration dans les IDEs (VSCode, IntelliJ, Eclipse...)
+* Système de gestion de version distribué créé par Linus Torvalds en 2005, le créateur de Linux
+* Rapide, simple, léger, performant, open source
+* Utilisé par de nombreux projets open source et en entreprise
+* Services en ligne (GitHub, GitLab, Bitbucket, Azure DevOps) viennent ajouter des fonctionnalités (gestion de projet, CI/CD, wiki, issues, pull requests...)
+* Intégration dans les IDEs (VSCode, IntelliJ, Eclipse...)
 
 ---
 
@@ -224,9 +224,9 @@ nothing added to commit but untracked files present (use "git add" to track)
 
 # **Git** - terminologie
 
-- **Working tree** : répertoire de travail, contient les fichiers du projet
-- **Staging area** : zone de transit, contient les fichiers qui seront inclus dans le prochain **commit**
-- **commit** : enregistrement des modifications dans l'historique du projet
+* **Working tree** : répertoire de travail, contient les fichiers du projet
+*  **Staging area** : zone de transit, contient les fichiers qui seront inclus dans le prochain **commit**
+* **commit** : enregistrement des modifications dans l'historique du projet
 
 ---
 
@@ -240,10 +240,10 @@ Le cas d'usage basique de git est de modifier des fichiers en local, puis de les
 
 # **Git** - cycle de vie des fichiers (suite)
 
-- Les fichiers sont modifiés en local, puis ajoutés à l'index avec la commande `git add`
-- Les fichiers de l'index sont commités avec la commande `git commit` 
-- Les commits sont ensuite envoyés vers le dépôt distant avec la commande `git push` 
-- Les commits du dépôt distant sont récupérés avec la commande `git pull`
+* Les fichiers sont modifiés en local, puis ajoutés à l'index avec la commande `git add`
+* Les fichiers de l'index sont commités avec la commande `git commit` 
+* Les commits sont ensuite envoyés vers le dépôt distant avec la commande `git push` 
+* Les commits du dépôt distant sont récupérés avec la commande `git pull`
 
 ---
 

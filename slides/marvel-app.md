@@ -63,15 +63,15 @@ Mettre en oeuvre les différents concepts manipulés au cours du développement 
 
 # Concepts manipulés
 
-- __agilité__ : méthode de développement
-- __développement web__ : html, css, javascript, typescript, react
-- __aide au développement__: vscode, github copilot, eslint, prettier
-- __travail collaboratif__: git, github
-- __tests unitaires, tests d'intégration__: jest, cypress, playwright
-- __intégration continue__: github actions
-- __déploiement continu__: github actions
-- __documentation__: markdown, mkdocs
-- __qualimétrie__: sonarqube
+* __agilité__ : méthode de développement
+* __développement web__ : html, css, javascript, typescript, react
+* __aide au développement__: vscode, github copilot, eslint, prettier
+* __travail collaboratif__: git, github
+* __tests unitaires, tests d'intégration__: jest, cypress, playwright
+* __intégration continue__: github actions
+* __déploiement continu__: github actions
+* __documentation__: markdown, mkdocs
+* __qualimétrie__: sonarqube
 
 ---
 
@@ -217,3 +217,13 @@ gitGraph
     merge develop
     commit tag: "V.0.4.0"
 ``` -->
+
+---
+
+# Version 1.0.0 - Objectif
+
+* Création de la page de détail d'un personnage
+* Sécurisation de l'application
+  * Création d'un workflow de CI/CD avec GitHub Actions
+  * Protection des branches `main` et `develop`
+* Création d'une release 1.0.0 et déploiement de l'application

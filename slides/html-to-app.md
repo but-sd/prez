@@ -38,7 +38,7 @@ footer: "Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.gir
   <div class="column">
     <ul>
       <li><b>DOCTYPE:</b><span> définit le type de document comme étant un document HTML</span></li>
-      <li><b>html:</b><span> définit le document comme étant un document HTML</span></li>
+      <li><b>html:</b><span> définit un document HTML</span></li>
       <li><b>head:</b> <span> définit un ensemble d'informations sur le document</span></li>
       <li><b>body:</b> <span> définit le corps du document</span></li>
     </ul>
@@ -212,7 +212,7 @@ Le **JavaScript** est un langage de programmation qui permet de rendre les pages
     <div class="column">
         <ul>
             <li>Afficher <i>Hello world from script.js</i> dans la console</li>
-            <li>Ajouter à la fin de l'élement h1 le texte " from JavaScript"</li>
+            <li>Ajouter à la fin de l'élement h1 le texte " from JS" et changer la couleur en JavaScript</li>
             <li>Ajouter un élément h2 <i>Welcome to the DOM</i> sous l'élément h1</li>
         </ul>
     </div>
@@ -257,8 +257,8 @@ Accessible via le menu **Plus d'outils** > **Outils de développement** ou en ap
     <div class="column">
         <ul>
           <li>Ajouter une liste de 2 éléments en html</li>
-          <li>Supprimer le premier élément de la liste en javascript</li>
-          <li>Ajouter un élément à la fin de la liste en javascript</li>
+          <li>Supprimer le premier élément de la liste en JavaScript</li>
+          <li>Ajouter un élément à la fin de la liste en JavaScript</li>
         </ul>
     </div>
     <div class="column">
@@ -367,6 +367,12 @@ Accessible via le menu **Plus d'outils** > **Outils de développement** ou en ap
 # Analyse de ce qu'il reste à faire - Suite
 
 Avant de refactoriser le code, il est important d'utiliser un système de contrôle de version comme Git pour pouvoir revenir en arrière en cas de problème.
+
+Nous allons donc commencer par versionner le code actuel en suivant le guide suivant :
+
+[https://but-sd.github.io/prez/guide-git.html](https://but-sd.github.io/prez/guide-git.html)
+
+
 
 ---
 
