@@ -22,13 +22,14 @@ footer: 'Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.gir
 
 Ensemble des outils pour le développement logiciel mis à la disposition des équipes de développement
 
-- **GitHub** : gestion des dépôts de code source
-- **Jenkins** : intégration continue
-- **SonarQube** : qualité du code
-- **Nexus** : gestion des artefacts
+* __GitHub__ : gestion des dépôts de code source
+* __Jenkins__ : intégration continue
+* __SonarQube__ : qualité du code
+* **Nexus** : gestion des artefacts
 ---
 
 # Regroupement de 2 modules
+
 ## **Développement logiciel**
 Présenter les approches et les outils qui permettent de mener à bien un projet informatique
 
@@ -44,9 +45,11 @@ Mélangeant de la théorie et surtout beaucoup de pratique pour mettre en applic
 
 ## **Mettre en place une application web en suivant les bonnes pratiques de développement**
 
-Les technologies utilisées sont celles actuellement utilisées dans le monde professionnel, l'objectif est de vous __préparer__ au mieux pour votre future insertion professionnelle.
+Les technologies utilisées sont celles actuellement utilisées dans le monde professionnel.
 
-L'objectif est de vous donner les __bases__ pour que vous puissiez continuer à apprendre par vous-même par la suite. Les technologies évoluent très vite, il est important de __savoir s'adapter__.
+ L'objectif est de vous:
+ * __préparer__ au mieux pour votre future insertion professionnelle.
+* donner les __bases__ pour que vous puissiez continuer à apprendre par vous-même par la suite. Les technologies évoluent très vite, il est important de __savoir s'adapter__.
 
 ---
 
@@ -64,6 +67,8 @@ L'objectif est de vous donner les __bases__ pour que vous puissiez continuer à 
     color: grey;
   }
 </style>
+
+Marvel App - Objectifs de développement
 
 <div class="two-columns">
   <div class="column">

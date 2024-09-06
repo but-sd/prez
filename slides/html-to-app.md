@@ -184,7 +184,7 @@ Il permet de séparer le contenu de la présentation.
         <ul>
             <li>Ajouter une page</li>
             <li>Pouvoir naviguer entre les 2 pages</li>
-            <li>Tester l'ordre d'application des styles inline, interne, externe</li>
+            <li>Tester, valider que l'application des styles est correcte</li>
             <li>En appliquant la structure suivante :</li>
         </ul>
         <img src="img/html-to-app/exercice-4-struct.png" alt="HTML to App" />

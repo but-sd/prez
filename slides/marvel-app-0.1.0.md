@@ -68,11 +68,48 @@ Exemple de versionnement sémantique:
 
 ---
 
+# semver - Semantic Versioning (suite)
+
+Le semver est à l'origine utilisé pour numéroter les versions des librairies utilisées dans un projet. Si le semver est respecté, il est possible de mettre à jour les librairies sans risque de casser le projet, par exemple on sait que la version `1.2.3` est compatible avec la version `1.2.0`
+
+--- 
+
+# semver - Semantic Versioning (suite)
+
+Ce système de versionnement est également utilisé pour numéroter les versions d'applications. Même si les applications ne sont pas des librairies et que rien ne dépends d'elles, il est possible de suivre le semver pour indiquer le niveau de stabilité de l'application.
+
+Par exemple la version `0.1.0` est une version instable en cours de développement, la version `1.0.0` est la première  version stable de l'application.
+
+La version 1.1.0 est une version mineure avec des ajouts de fonctionnalités.
+
+Une version 2.0.0 est une version majeure avec des changements fonctionnels importants.
+
+---
+
+# Gestion des dépendances
+
+La plupart des applications modernes utilisent des dépendances pour fonctionner. Les dépendances sont des librairies tierces qui sont utilisées par l'application pour ajouter des fonctionnalités. On ne réinvente pas la roue, on utilise des librairies existantes pour gagner du temps et faciliter le développement.
+
+Les dépendances sont gérées par un gestionnaire de dépendances qui permet de les installer, de les mettre à jour, de les supprimer, de les lister...
+
+---
+
+# Gestion des dépendances (suite)
+
+Il est important de gérer les dépendances pour s'assurer que l'application fonctionne correctement et que les dépendances sont à jour. Privilégier les dépendances maintenues et actives pour éviter les problèmes de sécurité.
+
+Attention à la notion de licence, certaines dépendances peuvent être payantes ou soumises à des restrictions d'utilisation. 
+
+--- 
+
 # npm - Node Package Manager
+
+`npm` est le gestionnaire de paquets officiel de Node.js. Il permet d'installer, de mettre à jour, de supprimer, de lister les paquets installés, de gérer les dépendances d'un projet.
+
+La description des dépendances est stockée dans un fichier `package.json` à la racine du projet. Ce fichier contient la liste des dépendances, des scripts, des métadonnées du projet (version, auteur, licence...).
 
 * Créer un fichier `package.json` à la racine du projet avec la commande:
     * `npm init -y`
-    * Ce fichier permet de décrire le projet, ses dépendances, ses scripts, sa version, son auteur, sa licence...
     * Modifier la version du projet en `0.1.0`
 
 ---
