@@ -98,7 +98,7 @@ Ces informations seront utilisées pour chaque **commit**. Il est possible de le
 # **Git** - configuration 2/3 (spécifique université de Poitiers)
 
 ```bash
-git config --global http.proxy http://proxy.univ-poitiers.fr:3128
+git config --global http.proxy http://proxy.iutn.univ-poitiers.fr:3128
 ```
 
 ---
