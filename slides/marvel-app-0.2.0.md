@@ -21,6 +21,12 @@ footer: "Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.gir
   span {
     color: grey;
   }
+
+  .highlight {
+            background-color: lightgrey;
+            padding: 2px 4px;
+            border-radius: 3px;
+  }
 </style>
 
 <!-- Add script to support mermaid -->
@@ -164,8 +170,7 @@ gitGraph
   <div class="column">
     <ul>
         <li>
-            Lister les branches avec la commande: git branch -v
-        </li>
+            Lister les branches avec la commande: <mark class="highlight">git branch -v</mark>
         <li>
             L'option <b>-v</b> affiche le dernier commit de chaque branche. On voit ici que toutes les branches sont au même niveau (même commit)
         </li>
@@ -187,7 +192,8 @@ gitGraph
   <div class="column">
     <ul>
         <li>
-            Se positionner sur la branche <b>feature/style</b> avec la commande: git checkout feature/style
+            Se positionner sur la branche <b>feature/style</b> avec la commande: <br>
+            <mark class="highlight">git checkout feature/style</mark>
         </li>
         <li>
             Modifier le fichier <b>src/style.css</b> pour ajouter du style à la page web
@@ -234,9 +240,11 @@ L'extension **Git Graph** de **Visual Studio Code** permet de visualiser les bra
 
 # Fonctionnalités - Données
 
-* Se positionner sur la branche <b>feature/data</b> avec la commande: git checkout feature/data
+* Se positionner sur la branche <b>feature/data</b> avec la commande:<br>
+  <mark class="highlight">git checkout feature/data</mark>
 * Créer un fichier <b>src/data/characters.json</b> pour ajouter des données sur les personnages Marvel et simuler une API
     * Le fichier characters.json contient un tableau d'objets. Chaque objet représente un personnage. Chaque personnage a un attribut name qui contient le nom du personnage.
+* Vous pouvez récupérer les données des personnages <a href="https://but-sd.github.io/prez/characters.json" target="_blank">ici</a>
 * Les données sont ensuite accessibles http://localhost:3000/data/characters.json
 
 ---
