@@ -19,6 +19,9 @@ jobs:
 
       - name: Copy index.html
         run: cp index.html build/index.html
+        
+      - name: Copy characters.json
+        run: cp characters.json build/characters.json
 
       - name: Copy images directory (if exists)
         run: if [[ -d slides/img ]]; then cp -R slides/img build/img; fi
