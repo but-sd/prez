@@ -199,27 +199,22 @@ export default App
 <h1 id="react---adapter-le-code-existant-suite">react - Adapter le code existant (suite)</h1>
 <ul>
 <li data-marpit-fragment="1">Copier les styles css du fichier <code>style.css</code> dans le fichier <code>App.css</code></li>
-<li data-marpit-fragment="2">Modifier le fichier <code>index.html</code> pour mettre le titre de la page à <code>Marvel App</code></li>
+<li data-marpit-fragment="2">Modifier le fichier <code>index.html</code> (à la racine du projet) pour mettre le titre de la page à <code>Marvel App</code></li>
 <li data-marpit-fragment="3">Valider que tout fonctionne correctement puis créer un commit avec le message <code>Use static list for characters</code></li>
 </ul>
 <footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="13" data-marpit-fragments="6" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" data-theme="default" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;--theme:default;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="13" data-marpit-fragments="4" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" data-theme="default" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;--theme:default;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <header>BUT SD - Marvel App</header>
 <h1 id="react---adapter-le-code-existant-suite-1">react - Adapter le code existant (suite)</h1>
 <ul>
-<li data-marpit-fragment="1">Modifier le fichier <code>src/data/characters.json</code> pour ajouter un id à chaque personnage
+<li data-marpit-fragment="1">Modifier le fichier <code>App.jsx</code> pour afficher la liste des personnages à partir du fichier <code>characters.json</code>
 <ul>
-<li data-marpit-fragment="2">Nécessaire pour React, chaque élément d'une liste doit avoir un identifiant unique</li>
+<li data-marpit-fragment="2">Utiliser la fonction <code>import</code> pour importer le fichier <code>characters.json</code></li>
+<li data-marpit-fragment="3">Utiliser la fonction <code>map</code> pour parcourir le tableau de personnages</li>
 </ul>
 </li>
-<li data-marpit-fragment="3">Modifier le fichier <code>App.jsx</code> pour afficher la liste des personnages à partir du fichier <code>characters.json</code>
-<ul>
-<li data-marpit-fragment="4">Utiliser la fonction <code>import</code> pour importer le fichier <code>characters.json</code></li>
-<li data-marpit-fragment="5">Utiliser la fonction <code>map</code> pour parcourir le tableau de personnages</li>
-</ul>
-</li>
-<li data-marpit-fragment="6">Valider que tout fonctionne correctement puis créer un commit avec le message <code>Use dynamic list for characters</code></li>
+<li data-marpit-fragment="4">Valider que tout fonctionne correctement puis créer un commit avec le message <code>Use dynamic list for characters</code></li>
 </ul>
 <footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
 </section>
@@ -273,7 +268,7 @@ export default App
 <header>BUT SD - Marvel App</header>
 <h1 id="git-1">git</h1>
 <ul>
-<li data-marpit-fragment="1">Modifer le numéro de version dans le fichier <code>package.json</code> pour <code>0.3.0</code></li>
+<li data-marpit-fragment="1">Modifier le numéro de version dans le fichier <code>package.json</code> pour <code>0.3.0</code></li>
 <li data-marpit-fragment="2">Vérifier que tout fonctionne correctement <code>npm install &amp;&amp; npm run dev</code></li>
 <li data-marpit-fragment="3">Créer un commit avec le message <code>Release 0.3.0</code></li>
 <li data-marpit-fragment="4">Merger la branche <code>develop</code> dans la branche <code>main</code> via la commande <code>git checkout main</code> puis <code>git merge develop</code></li>
