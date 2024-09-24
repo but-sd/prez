@@ -182,15 +182,13 @@ export default App
 # react - Adapter le code existant (suite)
 
 * Copier les styles css du fichier `style.css` dans le fichier `App.css`
-* Modifier le fichier `index.html` pour mettre le titre de la page à `Marvel App`
+* Modifier le fichier `index.html` (à la racine du projet) pour mettre le titre de la page à `Marvel App`
 * Valider que tout fonctionne correctement puis créer un commit avec le message `Use static list for characters`
 
 ---
 
 # react - Adapter le code existant (suite)
 
-* Modifier le fichier `src/data/characters.json` pour ajouter un id à chaque personnage
-    * Nécessaire pour React, chaque élément d'une liste doit avoir un identifiant unique
 * Modifier le fichier `App.jsx` pour afficher la liste des personnages à partir du fichier `characters.json`
     * Utiliser la fonction `import` pour importer le fichier `characters.json`
     * Utiliser la fonction `map` pour parcourir le tableau de personnages
@@ -235,7 +233,7 @@ L'état actuel de la branche `feature/react` devrait ressembler à ceci:
 
 # git
 
-* Modifer le numéro de version dans le fichier `package.json` pour `0.3.0`
+* Modifier le numéro de version dans le fichier `package.json` pour `0.3.0`
 * Vérifier que tout fonctionne correctement `npm install && npm run dev`
 * Créer un commit avec le message `Release 0.3.0`
 * Merger la branche `develop` dans la branche `main` via la commande `git checkout main` puis `git merge develop`
