@@ -150,6 +150,50 @@ footer: "Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.gir
 
 ---
 
+# react - Hello World - Syntaxe JavaScript
+
+Modifier le fichier `App.jsx` pour afficher le message `Hello World`
+
+```javascript
+import React from "react";
+
+function App() {
+  return React.createElement("h1", {}, "Hello World");
+}
+
+export default App;
+```
+
+La fonction App qui est l'élément racine de l'application retourne un élément **h1** avec le texte `Hello World`
+
+La syntaxe JavaScript est un peu verbeuse et peu lisible. React propose une syntaxe plus simple et plus lisible grâce à la syntaxe JSX
+
+---
+
+# react - Hello World - Syntaxe JSX
+
+Modifier le fichier `App.jsx` pour afficher le message `Hello World from react with JSX` en utilisant la syntaxe JSX
+
+```javascript
+
+function App() {
+  return (<h1>Hello World from react with JSX</h1>);
+}
+
+export default App;
+```
+
+La syntaxe JSX est très proche de la syntaxe HTML. Elle permet de créer des composants React en utilisant des balises HTML.
+
+--- 
+
+# react - Syntaxe JSX
+
+Pour plus de détails sur la syntaxe JSX, consulter la documentation officielle de React: [https://react.dev/learn](https://react.dev/learn)
+
+Ou le guide simplifié [https://but-sd.github.io/guide-react/](https://but-sd.github.io/guide-react/)
+
+---
 # react - Adapter le code existant - App.jsx
 
 ```html
