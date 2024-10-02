@@ -31,7 +31,7 @@ footer: "Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.gir
 
 # Gestion de la navigation dans l'application
 
-* installation et configuration de __React Router__, librairie tierce pour permettant de gérer la navigation
+* installation et configuration de __React Router__, librairie tierce permettant de gérer la navigation
 * Mise en place de la navigation dans l'application Marvel
     * définir les routes
     * définir les composants à afficher en fonction de la route
@@ -79,15 +79,16 @@ Nous verrons plus tard comment sécuriser nos branches de développement et de p
 
 # Page About
 
+Créez le composant `AboutPage` dans le dossier `src/pages` et ajoutez le contenu suivant:
+
 <div class="two-columns">
   <div class="column">
-    Contenu de la page <b>About</b>
     <ul>
         <li>Un système permettant de modifier le titre de la page (document.title)</li>
         <li>Un en-tête h2</li>
         <li>Un paragraphe</li>
     </ul>
-    Pour tester cette page, modifier le fichier App.jsx pour afficher la page About.
+    Pour tester cette page, modifier le fichier App.jsx pour utiliser le composant <b>AboutPage</b> (et supprimer l'affichage actuel).
   </div>
   <div class="column">
     <img src="./img/marvel-app/marvel-app-0.4.0-1.png" width="100%">
@@ -98,15 +99,16 @@ Nous verrons plus tard comment sécuriser nos branches de développement et de p
 
 # Page Contact
 
+Créez le composant `ContactPage` dans le dossier `src/pages` et ajoutez le contenu suivant:
+
 <div class="two-columns">
   <div class="column">
-    Contenu de la page <b>Contact</b>
     <ul>
         <li>Un système permettant de modifier le titre de la page (document.title)</li>
         <li>Un en-tête h2</li>
         <li>Un message de contact avec un lien de type mailto</li>
     </ul>
-    Pour tester cette page, modifier le fichier App.jsx pour afficher la page Contact.
+    Pour tester cette page, modifier le fichier App.jsx pour afficher la page <b>Contact</b>.
   </div>
   <div class="column">
     <img src="./img/marvel-app/marvel-app-0.4.0-2.png" width="100%">
@@ -116,14 +118,15 @@ Nous verrons plus tard comment sécuriser nos branches de développement et de p
 
 # Page Characters
 
+Créez le composant `CharactersPage` dans le dossier `src/pages` et ajoutez le contenu suivant:
+
 <div class="two-columns">
   <div class="column">
-    Contenu de la page <b>Characters</b>
     <ul>
         <li>Un système permettant de modifier le titre de la page (document.title)</li>
         <li>Le contenu qui était affiché sur la page d'accueil, attention au chemin d'accès aux imports</li>
     </ul>
-    Pour tester cette page, modifier le fichier App.jsx pour afficher la page Characters.
+    Pour tester cette page, modifier le fichier App.jsx pour afficher la page <b>Characters</b>.
   </div>
   <div class="column">
     <img src="./img/marvel-app/marvel-app-0.4.0-3.png" width="100%">
@@ -140,8 +143,6 @@ Nous n'avons pas de contenu spécifique pour la page Home, nous afficherons le c
 
 # Problématique - Gestions des routes
 
-Actuellement les pages sont affichées les unes à la suite des autres, il n'y a pas de gestion de la navigation entre les pages.
-
 * Comment gérer la navigation dans une application React ?
 * Comment définir les routes de l'application ?
 * Comment afficher les composants en fonction de la route ?
@@ -154,9 +155,6 @@ Actuellement les pages sont affichées les unes à la suite des autres, il n'y a
 * Quelques explications sur react-router :
     * [Guide React](https://but-sd.github.io/guide-react/react-router/) 
     * [React Router](https://reactrouter.com/en/main/start/overview)
-* Installation de __React Router__ dans l'application
-    * `npm install react-router-dom`
-    * `npm install react-router`
 
 ---
 

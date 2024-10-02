@@ -10,7 +10,7 @@ footer: "Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.gir
 
 ![bg opacity:.4 ](./img/background/fond-maif.jpg)
 
-# # 2. Présentation de GitHub Copilot
+# Présentation de GitHub Copilot
 
 ## Outil d'assistance à la programmation développé par GitHub et OpenAI basé sur l'IA
 ## https://copilot.github.com/
@@ -37,6 +37,22 @@ Vous avez des profils qui manipulent des données, qui peuvent être sensibles, 
 GitHub Copilot propose des suggestions de code en fonction du contexte et de l'intention du développeur
 
 GitHub Copilot peut générer des suggestions de code pour de nombreux langages de programmation (Python, JavaScript, TypeScript, Ruby, Go, Rust, C++, Java, C#, HTML, CSS, PHP, Swift, Kotlin, etc.)
+
+---
+
+# Avantages de GitHub Copilot
+
+- **Gain de temps** : Accélère le processus de développement en générant des suggestions de code.
+- **Amélioration de la productivité** : Permet aux développeurs de se concentrer sur des tâches plus complexes.
+- **Apprentissage continu** : Aide les développeurs à apprendre de nouvelles syntaxes et techniques en proposant des exemples de code.
+
+---
+
+# Limitations de GitHub Copilot
+
+- **Qualité des suggestions** : Les suggestions peuvent ne pas toujours être optimales ou correctes.
+- **Dépendance aux données** : Les suggestions sont basées sur les données disponibles, ce qui peut inclure des biais ou des erreurs.
+- **Confidentialité** : Les développeurs doivent être conscients des implications de la confidentialité des données lorsqu'ils utilisent des outils basés sur l'IA.
 
 ---
 
