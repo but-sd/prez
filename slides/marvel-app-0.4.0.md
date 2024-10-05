@@ -172,7 +172,7 @@ Le layout de l'application permet de définir la structure de l'application, c'e
 # React Router - Layout (suite)
 
 * Création du layout de l'application
-    * Création du composant `Layout` dans le dossier `src`
+    * Création du composant `Layout` dans le dossier `src` (nommé `Layout.jsx`)
     * Importation du composant `Layout` dans le composant `App`
     * Utilisation du composant `Layout` dans le composant `App`
 
@@ -206,6 +206,16 @@ const Layout = ({ children }) => {
 
 export default Layout;
 ```
+
+---
+
+# Router - Layout (suite)
+
+Le composant `Layout` devient le composant principal de l'application. C'est lui qui va gérer l'affichage des pages de l'application.
+
+Il prend en paramètre la prop `children` qui correspond au contenu principal de l'application. C'est ici que nous allons afficher les pages de l'application. 
+
+Dans un premier temps, nous allons afficher toutes les pages de l'application dans le composant `Layout`.
 
 ---
 
@@ -292,6 +302,12 @@ __children__ : routes enfants
 
 # React Router - App
 
+Afin d'utiliser __React Router__ dans notre application, nous devons importer les composants `RouterProvider` et `createBrowserRouter` de `react-router-dom` et envelopper l'application avec le composant `RouterProvider`.
+
+Il s'agit de la configuration de base de __React Router__. Cela permet de laisser __React Router__ gérer la navigation de l'application. La navigation pourra se faire sans recharger la page si nous utilisons les composants `Link` ou `NavLink`.
+
+---
+
 ```javascript
 import './App.css'
 
@@ -367,11 +383,12 @@ Nous avons maintenant une application avec une gestion de la navigation grâce �
 
 <img src="./img/marvel-app/marvel-app-0.4.0-5.png" width="40%">
 
+
 ---
 
 # React Router - NavLinks
 
-* Nous avons utilisé des balises `a` pour les liens de navigation
+* Nous avons utilisé des balises `a` pour les liens de navigation, ce qui n'est pas optimal, on perd le fonctionnement de __React Router__ et on recharge la page à chaque clic.
 * Nous allons remplacer ces balises par des composants `NavLink` de __React Router__
     * Permet de gérer la navigation sans recharger la page
     * Permet de gérer les classes CSS pour les liens actifs
@@ -426,8 +443,25 @@ export default Layout;
 
 ---
 
+# Fin de la version 0.4.0
+
+* Nous avons ajouté la gestion de la navigation dans l'application
+* Nous avons créé les pages de l'application
+* Nous avons créé le layout de l'application
+* Nous avons utilisé __React Router__ pour gérer la navigation
+* Nous avons utilisé le composant `Outlet` pour afficher les composants correspondant à la route
+* Nous avons utilisé les composants `NavLink` pour gérer la navigation sans recharger la page
+
+---
+
+# Fin de la version 0.4.0 (suite)
+
+L'application est maintenant fonctionnelle, nous avons ajouté les fonctionnalités de base pour une application web permettant de naviguer entre les différentes pages de l'application de manière fluide.
+
+Il est maintenant temps de générer une nouvelle version de l'application et de l'emmener jusqu'à la production. Faites le nécessaire pour générer la version 0.4.0 de l'application.
+
+---
+
 # git - Etat final
 
 <img src="./img/marvel-app/marvel-app-0.4.0-7.png" width="70%">
-
----
