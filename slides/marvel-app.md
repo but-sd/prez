@@ -227,3 +227,35 @@ gitGraph
   * Création d'un workflow de CI/CD avec GitHub Actions
   * Protection des branches `main` et `develop`
 * Création d'une release 1.0.0 et déploiement de l'application
+
+---
+
+# Version 1.0.0 - Objectif (suite)
+
+<!-- ```mermaid
+gitGraph
+    checkout main
+    commit tag: "v0.4.0"
+    branch develop
+    checkout develop
+    branch feature-character-detail
+    checkout feature-character-detail
+    commit id:"page"
+    commit id:"workflow"
+    checkout develop
+    merge feature-character-detail
+    branch release-1.0.0
+    checkout release-1.0.0
+    commit id:"1.0.0.rc1"
+    commit id:"doc"
+    commit id:"redirects"
+    commit id:"1.0.0.rc2"
+    commit id:"1.0.0"
+    checkout main
+    merge release-1.0.0
+    commit tag: "v1.0.0"
+    checkout develop
+    merge main
+``` -->
+
+<img src="img/marvel-app/marvel-app-1.0.0.png" alt="Version 1.0.0" style="width: 70%;">
