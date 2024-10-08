@@ -297,6 +297,22 @@ Il est possible de supprimer la branche source après l'intégration des modific
 
 ---
 
+# Deployment - Netifly
+
+Nous allons déployer l'application sur **netlify**. **netlify** est un service cloud qui permet de déployer des applications web.
+
+Créer un compte sur [netlify](https://app.netlify.com/signup) et se connecter avec son compte GitHub.
+
+---
+
+# Deployment - Netifly (suite)
+
+Dans la partie `Site Configuration/Build & Deploy/Continuous Deployment`, dans la section `Branches and deploy contexts` cliquer sur configure. La Production branch doit être `main` et `Any pull request again your production branch` doit être cochée.
+
+Cela va nous permettre d'avoir un déploiement automatique de l'application à chaque push sur la branche main et à chaque pull request sur la branche main. Nous pourrons ainsi avoir en parallèle la branche de production et les branches de "recette".
+
+---
+
 # git flow
 
 Pour rappel, le workflow git flow est le suivant:
@@ -387,13 +403,3 @@ L'application supporte le rechargement à chaud, ce qui signifie que les modific
 Le point d'entrée de l'application est le fichier `index.html` situé à la racine du projet. C'est ce fichier qui est chargé dans le navigateur et qui charge ensuite le fichier `main.jsx` qui est le point d'entrée de l'application React.
 
 ```
-
-<!-- ---
-
-TODO
-
-# Deployment - Netifly
-
-Nous allons déployer l'application sur **netlify**. **netlify** est un service cloud qui permet de déployer des applications web.
-
-Créer un compte sur [netlify](https://app.netlify.com/signup) et se connecter avec son compte GitHub. -->
