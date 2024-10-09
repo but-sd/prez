@@ -403,3 +403,57 @@ L'application supporte le rechargement à chaud, ce qui signifie que les modific
 Le point d'entrée de l'application est le fichier `index.html` situé à la racine du projet. C'est ce fichier qui est chargé dans le navigateur et qui charge ensuite le fichier `main.jsx` qui est le point d'entrée de l'application React.
 
 ```
+
+--- 
+
+# git - nettoyage des branches 
+
+Une fois la version déployée en production, il est possible de nettoyer les branches de fonctionnalités et de corrections de bugs.
+
+Il est possible de supprimer les branches de fonctionnalités qui ont été intégrées dans la branche `develop` et les branches de corrections de bugs qui ont été intégrées dans la branche `release/*`.
+
+---
+
+# git - nettoyage des branches (suite)
+
+Il est possible de supprimer les branches de fonctionnalités et de corrections de bugs directement sur GitHub en cliquant sur le bouton **Delete branch** dans la page des branches du repository.
+
+L'interface `branches` de GitHub permet de voir les branches qui ont été intégrées et celles qui ne le sont pas. Les branches de `feature/*` et de `bugfix/*` qui ont été intégrées peuvent être supprimées. Celà permet de garder un historique propre et de ne pas encombrer le repository avec des branches inutiles.
+
+Note : Cela ne supprime pas les branches en local.
+
+---
+
+# git - nettoyage des branches (suite)
+
+Afin de supprimer les branches en local, il est possible d'utiliser la commande `git branch -d <branch>` pour supprimer une branche en local.
+
+Pour mettre à jour les branches en local, il est possible de récupérer les branches distantes avec la commande `git fetch --prune`.
+
+Puis via la commande `git branch -vv` il est possible de voir les branches locales qui n'ont pas de correspondance avec les branches distantes. Il est possible de supprimer les branches locales qui n'ont pas de correspondance avec les branches distantes avec la commande `git branch -d <branch>`.
+
+---
+
+# git - nettoyage des branches (suite)
+
+Il est possible de supprimer toutes les branches locales qui n'ont pas de correspondance avec les branches distantes avec une enchaînement de commandes.
+
+  - `git fetch --prune` permet de récupérer les branches distantes et de supprimer les branches distantes qui n'existent plus en local
+  - `git branch -vv` permet de voir les branches locales et distantes
+  - `grep -v origin/` permet de filtrer les branches locales qui n'ont pas de correspondance avec les branches distantes
+  - `awk '{print $1}'` permet de récupérer le nom de la branche
+  - `xargs git branch -d` permet de supprimer la branche
+
+---
+
+# git - nettoyage des branches (suite)
+
+```bash
+git fetch --prune && git branch -vv | grep -v origin/ | awk '{print $1}' | xargs git branch -d
+```
+
+Le `|` permet de chaîner les commandes, le `&&` permet de chaîner les commandes et de les exécuter l'une après l'autre.
+
+Attention cette commande supprime toutes les branches locales qui n'ont pas de correspondance avec les branches distantes, il est donc important de vérifier que les branches locales à supprimer ne sont pas des branches de fonctionnalités ou de corrections de bugs en cours de développement. 
+
+A utiliser avec précaution pour ne pas perdre de travail uniquement présent en local.
