@@ -336,7 +336,7 @@ Etant donné qu'il s'agit de composants React écrit en **JSX**, il est nécessa
 Installer les dépendances nécessaires :
 
 ```bash
-npm install --save-dev jest-environment-jsdom @testing-library/react @testing-library/jest-dom
+npm install --save-dev jest-environment-jsdom @testing-library/react @testing-library/jest-dom @babel/plugin-syntax-jsx @babel/preset-react
 ```
 
 ---
@@ -403,7 +403,7 @@ test('renders the correct number of characters when characters array is not empt
 
 # Tests unitaires - Ajout de tests pour les composants (suite)
 
-Sauvegarder le fichier `src/components/NumberOfCharacters.test.js` et exécuter les tests avec la commande `npm test`.
+Sauvegarder le fichier `src/components/NumberOfCharacters.test.jsx` et exécuter les tests avec la commande `npm test`.
 
 <div class="two-columns">
   <div class="column">
@@ -555,43 +555,40 @@ jest.mock('react-router', () => ({
     },
 }));
 
-describe('CharactersPage', () => {
+test('render CharactersPage component', () => {
+    // when
 
-    test('render CharactersPage component', () => {
-        // when
+    // then
+    render(<CharactersPage />, { wrapper: BrowserRouter });
 
-        // then
-        render(<CharactersPage />, { wrapper: BrowserRouter });
-
-        // expect the document title to be "Marvel App"
-        expect(document.title).toBe('Marvel App');
+    // expect the document title to be "Marvel App"
+    expect(document.title).toBe('Marvel App');
 
 
-        // expect the heading 'Marvel Characters' to be in the document
-        const h2Element = screen.getByRole('heading', { level: 2, name: "Marvel Characters" });
-        expect(h2Element).toBeInTheDocument();
+    // expect the heading 'Marvel Characters' to be in the document
+    const h2Element = screen.getByRole('heading', { level: 2, name: "Marvel Characters" });
+    expect(h2Element).toBeInTheDocument();
 
-        // expect the character Thor to be in the document
-        const thorElement = screen.getByText(characters[0].name);
-        expect(thorElement).toBeInTheDocument();
+    // expect the character Thor to be in the document
+    const thorElement = screen.getByText(characters[0].name);
+    expect(thorElement).toBeInTheDocument();
 
-        // expect the charater Captain America to be in the document
-        const captainAmericaElement = screen.getByText(characters[1].name);
-        expect(captainAmericaElement).toBeInTheDocument();
+    // expect the charater Captain America to be in the document
+    const captainAmericaElement = screen.getByText(characters[1].name);
+    expect(captainAmericaElement).toBeInTheDocument();
 
-        // expect the number of characters to be in the document
-        const numberOfCharactersElement = screen.getByText(`There is ${characters.length} characters`);
-        expect(numberOfCharactersElement).toBeInTheDocument();
-    });
-
+    // expect the number of characters to be in the document
+    const numberOfCharactersElement = screen.getByText(`There is ${characters.length} characters`);
+    expect(numberOfCharactersElement).toBeInTheDocument();
 });
+
 ```
 
 ---
 
 # Tests unitaires - Tests d'un composant de type **Page** (suite)
 
-Sauvegarder le fichier `src/pages/CharactersPage.test.js` et exécuter les tests avec la commande `npm test`.
+Sauvegarder le fichier `src/pages/CharactersPage.test.jsx` et exécuter les tests avec la commande `npm test`.
 
 Nous testons ici que le composant `CharactersPage` est bien rendu et que les éléments attendus sont bien présents dans le DOM.
 
