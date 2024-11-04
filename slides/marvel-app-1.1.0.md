@@ -159,19 +159,17 @@ Contenu du fichier `jest.config.cjs` à créer à la racine du projet :
 
 ```javascript
 module.exports = {
-  transform: {
-    "^.+\\.jsx?$": "babel-jest",
-  },
-};
+    transform: {
+      "^.+\\.jsx?$": "babel-jest",
+    },
+  };
 ```
 
 Contenu du fichier `babel.config.cjs` à créer à la racine du projet :
 
 ```javascript
 module.exports = {
-  transform: {
-    "^.+\\.jsx?$": "babel-jest",
-  },
+  presets: ["@babel/preset-env"],
 };
 ```
 ---
@@ -198,19 +196,19 @@ jest.mock('../data/characters.json', () => [
 ]);
 
 describe('getCharacters', () => {
-    it('should return the list of characters', () => {
+    test('should return the list of characters', () => {
         const result = getCharacters();
         expect(result).toEqual(characters);
     });
 });
 
 describe('getCharacterById', () => {
-    it('should return the correct character when a valid ID is provided', () => {
+    test('should return the correct character when a valid ID is provided', () => {
         const result = getCharacterById(1);
         expect(result).toEqual({ id: 1, name: 'Character One' });
     });
 
-    it('should throw an error when an invalid ID is provided', () => {
+    test('should throw an error when an invalid ID is provided', () => {
         expect(() => getCharacterById(999)).toThrow('Character with id 999 not found');
     });
 });
@@ -235,10 +233,10 @@ Sauvegarder le fichier `src/api/characters-api.test.js` et exécuter les tests a
 
 # Tests unitaires - Ajout de tests pour la partie API (suite)
 
-Dans le résultat des tests, une ligne est affichée par `describe` et une sous-ligne par `it` avec le résultat du test. Cette organisation permet de savoir rapidement où se trouve le problème en cas d'échec. 
+Dans le résultat des tests, une ligne est affichée par `describe` et une sous-ligne par `test` avec le résultat du test. Cette organisation permet de savoir rapidement où se trouve le problème en cas d'échec. 
 
-On organise les tests en `describe` pour regrouper les tests par fonctionnalité et en `it` pour décrire un test en particulier.
-En nommant correctement les `describe` et les `it`, on peut rapidement comprendre ce qui est testé.
+On organise les tests en `describe` pour regrouper les tests par fonctionnalité et en `test` pour décrire un test en particulier.
+En nommant correctement les `describe` et les `test`, on peut rapidement comprendre ce qui est testé.
 
 ---
 
@@ -256,7 +254,7 @@ Ici on **mock** le fichier `characters.json` pour ne pas dépendre de son conten
 
 # Tests unitaires - Couverture de code
 
-Savoir que nos tests passent est une chose, mais il est important de savoir si notre code est bien testé. Pour cela, on utilise la couverture de code qui permet de savoir quelles parties de notre code sont testées et quelles parties ne le sont pas.
+Savoir que nos tests passent est une chose, mais il est important de savoir quelle partie du code est testé. Pour cela, on utilise la couverture de code qui permet de savoir quelles parties de notre code sont testées et quelles parties ne le sont pas.
 
 Pour afficher la couverture de code, il suffit d'exécuter la commande `npm test -- --coverage`. 
 
@@ -303,15 +301,15 @@ Nous verrons plus tard des cas où la couverture de code est moins bonne et comm
 
 # Tests unitaires - Bonnes pratiques
 
-Le découpage des tests en **describe** et **it** permet de mieux organiser les tests et de les rendre plus lisibles.
+Le découpage des tests en **describe** et **test** permet de mieux organiser les tests et de les rendre plus lisibles.
 
-Il est important de nommer correctement les **describe** et les **it** pour faciliter la compréhension des tests.
+Il est important de nommer correctement les **describe** et les **test** pour faciliter la compréhension des tests.
 
-Un **decribe** doit regrouper les tests par fonctionnalité et un **it** doit décrire un test en particulier.
+Un **decribe** doit regrouper les tests par fonctionnalité et un **test** doit décrire un test en particulier.
 
-Un **it** doit être clair et concis, il doit décrire ce qui est testé et ce qui est attendu.
+Un **test** doit être clair et concis, il doit décrire ce qui est testé et ce qui est attendu.
 
-Le nombre d'**it** correspond généralement aux différentes valeurs possibles des paramètres d'une fonction et aux différents cas possibles traités
+Le nombre de **test** correspond généralement aux différentes valeurs possibles des paramètres d'une fonction et aux différents cas possibles traités
 
 ---
 
@@ -319,7 +317,7 @@ Le nombre d'**it** correspond généralement aux différentes valeurs possibles 
 
 Il est important de tester les cas normaux, les cas limites et les cas d'erreurs pour s'assurer que le code fonctionne dans toutes les situations.
 
-Un test doit être indépendant des autres tests, il ne doit pas dépendre de l'ordre d'exécution des tests.
+Un test doit être indépendant des autres tests et ne doit pas dépendre de l'ordre d'exécution des tests.
 
 Le découpage du code en petites fonctions permet de faciliter les tests unitaires, car il est plus facile de tester une petite fonction qu'une grande fonction. Cela permet aussi de rendre le code plus lisible et plus maintenable.
 
@@ -389,12 +387,12 @@ import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import { NumberOfCharacters } from './NumberOfCharacters';
 
-it('renders "There is no character" when characters array is empty', () => {
+test('renders "There is no character" when characters array is empty', () => {
   render(<NumberOfCharacters characters={[]} />);
   expect(screen.getByText('There is no character')).toBeInTheDocument();
 });
 
-it('renders the correct number of characters when characters array is not empty', () => {
+test('renders the correct number of characters when characters array is not empty', () => {
   const characters = ['Character 1', 'Character 2', 'Character 3'];
   render(<NumberOfCharacters characters={characters} />);
   expect(screen.getByText('There is 3 characters')).toBeInTheDocument();
@@ -430,7 +428,7 @@ Ce qui signifie que la ligne 1 n'est pas complètement testée, il y a un cas no
 Pour corriger ce problème, il suffit d'ajouter un test pour ce cas.
 
 ```javascript
-it('renders "There is no character" when no characters are provided', () => {
+test('renders "There is no character" when no characters are provided', () => {
   render(<NumberOfCharacters />);
   expect(screen.getByText('There is no character')).toBeInTheDocument();
 });
@@ -457,7 +455,7 @@ Par exemple, `screen.getByText('There is no character')` permet de récupérer u
 Durant la phase de mise en oeuvre du test, il est possible de voir le composant s'afficher dans la console pour vérifier qu'il est bien rendu grâce à la fonction `debug`.
 
 ```javascript
-it('renders "There is no character" when no characters are provided', () => {
+test('renders "There is no character" when no characters are provided', () => {
   render(<NumberOfCharacters />);
   screen.debug();
   expect(screen.getByText('There is no character')).toBeInTheDocument();
@@ -716,7 +714,7 @@ Dans la protection de branche, il est possible de définir que la branche doit �
 
 # Pull Request (suite)
 
-La branche `feature/add-version-number` étant une branche de feature, il est préférable de faire un **rebase** pour garder un historique linéaire.
+La branche `feature/add-version-number` étant une branche de feature, il est possible de faire un **rebase** pour garder un historique linéaire.
 
 Dans le **git graph**, on peut voir que la branche `feature/add-version-number` est maintenant à jour avec la branche **develop**, la Pull Request devrait pouvoir être validée. 
 
