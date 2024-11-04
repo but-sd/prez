@@ -122,16 +122,14 @@
 <header>BUT SD - Marvel App</header>
 <p>Contenu du fichier <code>jest.config.cjs</code> à créer à la racine du projet :</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-javascript"><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = {
-  <span class="hljs-attr">transform</span>: {
-    <span class="hljs-string">&quot;^.+\\.jsx?$&quot;</span>: <span class="hljs-string">&quot;babel-jest&quot;</span>,
-  },
-};
+    <span class="hljs-attr">transform</span>: {
+      <span class="hljs-string">&quot;^.+\\.jsx?$&quot;</span>: <span class="hljs-string">&quot;babel-jest&quot;</span>,
+    },
+  };
 </code></pre>
 <p>Contenu du fichier <code>babel.config.cjs</code> à créer à la racine du projet :</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-javascript"><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = {
-  <span class="hljs-attr">transform</span>: {
-    <span class="hljs-string">&quot;^.+\\.jsx?$&quot;</span>: <span class="hljs-string">&quot;babel-jest&quot;</span>,
-  },
+  <span class="hljs-attr">presets</span>: [<span class="hljs-string">&quot;@babel/preset-env&quot;</span>],
 };
 </code></pre>
 <footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
@@ -157,19 +155,19 @@ jest.<span class="hljs-title function_">mock</span>(<span class="hljs-string">&#
 ]);
 
 <span class="hljs-title function_">describe</span>(<span class="hljs-string">&#x27;getCharacters&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
-    <span class="hljs-title function_">it</span>(<span class="hljs-string">&#x27;should return the list of characters&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+    <span class="hljs-title function_">test</span>(<span class="hljs-string">&#x27;should return the list of characters&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
         <span class="hljs-keyword">const</span> result = <span class="hljs-title function_">getCharacters</span>();
         <span class="hljs-title function_">expect</span>(result).<span class="hljs-title function_">toEqual</span>(characters);
     });
 });
 
 <span class="hljs-title function_">describe</span>(<span class="hljs-string">&#x27;getCharacterById&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
-    <span class="hljs-title function_">it</span>(<span class="hljs-string">&#x27;should return the correct character when a valid ID is provided&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+    <span class="hljs-title function_">test</span>(<span class="hljs-string">&#x27;should return the correct character when a valid ID is provided&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
         <span class="hljs-keyword">const</span> result = <span class="hljs-title function_">getCharacterById</span>(<span class="hljs-number">1</span>);
         <span class="hljs-title function_">expect</span>(result).<span class="hljs-title function_">toEqual</span>({ <span class="hljs-attr">id</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Character One&#x27;</span> });
     });
 
-    <span class="hljs-title function_">it</span>(<span class="hljs-string">&#x27;should throw an error when an invalid ID is provided&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+    <span class="hljs-title function_">test</span>(<span class="hljs-string">&#x27;should throw an error when an invalid ID is provided&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
         <span class="hljs-title function_">expect</span>(<span class="hljs-function">() =&gt;</span> <span class="hljs-title function_">getCharacterById</span>(<span class="hljs-number">999</span>)).<span class="hljs-title function_">toThrow</span>(<span class="hljs-string">&#x27;Character with id 999 not found&#x27;</span>);
     });
 });
@@ -193,9 +191,9 @@ jest.<span class="hljs-title function_">mock</span>(<span class="hljs-string">&#
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="15" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <header>BUT SD - Marvel App</header>
 <h1 id="tests-unitaires---ajout-de-tests-pour-la-partie-api-suite-1">Tests unitaires - Ajout de tests pour la partie API (suite)</h1>
-<p>Dans le résultat des tests, une ligne est affichée par <code>describe</code> et une sous-ligne par <code>it</code> avec le résultat du test. Cette organisation permet de savoir rapidement où se trouve le problème en cas d'échec.</p>
-<p>On organise les tests en <code>describe</code> pour regrouper les tests par fonctionnalité et en <code>it</code> pour décrire un test en particulier.<br />
-En nommant correctement les <code>describe</code> et les <code>it</code>, on peut rapidement comprendre ce qui est testé.</p>
+<p>Dans le résultat des tests, une ligne est affichée par <code>describe</code> et une sous-ligne par <code>test</code> avec le résultat du test. Cette organisation permet de savoir rapidement où se trouve le problème en cas d'échec.</p>
+<p>On organise les tests en <code>describe</code> pour regrouper les tests par fonctionnalité et en <code>test</code> pour décrire un test en particulier.<br />
+En nommant correctement les <code>describe</code> et les <code>test</code>, on peut rapidement comprendre ce qui est testé.</p>
 <footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="16" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
@@ -210,7 +208,7 @@ En nommant correctement les <code>describe</code> et les <code>it</code>, on peu
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="17" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <header>BUT SD - Marvel App</header>
 <h1 id="tests-unitaires---couverture-de-code">Tests unitaires - Couverture de code</h1>
-<p>Savoir que nos tests passent est une chose, mais il est important de savoir si notre code est bien testé. Pour cela, on utilise la couverture de code qui permet de savoir quelles parties de notre code sont testées et quelles parties ne le sont pas.</p>
+<p>Savoir que nos tests passent est une chose, mais il est important de savoir quelle partie du code est testé. Pour cela, on utilise la couverture de code qui permet de savoir quelles parties de notre code sont testées et quelles parties ne le sont pas.</p>
 <p>Pour afficher la couverture de code, il suffit d'exécuter la commande <code>npm test -- --coverage</code>.</p>
 <footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
 </section>
@@ -250,18 +248,18 @@ En nommant correctement les <code>describe</code> et les <code>it</code>, on peu
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="22" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <header>BUT SD - Marvel App</header>
 <h1 id="tests-unitaires---bonnes-pratiques">Tests unitaires - Bonnes pratiques</h1>
-<p>Le découpage des tests en <strong>describe</strong> et <strong>it</strong> permet de mieux organiser les tests et de les rendre plus lisibles.</p>
-<p>Il est important de nommer correctement les <strong>describe</strong> et les <strong>it</strong> pour faciliter la compréhension des tests.</p>
-<p>Un <strong>decribe</strong> doit regrouper les tests par fonctionnalité et un <strong>it</strong> doit décrire un test en particulier.</p>
-<p>Un <strong>it</strong> doit être clair et concis, il doit décrire ce qui est testé et ce qui est attendu.</p>
-<p>Le nombre d'<strong>it</strong> correspond généralement aux différentes valeurs possibles des paramètres d'une fonction et aux différents cas possibles traités</p>
+<p>Le découpage des tests en <strong>describe</strong> et <strong>test</strong> permet de mieux organiser les tests et de les rendre plus lisibles.</p>
+<p>Il est important de nommer correctement les <strong>describe</strong> et les <strong>test</strong> pour faciliter la compréhension des tests.</p>
+<p>Un <strong>decribe</strong> doit regrouper les tests par fonctionnalité et un <strong>test</strong> doit décrire un test en particulier.</p>
+<p>Un <strong>test</strong> doit être clair et concis, il doit décrire ce qui est testé et ce qui est attendu.</p>
+<p>Le nombre de <strong>test</strong> correspond généralement aux différentes valeurs possibles des paramètres d'une fonction et aux différents cas possibles traités</p>
 <footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="23" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <header>BUT SD - Marvel App</header>
 <h1 id="tests-unitaires---bonnes-pratiques-suite">Tests unitaires - Bonnes pratiques (suite)</h1>
 <p>Il est important de tester les cas normaux, les cas limites et les cas d'erreurs pour s'assurer que le code fonctionne dans toutes les situations.</p>
-<p>Un test doit être indépendant des autres tests, il ne doit pas dépendre de l'ordre d'exécution des tests.</p>
+<p>Un test doit être indépendant des autres tests et ne doit pas dépendre de l'ordre d'exécution des tests.</p>
 <p>Le découpage du code en petites fonctions permet de faciliter les tests unitaires, car il est plus facile de tester une petite fonction qu'une grande fonction. Cela permet aussi de rendre le code plus lisible et plus maintenable.</p>
 <footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
 </section>
@@ -321,12 +319,12 @@ En nommant correctement les <code>describe</code> et les <code>it</code>, on peu
 <span class="hljs-keyword">import</span> { render, screen } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@testing-library/react&#x27;</span>;
 <span class="hljs-keyword">import</span> { <span class="hljs-title class_">NumberOfCharacters</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./NumberOfCharacters&#x27;</span>;
 
-<span class="hljs-title function_">it</span>(<span class="hljs-string">&#x27;renders &quot;There is no character&quot; when characters array is empty&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+<span class="hljs-title function_">test</span>(<span class="hljs-string">&#x27;renders &quot;There is no character&quot; when characters array is empty&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
   <span class="hljs-title function_">render</span>(<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">NumberOfCharacters</span> <span class="hljs-attr">characters</span>=<span class="hljs-string">{[]}</span> /&gt;</span></span>);
   <span class="hljs-title function_">expect</span>(screen.<span class="hljs-title function_">getByText</span>(<span class="hljs-string">&#x27;There is no character&#x27;</span>)).<span class="hljs-title function_">toBeInTheDocument</span>();
 });
 
-<span class="hljs-title function_">it</span>(<span class="hljs-string">&#x27;renders the correct number of characters when characters array is not empty&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+<span class="hljs-title function_">test</span>(<span class="hljs-string">&#x27;renders the correct number of characters when characters array is not empty&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
   <span class="hljs-keyword">const</span> characters = [<span class="hljs-string">&#x27;Character 1&#x27;</span>, <span class="hljs-string">&#x27;Character 2&#x27;</span>, <span class="hljs-string">&#x27;Character 3&#x27;</span>];
   <span class="hljs-title function_">render</span>(<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">NumberOfCharacters</span> <span class="hljs-attr">characters</span>=<span class="hljs-string">{characters}</span> /&gt;</span></span>);
   <span class="hljs-title function_">expect</span>(screen.<span class="hljs-title function_">getByText</span>(<span class="hljs-string">&#x27;There is 3 characters&#x27;</span>)).<span class="hljs-title function_">toBeInTheDocument</span>();
@@ -358,7 +356,7 @@ En nommant correctement les <code>describe</code> et les <code>it</code>, on peu
 <header>BUT SD - Marvel App</header>
 <h1 id="tests-unitaires---ajout-de-tests-pour-les-composants-suite-5">Tests unitaires - Ajout de tests pour les composants (suite)</h1>
 <p>Pour corriger ce problème, il suffit d'ajouter un test pour ce cas.</p>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-javascript"><span class="hljs-title function_">it</span>(<span class="hljs-string">&#x27;renders &quot;There is no character&quot; when no characters are provided&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-javascript"><span class="hljs-title function_">test</span>(<span class="hljs-string">&#x27;renders &quot;There is no character&quot; when no characters are provided&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
   <span class="hljs-title function_">render</span>(<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">NumberOfCharacters</span> /&gt;</span></span>);
   <span class="hljs-title function_">expect</span>(screen.<span class="hljs-title function_">getByText</span>(<span class="hljs-string">&#x27;There is no character&#x27;</span>)).<span class="hljs-title function_">toBeInTheDocument</span>();
 });
@@ -379,7 +377,7 @@ En nommant correctement les <code>describe</code> et les <code>it</code>, on peu
 <h1 id="tests-unitaires---ajout-de-tests-pour-les-composants-suite-7">Tests unitaires - Ajout de tests pour les composants (suite)</h1>
 <p>Par exemple, <code>screen.getByText('There is no character')</code> permet de récupérer un élément du DOM contenant le texte <code>There is no character</code>.</p>
 <p>Durant la phase de mise en oeuvre du test, il est possible de voir le composant s'afficher dans la console pour vérifier qu'il est bien rendu grâce à la fonction <code>debug</code>.</p>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-javascript"><span class="hljs-title function_">it</span>(<span class="hljs-string">&#x27;renders &quot;There is no character&quot; when no characters are provided&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-javascript"><span class="hljs-title function_">test</span>(<span class="hljs-string">&#x27;renders &quot;There is no character&quot; when no characters are provided&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
   <span class="hljs-title function_">render</span>(<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">NumberOfCharacters</span> /&gt;</span></span>);
   screen.<span class="hljs-title function_">debug</span>();
   <span class="hljs-title function_">expect</span>(screen.<span class="hljs-title function_">getByText</span>(<span class="hljs-string">&#x27;There is no character&#x27;</span>)).<span class="hljs-title function_">toBeInTheDocument</span>();
@@ -614,7 +612,7 @@ jest.<span class="hljs-title function_">mock</span>(<span class="hljs-string">&#
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="54" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <header>BUT SD - Marvel App</header>
 <h1 id="pull-request-suite-3">Pull Request (suite)</h1>
-<p>La branche <code>feature/add-version-number</code> étant une branche de feature, il est préférable de faire un <strong>rebase</strong> pour garder un historique linéaire.</p>
+<p>La branche <code>feature/add-version-number</code> étant une branche de feature, il est possible de faire un <strong>rebase</strong> pour garder un historique linéaire.</p>
 <p>Dans le <strong>git graph</strong>, on peut voir que la branche <code>feature/add-version-number</code> est maintenant à jour avec la branche <strong>develop</strong>, la Pull Request devrait pouvoir être validée.</p>
 <p>Nous verrons plus tard une autre utilisation du <strong>rebase</strong> interractif pour nettoyer l'historique des commits et réécrire l'historique de la branche.</p>
 <footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
