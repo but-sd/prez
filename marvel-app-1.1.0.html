@@ -335,7 +335,7 @@ En nommant correctement les <code>describe</code> et les <code>test</code>, on p
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="30" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <header>BUT SD - Marvel App</header>
 <h1 id="tests-unitaires---ajout-de-tests-pour-les-composants-suite-3">Tests unitaires - Ajout de tests pour les composants (suite)</h1>
-<p>Sauvegarder le fichier <code>src/components/NumberOfCharacters.test.js</code> et exécuter les tests avec la commande <code>npm test</code>.</p>
+<p>Sauvegarder le fichier <code>src/components/NumberOfCharacters.test.jsx</code> et exécuter les tests avec la commande <code>npm test</code>.</p>
 <div class="two-columns">
   <div class="column">
     Les tests devraient passer et afficher dans la console quelque chose ressemblant à ceci :
@@ -470,43 +470,40 @@ jest.<span class="hljs-title function_">mock</span>(<span class="hljs-string">&#
     },
 }));
 
-<span class="hljs-title function_">describe</span>(<span class="hljs-string">&#x27;CharactersPage&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+<span class="hljs-title function_">test</span>(<span class="hljs-string">&#x27;render CharactersPage component&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+    <span class="hljs-comment">// when</span>
 
-    <span class="hljs-title function_">test</span>(<span class="hljs-string">&#x27;render CharactersPage component&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
-        <span class="hljs-comment">// when</span>
+    <span class="hljs-comment">// then</span>
+    <span class="hljs-title function_">render</span>(<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">CharactersPage</span> /&gt;</span></span>, { <span class="hljs-attr">wrapper</span>: <span class="hljs-title class_">BrowserRouter</span> });
 
-        <span class="hljs-comment">// then</span>
-        <span class="hljs-title function_">render</span>(<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">CharactersPage</span> /&gt;</span></span>, { <span class="hljs-attr">wrapper</span>: <span class="hljs-title class_">BrowserRouter</span> });
-
-        <span class="hljs-comment">// expect the document title to be &quot;Marvel App&quot;</span>
-        <span class="hljs-title function_">expect</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-property">title</span>).<span class="hljs-title function_">toBe</span>(<span class="hljs-string">&#x27;Marvel App&#x27;</span>);
+    <span class="hljs-comment">// expect the document title to be &quot;Marvel App&quot;</span>
+    <span class="hljs-title function_">expect</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-property">title</span>).<span class="hljs-title function_">toBe</span>(<span class="hljs-string">&#x27;Marvel App&#x27;</span>);
 
 
-        <span class="hljs-comment">// expect the heading &#x27;Marvel Characters&#x27; to be in the document</span>
-        <span class="hljs-keyword">const</span> h2Element = screen.<span class="hljs-title function_">getByRole</span>(<span class="hljs-string">&#x27;heading&#x27;</span>, { <span class="hljs-attr">level</span>: <span class="hljs-number">2</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Marvel Characters&quot;</span> });
-        <span class="hljs-title function_">expect</span>(h2Element).<span class="hljs-title function_">toBeInTheDocument</span>();
+    <span class="hljs-comment">// expect the heading &#x27;Marvel Characters&#x27; to be in the document</span>
+    <span class="hljs-keyword">const</span> h2Element = screen.<span class="hljs-title function_">getByRole</span>(<span class="hljs-string">&#x27;heading&#x27;</span>, { <span class="hljs-attr">level</span>: <span class="hljs-number">2</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Marvel Characters&quot;</span> });
+    <span class="hljs-title function_">expect</span>(h2Element).<span class="hljs-title function_">toBeInTheDocument</span>();
 
-        <span class="hljs-comment">// expect the character Thor to be in the document</span>
-        <span class="hljs-keyword">const</span> thorElement = screen.<span class="hljs-title function_">getByText</span>(characters[<span class="hljs-number">0</span>].<span class="hljs-property">name</span>);
-        <span class="hljs-title function_">expect</span>(thorElement).<span class="hljs-title function_">toBeInTheDocument</span>();
+    <span class="hljs-comment">// expect the character Thor to be in the document</span>
+    <span class="hljs-keyword">const</span> thorElement = screen.<span class="hljs-title function_">getByText</span>(characters[<span class="hljs-number">0</span>].<span class="hljs-property">name</span>);
+    <span class="hljs-title function_">expect</span>(thorElement).<span class="hljs-title function_">toBeInTheDocument</span>();
 
-        <span class="hljs-comment">// expect the charater Captain America to be in the document</span>
-        <span class="hljs-keyword">const</span> captainAmericaElement = screen.<span class="hljs-title function_">getByText</span>(characters[<span class="hljs-number">1</span>].<span class="hljs-property">name</span>);
-        <span class="hljs-title function_">expect</span>(captainAmericaElement).<span class="hljs-title function_">toBeInTheDocument</span>();
+    <span class="hljs-comment">// expect the charater Captain America to be in the document</span>
+    <span class="hljs-keyword">const</span> captainAmericaElement = screen.<span class="hljs-title function_">getByText</span>(characters[<span class="hljs-number">1</span>].<span class="hljs-property">name</span>);
+    <span class="hljs-title function_">expect</span>(captainAmericaElement).<span class="hljs-title function_">toBeInTheDocument</span>();
 
-        <span class="hljs-comment">// expect the number of characters to be in the document</span>
-        <span class="hljs-keyword">const</span> numberOfCharactersElement = screen.<span class="hljs-title function_">getByText</span>(<span class="hljs-string">`There is <span class="hljs-subst">${characters.length}</span> characters`</span>);
-        <span class="hljs-title function_">expect</span>(numberOfCharactersElement).<span class="hljs-title function_">toBeInTheDocument</span>();
-    });
-
+    <span class="hljs-comment">// expect the number of characters to be in the document</span>
+    <span class="hljs-keyword">const</span> numberOfCharactersElement = screen.<span class="hljs-title function_">getByText</span>(<span class="hljs-string">`There is <span class="hljs-subst">${characters.length}</span> characters`</span>);
+    <span class="hljs-title function_">expect</span>(numberOfCharactersElement).<span class="hljs-title function_">toBeInTheDocument</span>();
 });
+
 </code></pre>
 <footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="43" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <header>BUT SD - Marvel App</header>
 <h1 id="tests-unitaires---tests-dun-composant-de-type-page-suite">Tests unitaires - Tests d'un composant de type <strong>Page</strong> (suite)</h1>
-<p>Sauvegarder le fichier <code>src/pages/CharactersPage.test.js</code> et exécuter les tests avec la commande <code>npm test</code>.</p>
+<p>Sauvegarder le fichier <code>src/pages/CharactersPage.test.jsx</code> et exécuter les tests avec la commande <code>npm test</code>.</p>
 <p>Nous testons ici que le composant <code>CharactersPage</code> est bien rendu et que les éléments attendus sont bien présents dans le DOM.</p>
 <p>Nous devons ici faire attention à la portée de nos tests, devons-nous tester tout les cas possibles ?</p>
 <footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
