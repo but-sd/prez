@@ -31,7 +31,7 @@ footer: "Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.gir
 
 # Objectifs
 
-- Améliorer la qualité de l'application grâce à l'analyse de code (SonarQube)
+- Améliorer la qualité de l'application grâce à l'analyse de code **SonarCloud**
 - Augmentation de la couverture de tests unitaires pour les composants React (components, pages)
 - Ajout d'une nouvelle fonctionnalité : **Tri des personnages par nom ou date de modification**
 
@@ -84,9 +84,15 @@ Il existe de nombreux outils pour mesurer la qualité du code. Dans le cadre de 
 
 # Qualimétrie du code (suite)
 
-SonarCloud permet de mesurer la qualité du code en se basant sur un ensemble de règles prédéfinies. Ces règles sont définies par des experts en développement logiciel et sont basées sur les bonnes pratiques de développement.
+**SonarCloud** permet de mesurer la qualité du code en se basant sur un ensemble de règles prédéfinies. Ces règles sont définies par des experts en développement logiciel et sont basées sur les bonnes pratiques de développement.
 
-SonarCloud analyse le code source d'un projet et génère un rapport détaillé sur la qualité du code. Ce rapport contient des informations sur les erreurs, les avertissements et les bonnes pratiques de développement.
+**SonarCloud** analyse le code source d'un projet et génère un rapport détaillé sur la qualité du code. Ce rapport contient des informations sur les erreurs, les avertissements et les bonnes pratiques de développement.
+
+---
+
+# Qualimétrie du code (suite)
+
+Créer un compte sur [SonarCloud](https://sonarcloud.io/), puis y ajouter le projet **Marvel App**.
 
 ---
 
@@ -150,8 +156,8 @@ Cette action va :
 # Qualimétrie du code (suite)
 
 Cette action utilise 2 secrets :
-- **GITHUB_TOKEN** : ce token est automatiquement créé par GitHub et permet d'accéder aux informations du repository
-- **SONAR_TOKEN** : ce token est créé sur SonarCloud et permet d'accéder aux informations du projet
+- **GITHUB_TOKEN** : ce token est automatiquement créé par **GitHub** et permet d'accéder aux informations du repository
+- **SONAR_TOKEN** : ce token est créé sur **SonarCloud** et permet d'accéder aux informations du projet
 
 ---
 
@@ -159,13 +165,13 @@ Cette action utilise 2 secrets :
 
 Afin de générer le token **SonarCloud**, il faut se rendre sur **SonarCloud** et aller dans My Account > Security > Generate Tokens.
 
-Il faut ensuite ajouter le token dans les secrets du repository GitHub (Settings > Secrets and variables > Actions > New repository secret).
+Il faut ensuite ajouter le token dans les secrets du repository **GitHub** (Settings > Secrets and variables > Actions > New repository secret).
 
 Il faut aussi décocher la case Automatic Analysis dans Administration > Analysis Method sur SonarCloud.
 
 ---
 
-Afin de faire le lien entre projet GitHub et projet SonarCloud, il faut ajouter un fichier `sonar-project.properties` à la racine du projet avec le contenu suivant :
+Afin de faire le lien entre projet **GitHub** et projet **SonarCloud**, il faut ajouter un fichier `sonar-project.properties` à la racine du projet avec le contenu suivant :
 
 ```properties
 sonar.projectKey=nom-du-projet
@@ -175,9 +181,9 @@ sonar.javascript.lcov.reportPaths=./coverage/lcov.info
 sonar.coverage.exclusions=**/*.test.js
 ```
 
-Ce fichier définit les propriétés du projet SonarCloud :
-- sonar.projectKey : identifiant du projet SonarCloud
-- sonar.organization : organisation SonarCloud
+Ce fichier définit les propriétés du projet **SonarCloud** :
+- sonar.projectKey : identifiant du projet **SonarCloud**
+- sonar.organization : organisation **SonarCloud**
 - sonar.javascript.lcov.reportPaths : chemin vers le fichier de couverture de code
 - sonar.coverage.exclusions : fichiers à exclure de la couverture de code
 
@@ -211,7 +217,7 @@ module.exports = {
 
 A chaque push, une analyse de la qualité du code est lancée. 
 
-Elle est visible dans l'onglet **Actions** du repository, si le code ne passe pas la **Quality Gate**, l'action est en erreur. Il faut alors corriger les problèmes de qualité du code. On peut aussi voir l'analyse sur SonarCloud.
+Elle est visible dans l'onglet **Actions** du repository, si le code ne passe pas la **Quality Gate**, l'action est en erreur. Il faut alors corriger les problèmes de qualité du code. On peut aussi voir l'analyse sur **SonarCloud**.
 
 Nous n'avons pas défini de **Quality Gate** personnalisée, nous utilisons donc la **Quality** Gate par défaut de **SonarCloud**. Il serait possible de définir une **Quality Gate** personnalisée, mais cela n'est pas nécessaire dans le cadre de ce projet.
 
