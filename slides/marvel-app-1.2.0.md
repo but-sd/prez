@@ -239,15 +239,70 @@ Créer une branche `feature/increase-coverage` à partir de la branche `develop`
 
 Faire le nécessaire pour augmenter la couverture de tests unitaires pour les composants React (components, pages), puis merger la branche `feature/increase-coverage` dans la branche `develop`.
 
+En vous aidant des exemples déjà présents dans le projet, de **github copilot** ou de la documentation **React Testing Library**, ajouter des tests unitaires pour les composants React (components, pages) qui n'en ont pas.
+
+---
+# Augmentation de la couverture de tests unitaires - **CharactersList**
+
+Vérifier que le composant est une liste vide lorsque la liste de personnages est vide ou non passée en paramètre.
+  - `screen.getByRole('list')` permet de récupérer une liste.
+  - `toBeEmptyDOMElement()` permet de vérifier qu'un élément est vide.
+  
+---
+
+# Augmentation de la couverture de tests unitaires - **CharactersList**
+
+Vérifier que le composant affiche correctement tout les personnages passés en paramètre, pour ce cas le composant doit être instancier de cette manière `render(<CharactersList characters={[]} />, { wrapper: BrowserRouter });`.
+  - `screen.getAllByRole('listitem')` permet de récupérer tout les éléments de la liste.
+  - `screen.getByText('text')` permet de récupérer un élément par son texte.
+
+---
+
+# Augmentation de la couverture de tests unitaires - **CharacterDetail**
+
+Vérifier que le composant affiche correctement les informations du personnage passé en paramètre lorsque l'image existe.
+  - `screen.getByText('text')` permet de récupérer un élément par son texte.
+  - `screen.getByRole('img'), { name: character.name });` permet de récupérer l'image ayant pour nom le nom du personnage mais lève une erreur si elle n'existe pas.
+
+---
+
+# Augmentation de la couverture de tests unitaires - **CharacterDetail**
+
+Vérifier que le composant affiche correctement les informations du personnage passé en paramètre lorsque l'image n'existe pas.
+  - `screen.queryByRole('img', { name: character.name });`  permet de récupérer l'image ayant pour nom le nom du personnage ou null si elle n'existe pas.
+
+Vérifier que le composant affiche `No character` lorsque le personnage n'est pas passé en paramètre.
+  - `screen.getByText('No character')` permet de récupérer un élément par son texte.
+---
+
+# Augmentation de la couverture de tests unitaires - composants de type **Page**
+
+Pour les composants de type **Page**, on peut vérifier :
+
+- que le titre de la page est correct, `document.title` permet de récupérer le titre de la page.
+- qu'il y a bien un élément `h2` avec le texte attendu, `screen.getByRole('heading', { level: 2, name: 'text' });` permet de récupérer un élément de type `h2` avec le texte `text`.
+
+---
+
+# Augmentation de la couverture de tests unitaires
+
+Une fois la couverture de tests unitaires augmentée, on peut créer la **Pull Request** pour merger la branche `feature/increase-coverage` dans la branche `develop`. La couverture de tests unitaires devrait être supérieure au minimum de 80% demandé par la **Quality Gate** de **SonarCloud**.
+
+Pour sécuriser notre code, on peut ajouter un status check sur la qualité du code. Nous aurons ainsi une validation supplémentaire avant de merger une **Pull Request** ( Vérification que le code `build`, passe les tests unitaires et respecte la qualité du code).
+
+Corriger les éventuels problèmes de qualité du code détectés par **SonarCloud**.
+
+Merger la **Pull Request** une fois que la couverture de tests unitaires est suffisante et que la qualité du code est bonne. 
+
 ---
 
 # Tri des personnages
 
 Nous allons ajouter une nouvelle fonctionnalité à l'application : le tri des personnages par nom ou date de modification. 
 
-Créer une branche `feature/sort-characters` à partir de la branche `develop`.
+Créer une branche `feature/sort-characters` à partir de la branche `develop` (Penser à vous mettre à jour sur la branche `develop` avant de créer la branche).
 
-Puis, implémenter la fonctionnalité suivante : 
+Puis, implémenter la fonctionnalité de tri des personnages: 
 
 - faire en sorte de pouvoir via une url trier les personnages par nom ou date de modification.
 - modifier l'api pour prendre en compte ces informations.
@@ -274,7 +329,7 @@ Proposition, partir de la partie **api** pour prendre en compte ces informations
 
 Modifier la partie **routes** pour prendre en compte les paramètres de tri et d'ordre et les passer à l'api.
 
-Modifier la partie **components** pour ajouter les listes déroulantes pour le tri et l'ordre du tri.
+Modifier la partie **components** pour ajouter les listes déroulantes pour le tri et l'ordre du tri. (partie plus complexe)
 - s'assurer que les valeurs par défaut sont bien prises en compte et que la modification des listes déroulantes entraîne bien le rechargement des personnages avec les nouveaux paramètres de tri et d'ordre.
 - ajouter les tests unitaires nécessaires pour valider le bon fonctionnement de l'interface utilisateur.
 
@@ -284,10 +339,11 @@ Modifier la partie **components** pour ajouter les listes déroulantes pour le t
 
 Quelques pistes pour la mise en oeuvre de cette fonctionnalité :
 
-- La méthode `sort` d'un tableau permet de trier les éléments d'un tableau en fonction d'une fonction de comparaison. Voir documentation [sort](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Array/sort)
+- La méthode `sort` d'un tableau permet de trier les éléments d'un tableau à l'aide d'une fonction de comparaison. Voir documentation [sort](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Array/sort)
 - Exemple de paramètres d'url : `http://localhost:port?sort=name&order=desc`
 - Récupérer les paramètres de tri et d'ordre dans l'url depuis un router, voir documentation [request](https://reactrouter.com/en/main/route/loader#request)
 - Gestion des états dans React, voir documentation [state](https://react.dev/learn/state-a-components-memory)
+- Récupération des paramètres de tri et d'ordre dans un composant React, utiliser `useSearchParams` pour récupérer les paramètres de l'url, voir documentation [useSearchParams](https://reactrouter.com/en/main/hooks/use-search-params#usesearchparams)
 
 ---
 
