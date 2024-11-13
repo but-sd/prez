@@ -187,14 +187,77 @@
 <h1 id="augmentation-de-la-couverture-de-tests-unitaires">Augmentation de la couverture de tests unitaires</h1>
 <p>Créer une branche <code>feature/increase-coverage</code> à partir de la branche <code>develop</code>.</p>
 <p>Faire le nécessaire pour augmenter la couverture de tests unitaires pour les composants React (components, pages), puis merger la branche <code>feature/increase-coverage</code> dans la branche <code>develop</code>.</p>
+<p>En vous aidant des exemples déjà présents dans le projet, de <strong>github copilot</strong> ou de la documentation <strong>React Testing Library</strong>, ajouter des tests unitaires pour les composants React (components, pages) qui n'en ont pas.</p>
 <footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="18" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <header>BUT SD - Marvel App</header>
+<h1 id="augmentation-de-la-couverture-de-tests-unitaires---characterslist">Augmentation de la couverture de tests unitaires - <strong>CharactersList</strong></h1>
+<p>Vérifier que le composant est une liste vide lorsque la liste de personnages est vide ou non passée en paramètre.</p>
+<ul>
+<li><code>screen.getByRole('list')</code> permet de récupérer une liste.</li>
+<li><code>toBeEmptyDOMElement()</code> permet de vérifier qu'un élément est vide.</li>
+</ul>
+<footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="19" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+<header>BUT SD - Marvel App</header>
+<h1 id="augmentation-de-la-couverture-de-tests-unitaires---characterslist-1">Augmentation de la couverture de tests unitaires - <strong>CharactersList</strong></h1>
+<p>Vérifier que le composant affiche correctement tout les personnages passés en paramètre, pour ce cas le composant doit être instancier de cette manière <code>render(&lt;CharactersList characters={[]} /&gt;, { wrapper: BrowserRouter });</code>.</p>
+<ul>
+<li><code>screen.getAllByRole('listitem')</code> permet de récupérer tout les éléments de la liste.</li>
+<li><code>screen.getByText('text')</code> permet de récupérer un élément par son texte.</li>
+</ul>
+<footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="20" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+<header>BUT SD - Marvel App</header>
+<h1 id="augmentation-de-la-couverture-de-tests-unitaires---characterdetail">Augmentation de la couverture de tests unitaires - <strong>CharacterDetail</strong></h1>
+<p>Vérifier que le composant affiche correctement les informations du personnage passé en paramètre lorsque l'image existe.</p>
+<ul>
+<li><code>screen.getByText('text')</code> permet de récupérer un élément par son texte.</li>
+<li><code>screen.getByRole('img'), { name: character.name });</code> permet de récupérer l'image ayant pour nom le nom du personnage mais lève une erreur si elle n'existe pas.</li>
+</ul>
+<footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="21" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+<header>BUT SD - Marvel App</header>
+<h1 id="augmentation-de-la-couverture-de-tests-unitaires---characterdetail-1">Augmentation de la couverture de tests unitaires - <strong>CharacterDetail</strong></h1>
+<p>Vérifier que le composant affiche correctement les informations du personnage passé en paramètre lorsque l'image n'existe pas.</p>
+<ul>
+<li><code>screen.queryByRole('img', { name: character.name });</code>  permet de récupérer l'image ayant pour nom le nom du personnage ou null si elle n'existe pas.</li>
+</ul>
+<p>Vérifier que le composant affiche <code>No character</code> lorsque le personnage n'est pas passé en paramètre.</p>
+<ul>
+<li><code>screen.getByText('No character')</code> permet de récupérer un élément par son texte.</li>
+</ul>
+<footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="22" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+<header>BUT SD - Marvel App</header>
+<h1 id="augmentation-de-la-couverture-de-tests-unitaires---composants-de-type-page">Augmentation de la couverture de tests unitaires - composants de type <strong>Page</strong></h1>
+<p>Pour les composants de type <strong>Page</strong>, on peut vérifier :</p>
+<ul>
+<li>que le titre de la page est correct, <code>document.title</code> permet de récupérer le titre de la page.</li>
+<li>qu'il y a bien un élément <code>h2</code> avec le texte attendu, <code>screen.getByRole('heading', { level: 2, name: 'text' });</code> permet de récupérer un élément de type <code>h2</code> avec le texte <code>text</code>.</li>
+</ul>
+<footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="23" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+<header>BUT SD - Marvel App</header>
+<h1 id="augmentation-de-la-couverture-de-tests-unitaires-1">Augmentation de la couverture de tests unitaires</h1>
+<p>Une fois la couverture de tests unitaires augmentée, on peut créer la <strong>Pull Request</strong> pour merger la branche <code>feature/increase-coverage</code> dans la branche <code>develop</code>. La couverture de tests unitaires devrait être supérieure au minimum de 80% demandé par la <strong>Quality Gate</strong> de <strong>SonarCloud</strong>.</p>
+<p>Pour sécuriser notre code, on peut ajouter un status check sur la qualité du code. Nous aurons ainsi une validation supplémentaire avant de merger une <strong>Pull Request</strong> ( Vérification que le code <code>build</code>, passe les tests unitaires et respecte la qualité du code).</p>
+<p>Corriger les éventuels problèmes de qualité du code détectés par <strong>SonarCloud</strong>.</p>
+<p>Merger la <strong>Pull Request</strong> une fois que la couverture de tests unitaires est suffisante et que la qualité du code est bonne.</p>
+<footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="24" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+<header>BUT SD - Marvel App</header>
 <h1 id="tri-des-personnages">Tri des personnages</h1>
 <p>Nous allons ajouter une nouvelle fonctionnalité à l'application : le tri des personnages par nom ou date de modification.</p>
-<p>Créer une branche <code>feature/sort-characters</code> à partir de la branche <code>develop</code>.</p>
-<p>Puis, implémenter la fonctionnalité suivante :</p>
+<p>Créer une branche <code>feature/sort-characters</code> à partir de la branche <code>develop</code> (Penser à vous mettre à jour sur la branche <code>develop</code> avant de créer la branche).</p>
+<p>Puis, implémenter la fonctionnalité de tri des personnages:</p>
 <ul>
 <li>faire en sorte de pouvoir via une url trier les personnages par nom ou date de modification.</li>
 <li>modifier l'api pour prendre en compte ces informations.</li>
@@ -202,7 +265,7 @@
 </ul>
 <footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="19" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="25" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <header>BUT SD - Marvel App</header>
 <h1 id="tri-des-personnages-suite">Tri des personnages (suite)</h1>
 <p>Pour ce développement, il peut y avoir plusieurs approches dans l'ordre de mise en oeuvre:</p>
@@ -217,7 +280,7 @@
 </ul>
 <footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="20" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="26" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <header>BUT SD - Marvel App</header>
 <p>Proposition, partir de la partie <strong>api</strong> pour prendre en compte ces informations.</p>
 <ul>
@@ -225,39 +288,40 @@
 <li>ajouter les tests unitaires nécessaires pour valider le bon fonctionnement de l'api.</li>
 </ul>
 <p>Modifier la partie <strong>routes</strong> pour prendre en compte les paramètres de tri et d'ordre et les passer à l'api.</p>
-<p>Modifier la partie <strong>components</strong> pour ajouter les listes déroulantes pour le tri et l'ordre du tri.</p>
+<p>Modifier la partie <strong>components</strong> pour ajouter les listes déroulantes pour le tri et l'ordre du tri. (partie plus complexe)</p>
 <ul>
 <li>s'assurer que les valeurs par défaut sont bien prises en compte et que la modification des listes déroulantes entraîne bien le rechargement des personnages avec les nouveaux paramètres de tri et d'ordre.</li>
 <li>ajouter les tests unitaires nécessaires pour valider le bon fonctionnement de l'interface utilisateur.</li>
 </ul>
 <footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="21" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="27" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <header>BUT SD - Marvel App</header>
 <h1 id="tri-des-personnages-suite-1">Tri des personnages (suite)</h1>
 <p>Quelques pistes pour la mise en oeuvre de cette fonctionnalité :</p>
 <ul>
-<li>La méthode <code>sort</code> d'un tableau permet de trier les éléments d'un tableau en fonction d'une fonction de comparaison. Voir documentation <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Array/sort">sort</a></li>
+<li>La méthode <code>sort</code> d'un tableau permet de trier les éléments d'un tableau à l'aide d'une fonction de comparaison. Voir documentation <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Array/sort">sort</a></li>
 <li>Exemple de paramètres d'url : <code>http://localhost:port?sort=name&amp;order=desc</code></li>
 <li>Récupérer les paramètres de tri et d'ordre dans l'url depuis un router, voir documentation <a href="https://reactrouter.com/en/main/route/loader#request">request</a></li>
 <li>Gestion des états dans React, voir documentation <a href="https://react.dev/learn/state-a-components-memory">state</a></li>
+<li>Récupération des paramètres de tri et d'ordre dans un composant React, utiliser <code>useSearchParams</code> pour récupérer les paramètres de l'url, voir documentation <a href="https://reactrouter.com/en/main/hooks/use-search-params#usesearchparams">useSearchParams</a></li>
 </ul>
 <footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="22" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="28" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <header>BUT SD - Marvel App</header>
 <h1 id="tri-des-personnages-suite-2">Tri des personnages (suite)</h1>
 <p>Pour rappel on ne commit que du code fonctionnel, on peut donc faire plusieurs commits pour cette fonctionnalité. Il se peut que l'on ait besoin de faire des modifications en cours de route, c'est normal.</p>
 <p>Il est aussi possible de faire une <strong>Pull Request</strong> en mode <strong>Draft</strong> pour avoir les premiers résultats de l'analyse de code et de la couverture de tests unitaires par <strong>SonarCloud</strong>, et de demander des reviews pour avoir des retours sur le code par les autres membres de l'équipe.</p>
 <footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="23" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="29" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <header>BUT SD - Marvel App</header>
 <h1 id="tri-des-personnages-suite-3">Tri des personnages (suite)</h1>
 <p>Une fois la fonctionnalité terminée et que la <strong>Pull Request</strong> respecte les différents critères (tests unitaires, couverture de code, qualité du code), on peut merger la branche <code>feature/sort-characters</code> dans la branche <code>develop</code>.</p>
 <footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="24" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="30" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <header>BUT SD - Marvel App</header>
 <h1 id="release-120">Release 1.2.0</h1>
 <p>Faire le nécessaire pour créer une version 1.2.0 de l'application</p>
