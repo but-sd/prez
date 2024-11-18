@@ -48,13 +48,19 @@
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="5" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <header>BUT SD - Marvel App</header>
+<h1 id="visualisation-des-donn%C3%A9es-suite">Visualisation des données (suite)</h1>
+<img src="img/marvel-app/marvel-app-1.3.0-pie-charts.png" alt="Pie Charts" style="width: 40%;" />
+<footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="6" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+<header>BUT SD - Marvel App</header>
 <h1 id="pr%C3%A9paration-des-donn%C3%A9es">Préparation des données</h1>
 <p>Mettre en place une fonction pour transformer les données en un format utilisable par <code>recharts</code> ou <code>d3.js</code>.</p>
 <p>Nous allons utiliser la méthode <strong>T</strong>est-<strong>D</strong>riven <strong>D</strong>evelopment pour créer cette fonction. On commence par écrire les tests, la fonction n'existe pas encore. Les tests doivent échouer.</p>
 <p>L'objectif est d'implémenter la fonction pour que les tests passent, si les tests passent, on peut être sûr que la fonction fait ce qu'on attend d'elle.</p>
 <footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="6" data-background-image="url('img/background/fond-blanc.avif')" style="--background-image:url('img/background/fond-blanc.avif');background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="7" data-background-image="url('img/background/fond-blanc.avif')" style="--background-image:url('img/background/fond-blanc.avif');background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <p>Créer le fichier <code>src/components/chart-utils.test.js</code> et ajouter les tests suivants :</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-javascript"><span class="hljs-keyword">import</span> { prepareData } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./chart-utils&#x27;</span>;
 
@@ -119,20 +125,20 @@
 });
 </code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="7" data-background-image="url('img/background/fond-blanc.avif')" style="--background-image:url('img/background/fond-blanc.avif');background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="8" data-background-image="url('img/background/fond-blanc.avif')" style="--background-image:url('img/background/fond-blanc.avif');background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <h1 id="visualisation-des-donn%C3%A9es---d3js">Visualisation des données - d3.js</h1>
-<p><strong>d3.js</strong> est une librairie JavaScript pour manipuler des documents basés sur des données. Elle permet permet de manipuler le DOM pour créer des visualisations de données. Elle est très utilisée dans le monde du web pour créer des graphiques, des cartes, des diagrammes, etc.</p>
+<p><strong>d3.js</strong> est une librairie JavaScript pour manipuler des documents basés sur des données. Elle permet de manipuler le DOM pour créer des visualisations de données. Elle est très utilisée dans le monde du web pour créer des graphiques, des cartes, des diagrammes, etc.</p>
 <p>Installer la librairie <code>d3.js</code> :</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-bash">npm install d3@6
 </code></pre>
 <p>Nous installons ici la version 6 de <code>d3.js</code>, car la version 7 n'est pas compatible avec notre projet. Nous verrons plus tard comment gérer ce genre de problèmes.</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="8" data-background-image="url('img/background/fond-blanc.avif')" style="--background-image:url('img/background/fond-blanc.avif');background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="9" data-background-image="url('img/background/fond-blanc.avif')" style="--background-image:url('img/background/fond-blanc.avif');background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <h1 id="visualisation-des-donn%C3%A9es---d3js-suite">Visualisation des données - d3.js (suite)</h1>
 <p>Créer le fichier <code>src/components/D3PieChart.jsx</code></p>
 <p>En vous basant sur l'exemple <a href="https://observablehq.com/@d3/donut-chart/2">donut-chart</a> adapté le composant ci-dessous, pour afficher un graphique en camembert des capacités des personnages.</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="9" data-background-image="url('img/background/fond-blanc.avif')" style="--background-image:url('img/background/fond-blanc.avif');background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="10" data-background-image="url('img/background/fond-blanc.avif')" style="--background-image:url('img/background/fond-blanc.avif');background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-javascript"><span class="hljs-keyword">import</span> { useEffect } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span>;
 <span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> d3 <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;d3&quot;</span>;
 <span class="hljs-keyword">import</span> { prepareData } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./chart-utils&#x27;</span>;
@@ -158,37 +164,15 @@
         .<span class="hljs-title function_">select</span>(<span class="hljs-string">&#x27;svg&#x27;</span>)
         .<span class="hljs-title function_">remove</span>();
 
-    <span class="hljs-comment">// Create the color scale</span>
-    <span class="hljs-keyword">const</span> color = d3.<span class="hljs-title function_">scaleOrdinal</span>()
-        <span class="hljs-comment">// colors based on data</span>
-        .<span class="hljs-title function_">domain</span>(data.<span class="hljs-title function_">map</span>(<span class="hljs-function"><span class="hljs-params">d</span> =&gt;</span> d.<span class="hljs-property">name</span>))
-        .<span class="hljs-title function_">range</span>(d3.<span class="hljs-title function_">quantize</span>(<span class="hljs-function"><span class="hljs-params">t</span> =&gt;</span> d3.<span class="hljs-title function_">interpolateSpectral</span>(t * <span class="hljs-number">0.8</span> + <span class="hljs-number">0.1</span>), data.<span class="hljs-property">length</span>).<span class="hljs-title function_">reverse</span>());
+    <span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> draw the chart here base on example https://observablehq.com/@d3/donut-chart/2</span>
+        <span class="hljs-comment">// Create the color scale</span>
+        <span class="hljs-comment">// Create the pie chart</span>
+            <span class="hljs-comment">// Create the arc</span>
+            <span class="hljs-comment">// Create the pie</span>
+            <span class="hljs-comment">// Create the svg, with the right dimensions</span>
+        <span class="hljs-comment">// draw the donut</span>
+        <span class="hljs-comment">// add labels over the donut</span>
 
-    <span class="hljs-comment">// Create the arc</span>
-    <span class="hljs-keyword">const</span> arc = d3.<span class="hljs-title function_">arc</span>()
-        .<span class="hljs-title function_">innerRadius</span>(radius * <span class="hljs-number">0.5</span>) <span class="hljs-comment">// This is the size of the donut hole</span>
-        .<span class="hljs-title function_">outerRadius</span>(radius) <span class="hljs-comment">// This is the size of the donut</span>
-    
-    <span class="hljs-comment">// Create the pie</span>
-    <span class="hljs-keyword">const</span> pie = d3.<span class="hljs-title function_">pie</span>(data)
-        .<span class="hljs-title function_">sort</span>(<span class="hljs-literal">null</span>) <span class="hljs-comment">// disable sorting of data</span>
-        .<span class="hljs-title function_">value</span>(<span class="hljs-function"><span class="hljs-params">d</span> =&gt;</span> d.<span class="hljs-property">value</span>);
-
-    <span class="hljs-comment">// Create the svg, with the right dimensions</span>
-    <span class="hljs-keyword">const</span> svg = d3
-        .<span class="hljs-title function_">select</span>(<span class="hljs-string">&#x27;#pie-container&#x27;</span>)
-        .<span class="hljs-title function_">append</span>(<span class="hljs-string">&#x27;svg&#x27;</span>)
-        .<span class="hljs-title function_">attr</span>(<span class="hljs-string">&quot;width&quot;</span>, width)
-        .<span class="hljs-title function_">attr</span>(<span class="hljs-string">&quot;height&quot;</span>, height)
-        .<span class="hljs-title function_">attr</span>(<span class="hljs-string">&quot;viewBox&quot;</span>, [-width / <span class="hljs-number">2</span>, -height / <span class="hljs-number">2</span>, width, height]) <span class="hljs-comment">// center the pie chart</span>
-
-    <span class="hljs-comment">// draw the donut</span>
-    svg.<span class="hljs-title function_">append</span>(<span class="hljs-string">&quot;g&quot;</span>)
-        .<span class="hljs-title function_">selectAll</span>()
-        .<span class="hljs-title function_">data</span>(<span class="hljs-title function_">pie</span>(data))
-        .<span class="hljs-title function_">join</span>(<span class="hljs-string">&quot;path&quot;</span>)
-        .<span class="hljs-title function_">attr</span>(<span class="hljs-string">&quot;fill&quot;</span>, <span class="hljs-function"><span class="hljs-params">d</span> =&gt;</span> <span class="hljs-title function_">color</span>(d.<span class="hljs-property">data</span>.<span class="hljs-property">name</span>))
-        .<span class="hljs-title function_">attr</span>(<span class="hljs-string">&quot;d&quot;</span>, arc)
 };
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">D3PieChart</span>(<span class="hljs-params">{
@@ -210,19 +194,19 @@
 }
 </code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="10" data-background-image="url('img/background/fond-blanc.avif')" style="--background-image:url('img/background/fond-blanc.avif');background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="11" data-background-image="url('img/background/fond-blanc.avif')" style="--background-image:url('img/background/fond-blanc.avif');background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <h1 id="visualisation-des-donn%C3%A9es---d3js-suite-1">Visualisation des données - d3.js (suite)</h1>
 <p>Le composant <code>D3PieChart</code> génère une div avec l'id <code>pie-container</code> qui sera utilisée pour afficher le graphique. Le hook <code>useEffect</code> permet d'executer le code de la fonction <code>drawChart</code> uniquement lorsque les données sont chargées. Le composant défini également les dimensions du graphique.</p>
 <p>La fonction <code>drawChart</code> permet de dessiner le graphique, elle prend en paramètre les données à afficher. Il n'y a pas de spécificité React dans cette fonction.</p>
 <p>Tout d'abord, on supprime le graphique précédent, s'il existe (en mode développement la fonction <code>useEffect</code> est appelée 2 fois).</p>
 <p>On utilise ensuite les fonctions prédéfinies de <code>d3.js</code> pour créer le graphique en camembert, voir la documentation pour plus de détails.</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="11" data-background-image="url('img/background/fond-blanc.avif')" style="--background-image:url('img/background/fond-blanc.avif');background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="12" data-background-image="url('img/background/fond-blanc.avif')" style="--background-image:url('img/background/fond-blanc.avif');background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <h1 id="visualisation-des-donn%C3%A9es---d3js-suite-2">Visualisation des données - d3.js (suite)</h1>
 <p>Modifier le fichier <code>src/pages/CharacterDetailPage.jsx</code> pour afficher le graphique en camembert des capacités des personnages.</p>
 <p>Dans un premier temps, commentez la partie permettant d'afficher le composant <code>RechartsPieChart</code>.</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="12" data-background-image="url('img/background/fond-blanc.avif')" style="--background-image:url('img/background/fond-blanc.avif');background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="13" data-background-image="url('img/background/fond-blanc.avif')" style="--background-image:url('img/background/fond-blanc.avif');background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-javascript"><span class="hljs-keyword">import</span> <span class="hljs-title class_">React</span>, { useEffect } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;react&#x27;</span>;
 
 <span class="hljs-keyword">import</span> { useLoaderData } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;react-router&#x27;</span>;
@@ -260,11 +244,11 @@
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">CharacterDetailPage</span>;
 </code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="13" data-background-image="url('img/background/fond-blanc.avif')" style="--background-image:url('img/background/fond-blanc.avif');background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="14" data-background-image="url('img/background/fond-blanc.avif')" style="--background-image:url('img/background/fond-blanc.avif');background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <h1 id="visualisation-des-donn%C3%A9es---d3js-suite-3">Visualisation des données - d3.js (suite)</h1>
 <p>Le test <code>src/components/D3PieChart.test.jsx</code> ci-dessous permet de vérifier que le composant <code>D3PieChart</code> affiche bien les données passées en paramètre avec l'affichage des noms et des valeurs. Faites en sorte que ce test passe.</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="14" data-background-image="url('img/background/fond-blanc.avif')" style="--background-image:url('img/background/fond-blanc.avif');background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="15" data-background-image="url('img/background/fond-blanc.avif')" style="--background-image:url('img/background/fond-blanc.avif');background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-javascript"><span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;@testing-library/jest-dom&#x27;</span>;
 <span class="hljs-keyword">import</span> { render, screen } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@testing-library/react&#x27;</span>;
 <span class="hljs-keyword">import</span> D3PieChart <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./D3PieChart&#x27;</span>;
@@ -307,7 +291,7 @@ jest.<span class="hljs-title function_">mock</span>(<span class="hljs-string">&#
 });
 </code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="15" data-background-image="url('img/background/fond-blanc.avif')" style="--background-image:url('img/background/fond-blanc.avif');background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="16" data-background-image="url('img/background/fond-blanc.avif')" style="--background-image:url('img/background/fond-blanc.avif');background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <h1 id="visualisation-des-donn%C3%A9es---recharts">Visualisation des données - recharts</h1>
 <p><strong>recharts</strong> est une librairie React pour créer des graphiques. Elle est basée sur <code>d3.js</code> et permet de créer des graphiques de manière simple et rapide en manipulant des composants React. Cela peut être plus simple à utiliser que d3.js pour des développeurs React, mais elle est moins flexible que <strong>d3.js</strong>.</p>
 <p>Installer la librairie <code>recharts</code> :</p>
@@ -315,13 +299,13 @@ jest.<span class="hljs-title function_">mock</span>(<span class="hljs-string">&#
 </code></pre>
 <p>Décommenter le composant RechartsPieChart dans le fichier <code>src/pages/CharacterDetailPage.jsx</code> et implémenter le composant <code>RechartsPieChart</code> dans le fichier <code>src/components/RechartsPieChart.jsx</code>, en se basant sur l'exemple <a href="https://recharts.org/en-US/api/Cell">PieChart</a>.</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="16" data-background-image="url('img/background/fond-blanc.avif')" style="--background-image:url('img/background/fond-blanc.avif');background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="17" data-background-image="url('img/background/fond-blanc.avif')" style="--background-image:url('img/background/fond-blanc.avif');background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <h1 id="visualisation-des-donn%C3%A9es---recharts-suite">Visualisation des données - recharts (suite)</h1>
 <p>Faire en sorte que le test <code>src/components/RechartsPieChart.test.jsx</code> ci-dessous passe.</p>
 <p>Du fait que le composant <code>RechartsPieChart</code> est basé sur <strong>recharts</strong>, on ne doit pas tester le graphique directement. En effet, recharts est une librairie externe, on ne doit pas tester son code, on n'en a pas la responsabilité et le code pourrait changer à tout moment.</p>
 <p>On peut par contre tester que le composant est bien rendu.</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="17" data-background-image="url('img/background/fond-blanc.avif')" style="--background-image:url('img/background/fond-blanc.avif');background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="18" data-background-image="url('img/background/fond-blanc.avif')" style="--background-image:url('img/background/fond-blanc.avif');background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-javascript"><span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;@testing-library/jest-dom&#x27;</span>;
 <span class="hljs-keyword">import</span> { render, screen } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@testing-library/react&#x27;</span>;
 <span class="hljs-keyword">import</span> <span class="hljs-title class_">RechartsPieChart</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./RechartsPieChart&#x27;</span>;
@@ -355,12 +339,12 @@ jest.<span class="hljs-title function_">mock</span>(<span class="hljs-string">&#
 });
 </code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="18" data-background-image="url('img/background/fond-blanc.avif')" style="--background-image:url('img/background/fond-blanc.avif');background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="19" data-background-image="url('img/background/fond-blanc.avif')" style="--background-image:url('img/background/fond-blanc.avif');background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <h1 id="comparaison-des-deux-approches">Comparaison des deux approches</h1>
 <p>L'avantage de <strong>d3.js</strong> est qu'elle est très flexible du fait qu'elle manipule directement le DOM. On peut donc faire des graphiques très personnalisés. Par contre, il faut avoir des connaissances en <strong>d3.js</strong> pour pouvoir l'utiliser. Elle n'est pas liée à React, il faut donc faire attention à bien intégrer le graphique dans le cycle de vie de React, mais à contrario, on peut l'utiliser dans d'autres frameworks ou même sans framework (avec du JavaScript pur).</p>
 <p><strong>recharts</strong> est plus simple à utiliser que <strong>d3.js</strong> et permet de créer des graphiques rapidement, toute la complexité est cachée dans les composants React. Par contre, elle est moins flexible que <strong>d3.js</strong> et il peut être difficile de faire des graphiques très personnalisés. Elle est liée à React, il n'est donc pas possible de l'utiliser dans d'autres frameworks ou avec du JavaScript pur.</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="19" data-background-image="url('img/background/fond-blanc.avif')" style="--background-image:url('img/background/fond-blanc.avif');background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="20" data-background-image="url('img/background/fond-blanc.avif')" style="--background-image:url('img/background/fond-blanc.avif');background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <h1 id="librairies-tierces">Librairies tierces</h1>
 <p>Lors de l'utilisation d'une librairie externe, il faut bien vérifier la documentation et les exemples fournis afin de bien comprendre comment l'utiliser.</p>
 <ul>
@@ -369,52 +353,103 @@ jest.<span class="hljs-title function_">mock</span>(<span class="hljs-string">&#
 <li>Est-ce que je peux utiliser la librairie dans mon projet ? Est-ce que la librairie est payante ?</li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="20" data-background-image="url('img/background/fond-blanc.avif')" style="--background-image:url('img/background/fond-blanc.avif');background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="21" data-background-image="url('img/background/fond-blanc.avif')" style="--background-image:url('img/background/fond-blanc.avif');background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <h1 id="librairies-tierces---maintenance--communaut%C3%A9">Librairies tierces - Maintenance / Communauté</h1>
 <p>Si la librairie n'est plus maintenue, elle peut devenir obsolète, poser des problèmes de sécurité, de  compatibilité et ne plus fonctionner avec les nouvelles versions des navigateurs et rendre notre application obsolète. C'est un risque à prendre en compte lors de l'utilisation d'une librairie externe.</p>
 <p>Si la librairie est utilisée par la communauté, cela signifie qu'elle est utilisée par d'autres développeurs et qu'il y a donc plus de chance qu'elle soit maintenue, que les bugs soient corrigés et que de nouvelles fonctionnalités soient ajoutées.</p>
 <p>Il est plus facile de trouver de l'aide sur internet, de même que des exemples d'utilisation.</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="21" data-background-image="url('img/background/fond-blanc.avif')" style="--background-image:url('img/background/fond-blanc.avif');background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="22" data-background-image="url('img/background/fond-blanc.avif')" style="--background-image:url('img/background/fond-blanc.avif');background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <h1 id="librairies-tierces---licence">Librairies tierces - Licence</h1>
 <p>Il faut également faire attention à la licence de la librairie. Certaines licences peuvent être restrictives et ne pas permettre l'utilisation de la librairie dans un projet commercial. Il faut donc bien lire la licence de la librairie avant de l'utiliser.</p>
 <p>Par exemple, la licence <strong>MIT</strong> est une licence très permissive qui permet d'utiliser la librairie dans un projet commercial. La licence <strong>GPL</strong> est une licence plus restrictive qui oblige à rendre le code source de l'application disponible si on utilise la librairie dans un projet commercial.</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="22" data-background-image="url('img/background/fond-blanc.avif')" style="--background-image:url('img/background/fond-blanc.avif');background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="23" data-background-image="url('img/background/fond-blanc.avif')" style="--background-image:url('img/background/fond-blanc.avif');background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <h1 id="librairies-tierces---licence-suite">Librairies tierces - Licence (suite)</h1>
 <p>Pour des projets hébergés sur <strong>GitHub</strong>, il est possible de voir la licence sur la page du projet. <strong>Github</strong> affiche ainsi quelques informations sur le type de licence et les conditions d'utilisation liées à la licence.</p>
 <p>Par exemple la licence de d3.js est une licence <strong>ISC</strong>, qui est une licence <strong>MIT</strong> modifiée. Elle permet d'utiliser la librairie dans un projet commercial. <a href="https://github.com/d3/d3/blob/main/LICENSE">https://github.com/d3/d3/blob/main/LICENSE</a></p>
 <p>La licence de recharts est une licence <strong>MIT</strong>. <a href="https://github.com/recharts/recharts/blob/master/LICENSE">https://github.com/recharts/recharts/blob/master/LICENSE</a></p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="23" data-background-image="url('img/background/fond-blanc.avif')" style="--background-image:url('img/background/fond-blanc.avif');background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="24" data-background-image="url('img/background/fond-blanc.avif')" style="--background-image:url('img/background/fond-blanc.avif');background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <h1 id="librairies-tierces---s%C3%A9curit%C3%A9">Librairies tierces - Sécurité</h1>
 <p>Il est important de vérifier la sécurité des librairies tierces que l'on utilise dans notre projet. En effet, une librairie tierce peut contenir des failles de sécurité qui peuvent être exploitées par des attaquants pour compromettre notre application.</p>
 <p>Pour un projet <strong>Node.js</strong>, il est possible d'utiliser la commande <code>npm audit</code> pour vérifier la sécurité des dépendances de notre projet. Cette commande va analyser les dépendances de notre projet et nous indiquer s'il y a des failles de sécurité connues dans ces dépendances.</p>
 <p>Des commandes équivalentes existent pour d'autres langages et frameworks.</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="24" data-background-image="url('img/background/fond-blanc.avif')" style="--background-image:url('img/background/fond-blanc.avif');background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="25" data-background-image="url('img/background/fond-blanc.avif')" style="--background-image:url('img/background/fond-blanc.avif');background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <h1 id="librairies-tierces---s%C3%A9curit%C3%A9-suite">Librairies tierces - Sécurité (suite)</h1>
 <p>Dans notre projet, la commande <code>npm audit</code> nous indique qu'il y a une faille de sécurité de sévérité <code>high</code> dans la librairie <code>d3.js</code>. La faille de sécurité est de type <code>vulnerable to (ReDoS)</code>. Cela signifie que la librairie <code>d3.js</code> est vulnérable à une attaque par déni de service régulier (ReDoS).</p>
 <p>Une attaque par déni de service régulier (ReDoS) est une attaque qui exploite une faiblesse dans l'implémentation d'une expression régulière pour provoquer un déni de service en faisant en sorte que l'expression régulière prenne un temps d'exécution anormalement long pour traiter une entrée donnée.</p>
 <p>L'attaquant peut ainsi provoquer un déni de service en envoyant des requêtes malveillantes qui exploitent cette faiblesse. Le deni de service peut être utilisé pour rendre un service indisponible ou pour ralentir le service.</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="25" data-background-image="url('img/background/fond-blanc.avif')" style="--background-image:url('img/background/fond-blanc.avif');background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="26" data-background-image="url('img/background/fond-blanc.avif')" style="--background-image:url('img/background/fond-blanc.avif');background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <h1 id="librairies-tierces---s%C3%A9curit%C3%A9-suite-1">Librairies tierces - Sécurité (suite)</h1>
 <p>Il est donc important de corriger cette faille de sécurité dans notre projet. Cependant cette correction entraine une montée de version majeure de la librairie <code>d3.js</code>, cette montée de version contient une rupture de compatibilité avec notre projet. Nous ne pouvons donc pas simplement mettre à jour la librairie <code>d3.js</code> sans risquer de casser notre projet.</p>
-<p>Il est donc nécessaire de corriger la faille de sécurité dans une branche dédiée, de tester la correction et de s'assurer qu'elle ne casse pas notre projet avant de la fusionner dans la branche principale.</p>
+<p>Il est donc nécessaire de corriger la faille de sécurité dans une branche dédiée, de tester la correction et de s'assurer qu'elle ne casse pas notre projet avant de la fusionner dans la branche principale. Nous n'allons pas corriger cette faille de sécurité afin de tester une autre fonctionnalité de <strong>GitHub</strong>, appelée <strong>Dependabot</strong>.</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="26" data-background-image="url('img/background/fond-blanc.avif')" style="--background-image:url('img/background/fond-blanc.avif');background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="27" data-background-image="url('img/background/fond-blanc.avif')" style="--background-image:url('img/background/fond-blanc.avif');background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <h1 id="librairies-tierces---s%C3%A9curit%C3%A9---dependabot">Librairies tierces - Sécurité - Dependabot</h1>
 <p>Github propose l'outil <strong>dependabot alerts</strong>  pour détecter les failles de sécurité dans les dépendances de notre projet. Cet outil est accessible dans l'onglet <code>Security</code> de notre projet. Il permet de voir les dépendances vulnérables de notre projet et de voir les dépendances qui ont été corrigées.</p>
 <p>Il permet aussi de générer automatiquement des pull requests pour corriger les failles de sécurité dans notre projet, si nous avons mis en place suffisament de contrôles (tests, CI/CD), nous pouvons être confiants que la correction ne va pas casser notre projet. Pour cela il suffit d'activer la fonctionnalité <strong>Dependabot security updates</strong> dans les paramètres de notre projet (Settings &gt; Security)</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="27" data-background-image="url('img/background/fond-blanc.avif')" style="--background-image:url('img/background/fond-blanc.avif');background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="28" data-background-image="url('img/background/fond-blanc.avif')" style="--background-image:url('img/background/fond-blanc.avif');background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+<h1 id="librairies-tierces---s%C3%A9curit%C3%A9---dependabot-1">Librairies tierces - Sécurité - Dependabot</h1>
+<p><strong>Dependabot</strong> analyse la branche principale de notre projet, afin de ne pas impacter directement la branche de production <code>main</code>, nous allons définir la branche de développement <code>develop</code> comme branche par défaut, cela évitera aussi de créer des pull requests directement sur la branche <code>main</code> par défaut.</p>
+<p>Pour cela, il suffit de se rendre dans les paramètres de notre projet (Settings &gt; Branches) et de définir la branche <code>develop</code> comme branche par défaut.</p>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="29" data-background-image="url('img/background/fond-blanc.avif')" style="--background-image:url('img/background/fond-blanc.avif');background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <h1 id="librairies-tierces---s%C3%A9curit%C3%A9---dependabot-suite">Librairies tierces - Sécurité - Dependabot (suite)</h1>
-<p>Le fait d'avoir activer <strong>Dependabot security updates</strong> dans notre projet à créé une pull request pour corriger la faille de sécurité dans la librairie <code>d3.js</code>. Cette pull request n'est pas fusinnable directement car elle entraine une montée de version majeure de la librairie <code>d3.js</code> qui contient une rupture de compatibilité avec notre projet.</p>
+<p>Le fait d'avoir activer <strong>Dependabot security updates</strong> dans notre projet à créé une pull request pour corriger la faille de sécurité dans la librairie <code>d3.js</code>. Cette pull request n'est pas fusionnable directement car elle entraine une montée de version majeure de la librairie <code>d3.js</code> qui contient une rupture de compatibilité avec notre projet.</p>
 <p>Il convient donc de corriger le problème. La modification pouvant être importante, il est préférable de créer une branche dédiée pour corriger le problème.</p>
 <p>Une fois le problème corrigé et fusionné sur la branche principale, la pull request de <strong>Dependabot</strong> sera automatiquement fermée par <strong>Dependabot</strong>.</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="28" data-background-image="url('img/background/fond-blanc.avif')" style="--background-image:url('img/background/fond-blanc.avif');background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="30" data-background-image="url('img/background/fond-blanc.avif')" style="--background-image:url('img/background/fond-blanc.avif');background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+<h1 id="librairies-tierces---s%C3%A9curit%C3%A9---dependabot-suite-1">Librairies tierces - Sécurité - Dependabot (suite)</h1>
+<p>Créer une branche <code>fix-d3-security</code> pour corriger la faille de sécurité dans la librairie <code>d3.js</code>.</p>
+<p>Modifier le fichier <code>package.json</code> pour mettre à jour la version de la librairie <code>d3.js</code> vers la version <code>7.9.0</code>, puis lancer la commande <code>npm install</code> pour mettre à jour la librairie.</p>
+<p>Démarrer le serveur de développement avec la commande <code>npm run dev</code> et vérifier que le projet fonctionne correctement.</p>
+<p>Executer les tests avec la commande <code>npm test</code> pour vérifier que la correction ne casse pas les tests.</p>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="31" data-background-image="url('img/background/fond-blanc.avif')" style="--background-image:url('img/background/fond-blanc.avif');background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+<h1 id="librairies-tierces---s%C3%A9curit%C3%A9---dependabot-suite-2">Librairies tierces - Sécurité - Dependabot (suite)</h1>
+<p>On constate que les tests ne passent plus, la montée de version de la librairie <code>d3.js</code> a entrainé une rupture de compatibilité avec notre projet. Afin de corriger le problème il suffit de modifier le fichier de configuration de jest <code>jest.config.cjs</code> pour ajouter la ligne suivante :</p>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-javascript">  <span class="hljs-attr">moduleNameMapper</span>: {
+    <span class="hljs-string">&quot;d3&quot;</span>: <span class="hljs-string">&quot;&lt;rootDir&gt;/node_modules/d3/dist/d3.min.js&quot;</span>,
+  }
+</code></pre>
+<p>Les tests passent à nouveau, on peut donc fusionner la branche <code>fix-d3-security</code> dans la branche <strong>develop</strong>. La pull request de <strong>Dependabot</strong> devrait se fermer automatiquement.</p>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="32" data-background-image="url('img/background/fond-blanc.avif')" style="--background-image:url('img/background/fond-blanc.avif');background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+<h1 id="librairies-tierces---dependabot-suite">Librairies tierces - Dependabot (suite)</h1>
+<p><strong>Dependabot</strong> permet aussi de mettre à jour automatiquement les dépendances de notre projet, au delà des failles de sécurité. Il permet de garder les dépendances de notre projet à jour et de bénéficier des dernières fonctionnalités et des dernières corrections de bugs.</p>
+<p>Il est possible de configurer <strong>Dependabot</strong> pour qu'il mette à jour automatiquement les dépendances de notre projet en fonction de certains critères (type de dépendance, fréquence de mise à jour, etc.).</p>
+<p>Dans le cas d'un projet <strong>Node.js</strong>, il est possible par exemple de regrouper les mises à jour par type (devDependencies, dependencies).</p>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="33" data-background-image="url('img/background/fond-blanc.avif')" style="--background-image:url('img/background/fond-blanc.avif');background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+<h1 id="librairies-tierces---dependabot-suite-1">Librairies tierces - Dependabot (suite)</h1>
+<p>Pour activer <strong>Dependabot</strong> pour les dépendances de notre projet, il suffit de se rendre dans les paramètres de notre projet (Settings &gt; Security &gt; Code security) et d'activer la fonctionnalité <strong>Dependabot version updates</strong>.</p>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="34" data-background-image="url('img/background/fond-blanc.avif')" style="--background-image:url('img/background/fond-blanc.avif');background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+<h1 id="librairies-tierces---dependabot-suite-2">Librairies tierces - Dependabot (suite)</h1>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-yaml"><span class="hljs-comment"># To get started with Dependabot version updates, you&#x27;ll need to specify which</span>
+<span class="hljs-comment"># package ecosystems to update and where the package manifests are located.</span>
+<span class="hljs-comment"># Please see the documentation for all configuration options:</span>
+<span class="hljs-comment"># https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file</span>
+
+<span class="hljs-attr">version:</span> <span class="hljs-number">2</span>
+<span class="hljs-attr">updates:</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-attr">package-ecosystem:</span> <span class="hljs-string">&quot;npm&quot;</span> <span class="hljs-comment"># See documentation for possible values</span>
+    <span class="hljs-attr">directory:</span> <span class="hljs-string">&quot;/&quot;</span> <span class="hljs-comment"># Location of package manifests</span>
+    <span class="hljs-attr">schedule:</span>
+      <span class="hljs-attr">interval:</span> <span class="hljs-string">&quot;weekly&quot;</span>
+
+    <span class="hljs-attr">groups:</span>
+      <span class="hljs-comment"># group dev dependencies together</span>
+      <span class="hljs-attr">development-dependencies:</span>
+        <span class="hljs-attr">dependency-type:</span> <span class="hljs-string">&quot;development&quot;</span>
+</code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="35" data-background-image="url('img/background/fond-blanc.avif')" style="--background-image:url('img/background/fond-blanc.avif');background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <h1 id="release-130">Release 1.3.0</h1>
 <p>Faire le nécessaire pour créer une version 1.3.0 de l'application</p>
 </section>
