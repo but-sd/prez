@@ -92,6 +92,12 @@ Le fichier contient les nouvelles données **capacities** qui montrent les capac
 
 ---
 
+# Visualisation des données (suite)
+
+<img src="img/marvel-app/marvel-app-1.3.0-pie-charts.png" alt="Pie Charts" style="width: 40%;">
+
+---
+
 # Préparation des données
 
 Mettre en place une fonction pour transformer les données en un format utilisable par `recharts` ou `d3.js`.
@@ -174,7 +180,7 @@ describe('prepareData', () => {
 
 # Visualisation des données - d3.js
 
-**d3.js** est une librairie JavaScript pour manipuler des documents basés sur des données. Elle permet permet de manipuler le DOM pour créer des visualisations de données. Elle est très utilisée dans le monde du web pour créer des graphiques, des cartes, des diagrammes, etc.
+**d3.js** est une librairie JavaScript pour manipuler des documents basés sur des données. Elle permet de manipuler le DOM pour créer des visualisations de données. Elle est très utilisée dans le monde du web pour créer des graphiques, des cartes, des diagrammes, etc.
 
 Installer la librairie `d3.js` :
 
@@ -220,37 +226,15 @@ const drawChart = (data) => {
         .select('svg')
         .remove();
 
-    // Create the color scale
-    const color = d3.scaleOrdinal()
-        // colors based on data
-        .domain(data.map(d => d.name))
-        .range(d3.quantize(t => d3.interpolateSpectral(t * 0.8 + 0.1), data.length).reverse());
+    // TODO: draw the chart here base on example https://observablehq.com/@d3/donut-chart/2
+        // Create the color scale
+        // Create the pie chart
+            // Create the arc
+            // Create the pie
+            // Create the svg, with the right dimensions
+        // draw the donut
+        // add labels over the donut
 
-    // Create the arc
-    const arc = d3.arc()
-        .innerRadius(radius * 0.5) // This is the size of the donut hole
-        .outerRadius(radius) // This is the size of the donut
-    
-    // Create the pie
-    const pie = d3.pie(data)
-        .sort(null) // disable sorting of data
-        .value(d => d.value);
-
-    // Create the svg, with the right dimensions
-    const svg = d3
-        .select('#pie-container')
-        .append('svg')
-        .attr("width", width)
-        .attr("height", height)
-        .attr("viewBox", [-width / 2, -height / 2, width, height]) // center the pie chart
-
-    // draw the donut
-    svg.append("g")
-        .selectAll()
-        .data(pie(data))
-        .join("path")
-        .attr("fill", d => color(d.data.name))
-        .attr("d", arc)
 };
 
 export default function D3PieChart({
@@ -513,7 +497,7 @@ L'attaquant peut ainsi provoquer un déni de service en envoyant des requêtes m
 
 Il est donc important de corriger cette faille de sécurité dans notre projet. Cependant cette correction entraine une montée de version majeure de la librairie `d3.js`, cette montée de version contient une rupture de compatibilité avec notre projet. Nous ne pouvons donc pas simplement mettre à jour la librairie `d3.js` sans risquer de casser notre projet.
 
-Il est donc nécessaire de corriger la faille de sécurité dans une branche dédiée, de tester la correction et de s'assurer qu'elle ne casse pas notre projet avant de la fusionner dans la branche principale.
+Il est donc nécessaire de corriger la faille de sécurité dans une branche dédiée, de tester la correction et de s'assurer qu'elle ne casse pas notre projet avant de la fusionner dans la branche principale. Nous n'allons pas corriger cette faille de sécurité afin de tester une autre fonctionnalité de **GitHub**, appelée **Dependabot**.
 
 ---
 
@@ -523,15 +507,88 @@ Github propose l'outil **dependabot alerts**  pour détecter les failles de séc
 
 Il permet aussi de générer automatiquement des pull requests pour corriger les failles de sécurité dans notre projet, si nous avons mis en place suffisament de contrôles (tests, CI/CD), nous pouvons être confiants que la correction ne va pas casser notre projet. Pour cela il suffit d'activer la fonctionnalité **Dependabot security updates** dans les paramètres de notre projet (Settings > Security)
 
+--- 
+
+# Librairies tierces - Sécurité - Dependabot
+
+**Dependabot** analyse la branche principale de notre projet, afin de ne pas impacter directement la branche de production ```main```, nous allons définir la branche de développement ```develop``` comme branche par défaut, cela évitera aussi de créer des pull requests directement sur la branche ```main``` par défaut.
+
+Pour cela, il suffit de se rendre dans les paramètres de notre projet (Settings > Branches) et de définir la branche ```develop``` comme branche par défaut.
+
 ---
 
 # Librairies tierces - Sécurité - Dependabot (suite)
 
-Le fait d'avoir activer **Dependabot security updates** dans notre projet à créé une pull request pour corriger la faille de sécurité dans la librairie `d3.js`. Cette pull request n'est pas fusinnable directement car elle entraine une montée de version majeure de la librairie `d3.js` qui contient une rupture de compatibilité avec notre projet.
+Le fait d'avoir activer **Dependabot security updates** dans notre projet à créé une pull request pour corriger la faille de sécurité dans la librairie `d3.js`. Cette pull request n'est pas fusionnable directement car elle entraine une montée de version majeure de la librairie `d3.js` qui contient une rupture de compatibilité avec notre projet.
 
 Il convient donc de corriger le problème. La modification pouvant être importante, il est préférable de créer une branche dédiée pour corriger le problème.
 
 Une fois le problème corrigé et fusionné sur la branche principale, la pull request de **Dependabot** sera automatiquement fermée par **Dependabot**.
+
+---
+
+# Librairies tierces - Sécurité - Dependabot (suite)
+
+Créer une branche `fix-d3-security` pour corriger la faille de sécurité dans la librairie `d3.js`.
+
+Modifier le fichier `package.json` pour mettre à jour la version de la librairie `d3.js` vers la version `7.9.0`, puis lancer la commande `npm install` pour mettre à jour la librairie.
+
+Démarrer le serveur de développement avec la commande `npm run dev` et vérifier que le projet fonctionne correctement.
+
+Executer les tests avec la commande `npm test` pour vérifier que la correction ne casse pas les tests.
+
+---
+
+# Librairies tierces - Sécurité - Dependabot (suite)
+
+On constate que les tests ne passent plus, la montée de version de la librairie `d3.js` a entrainé une rupture de compatibilité avec notre projet. Afin de corriger le problème il suffit de modifier le fichier de configuration de jest `jest.config.cjs` pour ajouter la ligne suivante :
+
+```javascript
+  moduleNameMapper: {
+    "d3": "<rootDir>/node_modules/d3/dist/d3.min.js",
+  }
+```
+
+Les tests passent à nouveau, on peut donc fusionner la branche `fix-d3-security` dans la branche **develop**. La pull request de **Dependabot** devrait se fermer automatiquement.
+
+---
+
+# Librairies tierces - Dependabot (suite)
+
+**Dependabot** permet aussi de mettre à jour automatiquement les dépendances de notre projet, au delà des failles de sécurité. Il permet de garder les dépendances de notre projet à jour et de bénéficier des dernières fonctionnalités et des dernières corrections de bugs.
+
+Il est possible de configurer **Dependabot** pour qu'il mette à jour automatiquement les dépendances de notre projet en fonction de certains critères (type de dépendance, fréquence de mise à jour, etc.).
+
+Dans le cas d'un projet **Node.js**, il est possible par exemple de regrouper les mises à jour par type (devDependencies, dependencies).
+
+---
+
+# Librairies tierces - Dependabot (suite)
+
+Pour activer **Dependabot** pour les dépendances de notre projet, il suffit de se rendre dans les paramètres de notre projet (Settings > Security > Code security) et d'activer la fonctionnalité **Dependabot version updates**.
+
+---
+
+# Librairies tierces - Dependabot (suite)
+
+```yaml
+# To get started with Dependabot version updates, you'll need to specify which
+# package ecosystems to update and where the package manifests are located.
+# Please see the documentation for all configuration options:
+# https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
+
+version: 2
+updates:
+  - package-ecosystem: "npm" # See documentation for possible values
+    directory: "/" # Location of package manifests
+    schedule:
+      interval: "weekly"
+
+    groups:
+      # group dev dependencies together
+      development-dependencies:
+        dependency-type: "development"
+```    
 
 ---
 
