@@ -234,20 +234,35 @@
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="21" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <header>BUT SD - Marvel App</header>
+<h1 id="int%C3%A9gration-continue-suite-1">Intégration continue (suite)</h1>
+<p>Décommenter et modifier la partie <code>webserver</code> du fichier de configuration pour lancer le serveur web local avant les tests :</p>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-yaml">  <span class="hljs-string">/*</span> <span class="hljs-string">Run</span> <span class="hljs-string">your</span> <span class="hljs-string">local</span> <span class="hljs-string">dev</span> <span class="hljs-string">server</span> <span class="hljs-string">before</span> <span class="hljs-string">starting</span> <span class="hljs-string">the</span> <span class="hljs-string">tests</span> <span class="hljs-string">*/</span>
+  <span class="hljs-attr">webServer:</span> {
+    <span class="hljs-attr">command:</span> <span class="hljs-string">&#x27;npm run dev&#x27;</span>,
+    <span class="hljs-attr">url:</span> <span class="hljs-string">&#x27;http://localhost:5173&#x27;</span>,
+    <span class="hljs-attr">reuseExistingServer:</span> <span class="hljs-type">!process.env.CI,</span>
+  }<span class="hljs-string">,</span>
+</code></pre>
+<p>Celà permet de lancer le serveur web local avant les tests, pour s'assurer que l'application est bien accessible avant de lancer les tests.</p>
+<p>Publier les modifications sur la branche <code>feature/e2e-tests</code> et créer une pull request pour l'intégrer dans la branche <code>develop</code>.</p>
+<footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="22" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+<header>BUT SD - Marvel App</header>
 <h1 id="conclusion">Conclusion</h1>
 <p>Les tests end-to-end permettent de vérifier le bon fonctionnement de l'application dans son ensemble, en simulant le comportement de l'utilisateur. Ils permettent de tester des scénarios complets et de vérifier que l'application fonctionne correctement dans des conditions proches de la réalité.</p>
 <p>Attention à ne pas sur-investir dans les tests end-to-end, car ils sont plus complexes et plus coûteux à mettre en place que les tests unitaires. Il est recommandé de privilégier les tests unitaires aux tests d'intégration et aux tests end-to-end.</p>
 <p>Il n'est pas rare de voir des tests end-to-end qui ne sont pas maintenus et qui deviennent obsolètes, car ils sont plus difficiles à maintenir et à faire évoluer que les tests unitaires.</p>
 <footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="22" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="23" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <header>BUT SD - Marvel App</header>
 <h1 id="conclusion-suite">Conclusion (suite)</h1>
 <p>Attention à ne pas mettre en oeuvre une pyramide des tests inversée, avec plus de tests end-to-end que de tests unitaires. Il est important de trouver le bon équilibre entre les différents types de tests, en fonction des besoins et contraintes du projet.</p>
 <p>Les tests end-to-end sont un outil précieux pour s'assurer que l'application fonctionne correctement dans des conditions proches de la réalité, mais il est important de ne pas négliger les tests unitaires et les tests d'intégration, qui permettent de détecter des problèmes plus rapidement et plus facilement.</p>
 <footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="23" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="24" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <header>BUT SD - Marvel App</header>
 <h1 id="release">Release</h1>
 <p>Faire le nécessaire pour créer une version 1.4.0 de l'application.</p>
