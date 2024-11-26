@@ -269,6 +269,25 @@ on:
 
 ---
 
+# Intégration continue (suite)
+
+Décommenter et modifier la partie `webserver` du fichier de configuration pour lancer le serveur web local avant les tests :
+
+```yaml
+  /* Run your local dev server before starting the tests */
+  webServer: {
+    command: 'npm run dev',
+    url: 'http://localhost:5173',
+    reuseExistingServer: !process.env.CI,
+  },
+```
+
+Celà permet de lancer le serveur web local avant les tests, pour s'assurer que l'application est bien accessible avant de lancer les tests.
+
+Publier les modifications sur la branche `feature/e2e-tests` et créer une pull request pour l'intégrer dans la branche `develop`.
+
+---
+
 # Conclusion
 
 Les tests end-to-end permettent de vérifier le bon fonctionnement de l'application dans son ensemble, en simulant le comportement de l'utilisateur. Ils permettent de tester des scénarios complets et de vérifier que l'application fonctionne correctement dans des conditions proches de la réalité.
