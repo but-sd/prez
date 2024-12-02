@@ -4,7 +4,8 @@
   "description": "Lancement du serveur pour charger les slides",
   "main": "index.js",
   "scripts": {
-    "start": "marp -s --html  slides"
+    "start": "marp -s --html  slides",
+    "generate:pdf": "marp --pdf --allow-local-files --html --input-dir slides --output build"
   },
   "author": "",
   "license": "ISC",
