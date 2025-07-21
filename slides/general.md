@@ -4,7 +4,7 @@ size: 16:9
 theme: default
 paginate: false
 backgroundImage: url('img/background/fond-blanc.avif')
-header: 'BUT SD - Organisation des modules - 2024-2025'
+header: 'BUT SD - Organisation des modules - 2025-2026'
 footer: 'Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr'
 
 ---
@@ -20,20 +20,20 @@ footer: 'Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.gir
 ![bg opacity:.4 ](./img/background/fond-maif.jpg)
 # Gestion de la forge logicielle
 
-Ensemble des outils pour le développement logiciel mis à la disposition des équipes de développement
+Ensemble des outils pour le développement logiciel mis à la disposition des équipes de développement 
 
 * __GitHub__ : gestion des dépôts de code source
 * __Jenkins__ : intégration continue
 * __SonarQube__ : qualité du code
-* **Nexus** : gestion des artefacts
+* __Nexus__ : gestion des artefacts
 ---
 
 # Regroupement de 2 modules
 
-## **Développement logiciel**
+## __Développement logiciel__
 Présenter les approches et les outils qui permettent de mener à bien un projet informatique
 
-## **Développement web**
+## __Développement web__
 Programmation web pour la visualisation de données
 
 # 24 séances de 2H
