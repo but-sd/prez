@@ -69,7 +69,7 @@ Il est possible de valider une page HTML en utilisant le service en ligne [valid
     </div>
 </div>
 
-### Support de cours : [https://but-sd.github.io/guide-html](https://but-sd.github.io/guide-html)
+Vérifiez que la page est valide en utilisant le service en ligne [validator.w3.org](https://validator.w3.org/)
 
 ---
 
@@ -80,7 +80,7 @@ Il est possible de valider une page HTML en utilisant le service en ligne [valid
     <div class="column">
         <ul>
             <li>Ajouter un paragraphe</li>
-            <li>Ajouter des liens hypertextes</li>
+            <li>Ajouter des liens hypertextes vers d'autres pages (https://www.w3schools.com/html/, et https://www.w3schools.com/css/)</li>
             <li>Ajouter une image grâce à l'url https://picsum.photos/200</li>
         </ul>
     </div>
@@ -136,8 +136,6 @@ Le **C**ascading **S**tyle **S**heets (CSS) est un langage de style utilisé pou
 
 Il permet de séparer le contenu de la présentation.
 
-### Support de cours : [https://but-sd.github.io/guide-html/css/](https://but-sd.github.io/guide-html/css/)
-
 ---
 
 # Exercice 3
@@ -149,7 +147,7 @@ Il permet de séparer le contenu de la présentation.
             <li>Utiliser un fichier CSS externe (style.css)</li>
             <li>Passer le titre en rouge</li>
             <li>Passer le paragraphe en bleu avec la police Lucida Sans ou par défaut sans-serif</li>
-            <li>Arrondir les coins de l'image</li>
+            <li>Arrondir les coins de l'image grâce à la propriété CSS <code>border-radius</code></li>
         </ul>
     </div>
     <div class="column">
@@ -159,7 +157,7 @@ Il permet de séparer le contenu de la présentation.
 
 ---
 
-# CSS - Bonnes pratiques
+# Bonnes pratiques - CSS
 
 * **Sélectionner les éléments à styliser** : utiliser les sélecteurs CSS
   * **classes** : permet de réutiliser un style
@@ -169,9 +167,17 @@ Il permet de séparer le contenu de la présentation.
   * **inline ou interne** : pour des styles spécifiques à une page
   * **externe** : pour des styles communs à plusieurs pages
 
+* **Utiliser des noms de classes et d'identifiants explicites** : pour faciliter la compréhension du code
+    * Exemples : `header`, `footer`, `title`, `paragraph`, `image`, `button`
+---
+
+# Bonnes pratiques - De développement
+
 * **Organiser le code** : pour faciliter la maintenance
 
 * **Utiliser des commentaires** : pour expliquer le code
+
+* **K**eep **i**t **s**imple, **s**tupid (KISS) : On doit pouvoir comprendre le code sans avoir à le lire en détail et sans avoir à se souvenir de ce qu'il fait, être capable de le faire évoluer même plusieurs mois après l'avoir écrit.
 
 ---
 
@@ -196,18 +202,25 @@ Il permet de séparer le contenu de la présentation.
 
 ---
 
-# JavaScript
+# JavaScript - Ajouter du dynamisme à une page web
 
-Le **JavaScript** est un langage de programmation qui permet de rendre les pages web interactives. Il est souvent utilisé pour ajouter des fonctionnalités à une page web.
+Le HTML et le CSS permettent de créer des pages web statiques mais ne permettent pas d'ajouter de la logique ou de l'interactivité.C'est là qu'intervient le **JavaScript**. 
 
-### Support de cours : [https://but-sd.github.io/guide-html/js/](https://but-sd.github.io/guide-html/js/)
+Le **JavaScript** est un langage de programmation qui permet de rendre les pages web interactives en manipulant le DOM (**D**ocument **O**bject **M**odel) et en gérant des événements comme les clics, les survols, le chargement de la page, etc.
 
 ---
 
 # Exercice 5
 
-## Manipuler le DOM en JavaScript
+## Initialisation du JavaScript
 
+Dans un fichier `script.js`, ajouter du code JavaScript pour manipuler le DOM de la page HTML. Inclure le fichier `script.js` dans la page HTML en ajoutant la balise `<script src="../scripts/scripts.js"></script>` avant la balise de fermeture `</body>`.
+
+---
+
+# Exercice 5.0
+
+## Manipuler le DOM en JavaScript
 <div class="two-columns">
     <div class="column">
         <ul>
@@ -231,7 +244,7 @@ Accessible via le menu **Plus d'outils** > **Outils de développement** ou en ap
 
 ---
 
-# Exercice 5 - Suite
+# Exercice 5.1 
 
 ## Manipuler le DOM en JavaScript
 
@@ -249,7 +262,7 @@ Accessible via le menu **Plus d'outils** > **Outils de développement** ou en ap
 
 ---
 
-# Exercice 5 - Suite
+# Exercice 5.2
 
 ## Manipuler le DOM en JavaScript
 
@@ -268,15 +281,17 @@ Accessible via le menu **Plus d'outils** > **Outils de développement** ou en ap
 
 ---
 
-# Exercice 6
+# Exercice 6.0
 
 ## Gestions des événements
 
 <div class="two-columns">
     <div class="column">
         <ul>
-            <li>Ajouter un événement lors du survol de l'élement caption</li>
+            <li>Ajouter un événement lors du survol de l'élement caption (la méthode <b>addEventListener</b> sera utile)</li>
         </ul>
+        <br />
+        Le code html et css sont fournis dans les slides suivant.
     </div>
     <div class="column">
         <img src="img/html-to-app/exercice-6-1.png" alt="HTML to App">
@@ -285,15 +300,83 @@ Accessible via le menu **Plus d'outils** > **Outils de développement** ou en ap
 
 ---
 
-# Exercice 6 - Suite
+```html
+<table id="table-users">
+    <caption>People</caption>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>User name</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>John Doe</td>
+            <td>johndoe</td>
+            <td>john@example.com</td>
+        </tr>
+        <tr>
+            <td>Jane Smith</td>
+            <td>janesmith</td>
+            <td>jane@example.com</td>
+        </tr>
+    </tbody>
+</table>
+```
+---
+
+```css
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+}
+
+th,
+td {
+    padding: 0.75rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+}
+
+th {
+    text-align: inherit;
+    background-color: #e9ecef;
+    border-bottom: 2px solid #dee2e6;
+}
+
+tbody tr:nth-of-type(odd) {
+    background-color: rgba(101, 147, 44, 0.05);
+}
+
+tbody tr:hover {
+    background-color: rgba(101, 147, 44, 0.1);
+}
+
+caption {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+```
+---
+
+# Exercice 6.1
 
 ## Gestions des événements
 
 <div class="two-columns">
     <div class="column">
         <ul>
-            <li>Ajouter des boutons (en javascript) pour faire bouger l'image et le tableau</li>
+            <li>Ajouter des boutons (en javascript) pour faire bouger l'image et le tableau (ajouter ou supprimer la classe 'shake')</li>
         </ul>
+        Des fonctions JavaScript <b>shakeImage()</b>, <b>unShakeImage()</b>, <b>shakeTable()</b>, <b>unShakeTable()</b> sont à créer pour faire bouger ou arrêter de faire bouger l'image et le tableau.
     </div>
     <div class="column">
         <img src="img/html-to-app/exercice-6-2.png" alt="HTML to App">
@@ -301,16 +384,40 @@ Accessible via le menu **Plus d'outils** > **Outils de développement** ou en ap
 </div>
 
 ---
+```css
+.shake {
+    /* Démarre l'animation d'une durée de 0.5s */
+    animation: shake 0.5s;
 
-# Exercice 7
+    /* Quand l'animation est terminée, on recommence */
+    animation-iteration-count: infinite;
+}
+
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+```
+---
+
+# Exercice 7 - Bonus
 
 ## Récupérer des données depuis une API
 
 <div class="two-columns">
     <div class="column">
         <ul>
-            <li>Récupérer des données depuis une API (https://jsonplaceholder.typicode.com/users)</li>
-            <li>Afficher les données dans le tableau</li>
+            <li>Récupérer des données depuis une API (https://jsonplaceholder.typicode.com/users) grâce à la méthode <b>fetch</b></li>
+            <li>Afficher les données dans le tableau, pour cela il faut créer des lignes de tableau dynamiquement en JavaScript.</li>
         </ul>
     </div>
     <div class="column">
@@ -351,7 +458,8 @@ Accessible via le menu **Plus d'outils** > **Outils de développement** ou en ap
 
 # Analyse de ce qu'il reste à faire
 
-* Factoriser le code
+* Refactoriser le code
+    * Rendre le code plus lisible et maintenable
     * Réutiliser les styles communs
     * Réutiliser les fonctions JavaScript
 
@@ -359,10 +467,9 @@ Accessible via le menu **Plus d'outils** > **Outils de développement** ou en ap
     * Vérifier que les données récupérées sont bien celles attendues
     * Gérer les cas où les données ne sont pas disponibles
 
-* Tester le code sur différents navigateurs
-    * Chrome, Firefox, Edge, Safari
-
 ---
+
+# WIP 
 
 # Analyse de ce qu'il reste à faire - Suite
 
@@ -371,8 +478,6 @@ Avant de refactoriser le code, il est important d'utiliser un système de contr�
 Nous allons donc commencer par versionner le code actuel en suivant le guide suivant :
 
 [https://but-sd.github.io/prez/guide-git.html](https://but-sd.github.io/prez/guide-git.html)
-
-
 
 ---
 
