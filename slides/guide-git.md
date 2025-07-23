@@ -115,7 +115,11 @@ git config --global core.editor "code --wait"
 
 # **Git** - Vérification de la configuration
 
-Pour vérifier la configuration actuelle, utiliser la commande `git config --list`
+Pour vérifier la configuration actuelle, utiliser la commande :
+
+```bash
+git config --global --list
+```
 
 ---
 
@@ -154,6 +158,12 @@ ls -a
 . .. .git
 ```
 
+Il n'est pas nécessaire de modifier ce répertoire, **git** s'en occupe automatiquement. 
+
+Nous n'aurions pas à le modifier manuellement.
+
+Ne pas le supprimer, cela supprimerait l'historique du projet.
+
 ---
 # **Git** - initialisation (suite)
 
@@ -163,6 +173,7 @@ Contient les informations nécessaires pour suivre les modifications apportées 
 ls -la .git
 .  ..  HEAD  config  description  hooks  info  objects  refs
 ```
+
 ---
 
 # **Git** - Aide
@@ -196,8 +207,8 @@ nothing to commit (create/copy files and use "git add" to track)
 
 # Exercice - Git - initialisation 
 
-* Initialiser un nouveau **repository** **git** dans un répertoire existant (init + checkout)
-* Copier les fichiers du projet dans le répertoire de travail
+* Initialiser un nouveau **repository** **git** dans un répertoire nommé **html-to-app** (un répertoire local vide sur le disque du poste de travail, pas un répertoire synschronisé avec un service de stockage en ligne cela pourrait poser des problèmes de synchronisation)
+* Copier les fichiers sur lesquels vous avez travaillé pour l'application html dans ce répertoire
 * Vérifier l'état du **repository** avec la commande `git status`
 
 ---
@@ -421,9 +432,19 @@ git log --oneline --graph --decorate
 
 # **Git** - VSCode - git log
 
-Il est possible de visualiser l'historique des commits directement depuis **VSCode** dans l'élément **Commits** de l'explorateur.
+Il est possible de visualiser l'historique des commits directement depuis **VSCode** dans l'élément **Graph** de l'explorateur.
 
 <img src="img/git/git-vscode-commits.png" alt="Git in VSCode Explorer" width="50%"/>
+
+---
+
+# **Git** - Bonnes pratiques - commit
+
+- Faire des commits réguliers et atomiques
+    - Un commit par fonctionnalité
+    - Eviter les commits trop gros (trop de fichiers modifiés, trop de lignes modifiées)
+
+Si vous commitez trop de fichiers en même temps, il est difficile de savoir ce qui a été modifié et pourquoi. Il est préférable de faire plusieurs commits pour des modifications différentes.
 
 ---
 
@@ -433,9 +454,21 @@ Il est possible de visualiser l'historique des commits directement depuis **VSCo
 - Ils doivent expliquer les modifications apportées par le commit
     - Quoi : modifications apportées
     - Pourquoi : pourquoi ces modifications ont été apportées
-- Faire des commits réguliers et atomiques
-    - Un commit par fonctionnalité
-    - Eviter les commits trop gros
+
+Si vous avez des difficultés à écrire un message de commit, c'est peut-être que vous devriez faire plusieurs commits pour des modifications différentes.
+
+Un bon message de commit doit permettre de comprendre les modifications apportées sans avoir à lire le code.
+
+---
+
+# **Git** - Bonnes pratiques - messages de commit (suite)
+
+Les messages de commit permettent de comprendre l'historique du projet et de savoir qui a fait quoi et pourquoi.
+On doit pouvoir comprendre l'historique du projet sans avoir à lire le code.
+
+Des messages de commit clairs et concis permettent de faciliter la collaboration entre les membres d'une équipe et de faciliter la maintenance du code.
+
+Des messages trop génériques ou trop vagues rendent l'historique du projet difficile à comprendre et n'apportent pas d'informations utiles.
 
 ---
 
@@ -445,31 +478,11 @@ Il est possible de visualiser l'historique des commits directement depuis **VSCo
     - "Ajoute la fonctionnalité xxx"
     - "Modifie le style de la page d'accueil"
     - "Supprime le fichier xxx devenu inutile"
-- Limiter la longueur du titre à 50 caractères
-- Ajouter une ligne vide entre le titre et le corps du message
-
----
-
-# **Git** - Bonnes pratiques - messages de commit (suite)
-
-Des emojis peuvent être utilisés pour améliorer la lisibilité des messages de commit :
-
-- 🎉 `:tada:` : Initial commit
-- 🚀 `:rocket:` : Nouvelle fonctionnalité
-- 🐛 `:bug:` : Correction de bug
-- 📝 `:memo:` : Documentation
-- 🎨 `:art:` : Amélioration du style
-- ⚡ `:zap:` : Amélioration des performances
-- 🚧 `:construction:` : Travail en cours
-
-
-Attention à ne pas en abuser, ne pas en utiliser trop de différents, cela peut vite devenir illisible.
-
----
-
-# **Git** - Bonnes pratiques - messages de commit (suite)
-
-L'extension **Gitmoji** pour **VSCode** permet d'ajouter des emojis aux messages de commit.
+- Limiter la longueur du titre à environ 70 caractères
+- Ajouter une ligne vide entre le titre et le corps du message si le corps est nécessaire
+- Utiliser le corps du message pour expliquer les modifications plus en détail si nécessaire
+    - Expliquer le pourquoi des modifications
+    - Expliquer les conséquences des modifications
 
 ---
 
@@ -522,7 +535,7 @@ Les lignes supprimées sont affichées en rouge, les lignes ajoutées en vert.
 Afin de travailler en collaboration avec d'autres personnes ou de sauvegarder son travail sur un serveur distant, il est nécessaire de configurer un dépôt distant. Nous allons utiliser **GitHub** pour cela. Les étapes sont les suivantes :
 
 * Créer un compte sur **GitHub**
-* Créer un nouveau dépôt sur **GitHub**
+* Créer un nouveau dépôt sur **GitHub** nommé **html-to-app**
 * Ajouter le dépôt distant à notre **repository** local
 
 ---
@@ -532,8 +545,12 @@ Afin de travailler en collaboration avec d'autres personnes ou de sauvegarder so
 Pour ajouter un dépôt distant à notre **repository** local, utiliser la commande `git remote add <name> <url>` :
 
 ```bash
-git remote add origin https://github.com/your-login/yout-repo.git
+git remote add origin https://github.com/your-login/your-repo.git
 ```
+
+Remplacer `your-login` par votre nom d'utilisateur **GitHub** et `your-repo` par le nom du dépôt que vous avez créé sur **GitHub**.
+Ces informations sont aussi fournies par **GitHub** lors de la création du dépôt.
+
 ---
 
 # **Git** - remote (suite)
