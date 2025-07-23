@@ -469,13 +469,31 @@ caption {
 
 ---
 
-# WIP 
+# Problématique - Faire évoluer le code
 
-# Analyse de ce qu'il reste à faire - Suite
+Bien qu'il s'agisse d'une application web relativement simple, nous commençons à avoir quelques lignes de code. Modifier ce code peut rapidement devenir problématique :
+* Difficulté à revenir en arrière en cas de problème
+* Difficulté à suivre les modifications apportées au code
 
-Avant de refactoriser le code, il est important d'utiliser un système de contrôle de version comme Git pour pouvoir revenir en arrière en cas de problème.
+---
 
-Nous allons donc commencer par versionner le code actuel en suivant le guide suivant :
+# Problématique - Faire évoluer le code (suite)
+
+De plus, si l'on se place dans un contexte **professionnel**, où l'on pourrait être amené à travailler en équipe, on rencontre d'autres difficultés :
+* Comment partager le code avec d'autres personnes
+* Comment collaborer sur le code
+* Comment gérer les conflits de code
+* Comment suivre les modifications apportées par les autres membres de l'équipe
+* Comment savoir qui a apporté quelles modifications
+* Comment savoir quelles modifications ont été apportées et pourquoi
+
+---
+
+# Outil de gestion de sources
+
+Afin de répondre à ces problématiques, on utilise un outil de gestion de sources. Il permet de versionner le code, de suivre les modifications apportées, de collaborer avec d'autres personnes et de gérer les conflits de code. 
+
+Nous allons donc explorer le fonctionnement de **Git** (outil le plus utilisé en entreprise) et comment l'utiliser pour versionner notre code.
 
 [https://but-sd.github.io/prez/guide-git.html](https://but-sd.github.io/prez/guide-git.html)
 
@@ -491,31 +509,26 @@ Utiliser git pour versionner le code et apporter des modifications en toute séc
 
 ---
 
-# Exercice 8 - Refactorisation du code - git
+# Exercice 8 - Fonctionnalité **shake**
 
-## Refactorisation du code - Fonctionnalité **shake**
-
-* Ajouter des ids aux éléments à faire bouger (image et tableau)
-* Utiliser des boutons dans la page html plutôt que des boutons dans le code JavaScript
-* Factoriser les fonctions **shake** et **unshake** en une seule permettant de shake ou unshake un élément en fonction de son id et de son état actuel
+* Refactoriser les fonctions **shake** et **unshake** en une seule permettant de shake ou unshake un élément en fonction de son id passé en paramètre et de son état actuel
+* Remplacer les 2 boutons présents pour l'image et le tableau par un seul bouton permettant de faire l'action inverse de l'état actuel de l'élément
+    * Si l'élément est en train de shaker, le bouton permet de le déshaker
+    * Si l'élément n'est pas en train de shaker, le bouton permet de le shaker
 
 ---
 
-# Exercice 8 - Refactorisation du code - git (suite)
-
-## Refactorisation du code - Fonctionnalité **shake**
+# Exercice 8 - Fonctionnalité **shake** (suite)
 
 * Préparer un commit pour l'ensemble des modifications
-    * Il serait possible de ne pas tout commiter en une seule fois, cependant les 3 modifications sont liées, il est donc préférable de les regrouper dans un seul commit
+    * Il serait possible de ne pas tout commiter en une seule fois, cependant les 2 modifications sont liées, il est donc préférable de les regrouper dans un seul commit, en effet 1 modification sans l'autre ne serait pas fonctionnelle, il faut donc les regrouper dans un seul commit **atomique**
     * Analyser les modifications apportées pour s'assurer qu'elles sont cohérentes et fonctionnent correctement, on ne commit pas du code instable
 * Ajouter un message de commit explicite 
     * Exemple : "Refactorisation de code - Fonctionnalité shake"
 
 ---
 
-# Exercice 8 - Refactorisation du code - git (suite)
-
-## Refactorisation du code - Fonctionnalité **shake**
+# Exercice 8 - Fonctionnalité **shake** (suite)
 
 <img src="img/git/git-vscode-log.png" alt="Git - Visual Studio Code" style="width: 80%">
 
@@ -529,9 +542,7 @@ Utiliser git pour versionner le code et apporter des modifications en toute séc
     * Afficher un message à l'utilisateur pour l'informer qu'il n'y a pas de données à afficher
 
 * Préparer et effectuer un commit pour l'ensemble des modifications
-    * Analyser les modifications
-    * Ajouter un message de commit explicite
-
+    
 ---
 
 # Exercice 9 - Amélioration de la récupération des données - Gestion des erreurs (suite)
@@ -554,7 +565,9 @@ Utiliser git pour versionner le code et apporter des modifications en toute séc
 
 # Pour aller plus loin
 
-On atteint ici les limites de la programmation front-end. Pour aller plus loin, il est possible de se tourner vers des frameworks ou des bibliothèques JavaScript comme React, Angular ou Vue.js qui permettent de développer des applications web plus complexes.
+On atteint ici les limites de la programmation front-end en pur JavaScript. 
+
+Pour aller plus loin, il est possible de se tourner vers des frameworks ou des bibliothèques JavaScript comme React, Angular ou Vue.js qui permettent de développer des applications web plus complexes.
 
 * **Responsive Design** : adapter la page web à différents supports (mobile, tablette, desktop)
 
