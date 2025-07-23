@@ -100,7 +100,9 @@ git config --global user.email johndoe@example.com
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="11" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Git" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" data-theme="default" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Git;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;--theme:default;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <header>BUT SD - Git</header>
 <h1 id="git---v%C3%A9rification-de-la-configuration"><strong>Git</strong> - Vérification de la configuration</h1>
-<p>Pour vérifier la configuration actuelle, utiliser la commande <code>git config --list</code></p>
+<p>Pour vérifier la configuration actuelle, utiliser la commande :</p>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-bash">git config --global --list
+</code></pre>
 <footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="12" data-marpit-fragments="4" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Git" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" data-theme="default" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Git;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;--theme:default;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
@@ -140,6 +142,9 @@ git checkout -b main
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-bash"><span class="hljs-built_in">ls</span> -a
 . .. .git
 </code></pre>
+<p>Il n'est pas nécessaire de modifier ce répertoire, <strong>git</strong> s'en occupe automatiquement.</p>
+<p>Nous n'aurions pas à le modifier manuellement.</p>
+<p>Ne pas le supprimer, cela supprimerait l'historique du projet.</p>
 <footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="15" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Git" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" data-theme="default" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Git;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;--theme:default;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
@@ -178,8 +183,8 @@ nothing to commit (create/copy files and use <span class="hljs-string">&quot;git
 <header>BUT SD - Git</header>
 <h1 id="exercice---git---initialisation">Exercice - Git - initialisation</h1>
 <ul>
-<li data-marpit-fragment="1">Initialiser un nouveau <strong>repository</strong> <strong>git</strong> dans un répertoire existant (init + checkout)</li>
-<li data-marpit-fragment="2">Copier les fichiers du projet dans le répertoire de travail</li>
+<li data-marpit-fragment="1">Initialiser un nouveau <strong>repository</strong> <strong>git</strong> dans un répertoire nommé <strong>html-to-app</strong> (un répertoire local vide sur le disque du poste de travail, pas un répertoire synschronisé avec un service de stockage en ligne cela pourrait poser des problèmes de synchronisation)</li>
+<li data-marpit-fragment="2">Copier les fichiers sur lesquels vous avez travaillé pour l'application html dans ce répertoire</li>
 <li data-marpit-fragment="3">Vérifier l'état du <strong>repository</strong> avec la commande <code>git status</code></li>
 </ul>
 <footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
@@ -374,11 +379,25 @@ Date:   Tue Jul 23 16:10:37 2024 +0200
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="35" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Git" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" data-theme="default" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Git;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;--theme:default;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <header>BUT SD - Git</header>
 <h1 id="git---vscode---git-log"><strong>Git</strong> - VSCode - git log</h1>
-<p>Il est possible de visualiser l'historique des commits directement depuis <strong>VSCode</strong> dans l'élément <strong>Commits</strong> de l'explorateur.</p>
+<p>Il est possible de visualiser l'historique des commits directement depuis <strong>VSCode</strong> dans l'élément <strong>Graph</strong> de l'explorateur.</p>
 <img src="img/git/git-vscode-commits.png" alt="Git in VSCode Explorer" width="50%" />
 <footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="36" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Git" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" data-theme="default" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Git;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;--theme:default;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+<header>BUT SD - Git</header>
+<h1 id="git---bonnes-pratiques---commit"><strong>Git</strong> - Bonnes pratiques - commit</h1>
+<ul>
+<li>Faire des commits réguliers et atomiques
+<ul>
+<li>Un commit par fonctionnalité</li>
+<li>Eviter les commits trop gros (trop de fichiers modifiés, trop de lignes modifiées)</li>
+</ul>
+</li>
+</ul>
+<p>Si vous commitez trop de fichiers en même temps, il est difficile de savoir ce qui a été modifié et pourquoi. Il est préférable de faire plusieurs commits pour des modifications différentes.</p>
+<footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="37" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Git" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" data-theme="default" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Git;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;--theme:default;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <header>BUT SD - Git</header>
 <h1 id="git---bonnes-pratiques---messages-de-commit"><strong>Git</strong> - Bonnes pratiques - messages de commit</h1>
 <ul>
@@ -389,18 +408,23 @@ Date:   Tue Jul 23 16:10:37 2024 +0200
 <li>Pourquoi : pourquoi ces modifications ont été apportées</li>
 </ul>
 </li>
-<li>Faire des commits réguliers et atomiques
-<ul>
-<li>Un commit par fonctionnalité</li>
-<li>Eviter les commits trop gros</li>
 </ul>
-</li>
-</ul>
+<p>Si vous avez des difficultés à écrire un message de commit, c'est peut-être que vous devriez faire plusieurs commits pour des modifications différentes.</p>
+<p>Un bon message de commit doit permettre de comprendre les modifications apportées sans avoir à lire le code.</p>
 <footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="37" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Git" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" data-theme="default" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Git;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;--theme:default;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="38" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Git" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" data-theme="default" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Git;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;--theme:default;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <header>BUT SD - Git</header>
 <h1 id="git---bonnes-pratiques---messages-de-commit-suite"><strong>Git</strong> - Bonnes pratiques - messages de commit (suite)</h1>
+<p>Les messages de commit permettent de comprendre l'historique du projet et de savoir qui a fait quoi et pourquoi.<br />
+On doit pouvoir comprendre l'historique du projet sans avoir à lire le code.</p>
+<p>Des messages de commit clairs et concis permettent de faciliter la collaboration entre les membres d'une équipe et de faciliter la maintenance du code.</p>
+<p>Des messages trop génériques ou trop vagues rendent l'historique du projet difficile à comprendre et n'apportent pas d'informations utiles.</p>
+<footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="39" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Git" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" data-theme="default" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Git;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;--theme:default;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+<header>BUT SD - Git</header>
+<h1 id="git---bonnes-pratiques---messages-de-commit-suite-1"><strong>Git</strong> - Bonnes pratiques - messages de commit (suite)</h1>
 <ul>
 <li>Commencer le message de commit par un verbe à l'impératif avec une majuscule
 <ul>
@@ -409,31 +433,15 @@ Date:   Tue Jul 23 16:10:37 2024 +0200
 <li>&quot;Supprime le fichier xxx devenu inutile&quot;</li>
 </ul>
 </li>
-<li>Limiter la longueur du titre à 50 caractères</li>
-<li>Ajouter une ligne vide entre le titre et le corps du message</li>
-</ul>
-<footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
-</section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="38" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Git" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" data-theme="default" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Git;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;--theme:default;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
-<header>BUT SD - Git</header>
-<h1 id="git---bonnes-pratiques---messages-de-commit-suite-1"><strong>Git</strong> - Bonnes pratiques - messages de commit (suite)</h1>
-<p>Des emojis peuvent être utilisés pour améliorer la lisibilité des messages de commit :</p>
+<li>Limiter la longueur du titre à environ 70 caractères</li>
+<li>Ajouter une ligne vide entre le titre et le corps du message si le corps est nécessaire</li>
+<li>Utiliser le corps du message pour expliquer les modifications plus en détail si nécessaire
 <ul>
-<li><img class="emoji" draggable="false" alt="🎉" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/1f389.svg" data-marp-twemoji=""/> <code>:tada:</code> : Initial commit</li>
-<li><img class="emoji" draggable="false" alt="🚀" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/1f680.svg" data-marp-twemoji=""/> <code>:rocket:</code> : Nouvelle fonctionnalité</li>
-<li><img class="emoji" draggable="false" alt="🐛" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/1f41b.svg" data-marp-twemoji=""/> <code>:bug:</code> : Correction de bug</li>
-<li><img class="emoji" draggable="false" alt="📝" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/1f4dd.svg" data-marp-twemoji=""/> <code>:memo:</code> : Documentation</li>
-<li><img class="emoji" draggable="false" alt="🎨" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/1f3a8.svg" data-marp-twemoji=""/> <code>:art:</code> : Amélioration du style</li>
-<li><img class="emoji" draggable="false" alt="⚡" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/26a1.svg" data-marp-twemoji=""/> <code>:zap:</code> : Amélioration des performances</li>
-<li><img class="emoji" draggable="false" alt="🚧" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/1f6a7.svg" data-marp-twemoji=""/> <code>:construction:</code> : Travail en cours</li>
+<li>Expliquer le pourquoi des modifications</li>
+<li>Expliquer les conséquences des modifications</li>
 </ul>
-<p>Attention à ne pas en abuser, ne pas en utiliser trop de différents, cela peut vite devenir illisible.</p>
-<footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
-</section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="39" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Git" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" data-theme="default" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Git;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;--theme:default;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
-<header>BUT SD - Git</header>
-<h1 id="git---bonnes-pratiques---messages-de-commit-suite-2"><strong>Git</strong> - Bonnes pratiques - messages de commit (suite)</h1>
-<p>L'extension <strong>Gitmoji</strong> pour <strong>VSCode</strong> permet d'ajouter des emojis aux messages de commit.</p>
+</li>
+</ul>
 <footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="40" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Git" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" data-theme="default" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Git;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;--theme:default;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
@@ -478,7 +486,7 @@ index 7b3b3d4..f7b3b3d 100644
 <p>Afin de travailler en collaboration avec d'autres personnes ou de sauvegarder son travail sur un serveur distant, il est nécessaire de configurer un dépôt distant. Nous allons utiliser <strong>GitHub</strong> pour cela. Les étapes sont les suivantes :</p>
 <ul>
 <li data-marpit-fragment="1">Créer un compte sur <strong>GitHub</strong></li>
-<li data-marpit-fragment="2">Créer un nouveau dépôt sur <strong>GitHub</strong></li>
+<li data-marpit-fragment="2">Créer un nouveau dépôt sur <strong>GitHub</strong> nommé <strong>html-to-app</strong></li>
 <li data-marpit-fragment="3">Ajouter le dépôt distant à notre <strong>repository</strong> local</li>
 </ul>
 <footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
@@ -487,8 +495,10 @@ index 7b3b3d4..f7b3b3d 100644
 <header>BUT SD - Git</header>
 <h1 id="git---remote-suite"><strong>Git</strong> - remote (suite)</h1>
 <p>Pour ajouter un dépôt distant à notre <strong>repository</strong> local, utiliser la commande <code>git remote add &lt;name&gt; &lt;url&gt;</code> :</p>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-bash">git remote add origin https://github.com/your-login/yout-repo.git
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-bash">git remote add origin https://github.com/your-login/your-repo.git
 </code></pre>
+<p>Remplacer <code>your-login</code> par votre nom d'utilisateur <strong>GitHub</strong> et <code>your-repo</code> par le nom du dépôt que vous avez créé sur <strong>GitHub</strong>.<br />
+Ces informations sont aussi fournies par <strong>GitHub</strong> lors de la création du dépôt.</p>
 <footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="45" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Git" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" data-theme="default" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Git;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;--theme:default;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
