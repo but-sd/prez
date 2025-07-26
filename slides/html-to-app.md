@@ -69,7 +69,7 @@ Il est possible de valider une page HTML en utilisant le service en ligne [valid
     </div>
 </div>
 
-Vérifiez que la page est valide en utilisant le service en ligne [validator.w3.org](https://validator.w3.org/)
+Vérifiez que la page est valide en utilisant le service en ligne [validator.w3.org](https://validator.w3.org/#validate_by_input)
 
 ---
 
@@ -214,7 +214,7 @@ Le **JavaScript** est un langage de programmation qui permet de rendre les pages
 
 ## Initialisation du JavaScript
 
-Dans un fichier `script.js`, ajouter du code JavaScript pour manipuler le DOM de la page HTML. Inclure le fichier `script.js` dans la page HTML en ajoutant la balise `<script src="../scripts/scripts.js"></script>` avant la balise de fermeture `</body>`.
+Dans un fichier `script.js`, ajouter du code JavaScript pour manipuler le DOM de la page HTML. Inclure le fichier `script.js` dans la page HTML en ajoutant la balise `<script src="./scripts.js"></script>` avant la balise de fermeture `</body>`.
 
 ---
 
