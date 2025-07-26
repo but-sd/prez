@@ -88,6 +88,17 @@ Mettre en oeuvre les différents concepts manipulés au cours du développement 
 
 # Version 0.1.0 - Objectif
 
+* Gestion de version - __semver__
+* Préparation du projet
+    * Utilisation de __npm__ pour gérer les dépendances du projet
+    * Utilisation de __browser-sync__ pour créer un serveur web local
+* Implémentation d'une page web
+    * Contenu statique de la page __HTML__ (**H**yper**T**ext **M**arkup **L**anguage)
+    * Application du style avec __CSS__ (**C**ascading **S**tyle **S**heets)
+
+---
+
+# Version 0.1.0 - Objectif (suite)
 
 <!-- ```mermaid
 gitGraph
@@ -99,15 +110,9 @@ gitGraph
     commit id:"style" tag: "v0.1.0"
 ``` -->
 
-<img src="img/git-graph/version-0.1.0.png" alt="Version 0.1.0" style="width: 30%;">
+<img src="img/git-graph/version-0.1.0.png" alt="Version 0.1.0" style="width: 50%;">
 
-* Gestion de version - __semver__
-* Préparation du projet
-    * Utilisation de __npm__ pour gérer les dépendances du projet
-    * Utilisation de __browser-sync__ pour créer un serveur web local
-* Implémentation d'une page web
-    * Contenu statique de la page __HTML__ (**H**yper**T**ext **M**arkup **L**anguage)
-    * Application du style avec __CSS__ (**C**ascading **S**tyle **S**heets)
+<a href="marvel-app-0.1.0.md" target="_blank">Voir les slides de la version 0.1.0</a>
 
 ---
 
