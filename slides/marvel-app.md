@@ -112,7 +112,7 @@ gitGraph
 
 <img src="img/git-graph/version-0.1.0.png" alt="Version 0.1.0" style="width: 50%;">
 
-<a href="marvel-app-0.1.0.md" target="_blank">Voir les slides de la version 0.1.0</a>
+<a href="marvel-app-0.1.0.html" target="_blank">Voir les slides de la version 0.1.0</a>
 
 ---
 
