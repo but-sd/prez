@@ -128,7 +128,7 @@ gitGraph
 
 # Version 0.2.0 - Objectif (suite)
 
-<img src="img/git-graph/version-0.2.0.png" alt="Version 0.2.0" style="width: 70%;">
+<img src="img/git-graph/version-0.2.0.png" alt="Version 0.2.0" style="width: 60%;">
 
 <!-- ```mermaid
 gitGraph
@@ -150,6 +150,8 @@ gitGraph
     merge develop
     commit tag: "v0.2.0"
 ``` -->
+
+<a href="marvel-app-0.2.0.html" target="_blank">Voir les slides de la version 0.2.0</a>
 
 ---
 
