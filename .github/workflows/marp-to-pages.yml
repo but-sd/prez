@@ -19,12 +19,13 @@ jobs:
 
       - name: Copy index.html
         run: cp index.html build/index.html
-        
-      - name: Copy characters.json
+
+      - name: Copy somes assets
         run: |
           cp characters.json build/characters.json
           cp characters-full.json build/characters-full.json
           cp characters-full-with-capacities.json build/characters-full-with-capacities.json
+          cp marvel.png build/marvel.png
 
       - name: Copy images directory (if exists)
         run: if [[ -d slides/img ]]; then cp -R slides/img build/img; fi
