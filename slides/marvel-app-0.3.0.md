@@ -29,24 +29,103 @@ footer: "Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.gir
 
 ---
 
+# D'une page statique à une application web
+
+Le **html**, le **css** et le **javascript** sont les technologies de base du web. Elles permettent de créer des pages web statiques.
+
+Elles sont suffisantes pour créer des pages web simples, mais deviennent rapidement difficiles à maintenir et à étendre pour des applications web plus complexes.
+
+---
+
+# D'une page statique à une application web (suite)
+
+Par exemple en ajoutant des pages, des formulaires, des interactions avec l'utilisateur, des données dynamiques... on se retrouve rapidement avec 
+
+- du code difficile à lire, 
+- à maintenir et à étendre (duplication de code, logique métier dispersée, des données...)
+- des bugs difficiles à corriger
+- des performances médiocres (rechargement complet de la page, gestion des événements, gestion des états...)
+
+---
+
 # Librairies et Frameworks
 
-* Développer une application web en pure html/css/js
-    * code difficile à maintenir, voir illisible
-    * gestion des fonctionnalités complexes difficile
-        * gestion des pages, de la navigation, des états, des événements, des composants, des données...
+Pour résoudre ces problèmes, il est courant d'utiliser des **librairies** ou des **frameworks** qui permettent de structurer le code, de le rendre plus lisible et plus maintenable.
 
-* Utiliser une librairie ou un framework
-    * React
-    * Angular
-    * Vue
-    * ...
+Les problématiques rencontrées par un développeur web sont les mêmes depuis des années, et de nombreuses solutions ont été proposées pour y répondre.
+
+---
+
+# Librairies et Frameworks (suite)
+
+Les **librairies** et **frameworks** permettent de:
+* Structurer le code
+    * séparation des préoccupations (HTML, CSS, JavaScript)
+    * modularité (composants, modules, services...)
+* Gérer les données
+    * gestion des états (états locaux, globaux, partagés...)
+    * gestion des données (API, stockage local, base de données...)
+* Gérer les interactions avec l'utilisateur
+    * gestion des événements (clics, saisie, navigation...)
+
+---
+
+# Librairies et Frameworks (suite)
+
+* Gérer les performances
+    * optimisation du rendu
+* Gérer la navigation
+    * gestion des routes (pages, URL, navigation...)
+* Gérer la sécurité
+    * protection contre les attaques (XSS, CSRF, injection SQL...) 
+
+---
+
+# Librairies et Frameworks (suite)
+
+
+* Gérer l'accessibilité
+    * rendre l'application accessible aux personnes en situation de handicap
+* Gérer la compatibilité
+    * compatibilité avec les navigateurs, les appareils, les systèmes d'exploitation...
+* Gérer les tests
+    * tests unitaires, tests d'intégration, tests de bout en bout... 
+
+---
+
+# Librairies et Frameworks (suite)
+
+* La différence entre une **librairie** et un **framework** est que:
+  * une **librairie** est un ensemble de fonctions ou de classes qui peuvent être utilisées
+  * un **framework** est un ensemble de règles et de conventions qui définissent comment le code doit être structuré et organisé
+
+* Un framework impose une architecture et des conventions à suivre, tandis qu'une librairie est plus flexible et peut être utilisée de manière indépendante.
+
+---
+
+# Librairies et Frameworks (suite)
+
+* Il existe de nombreuses librairies et frameworks pour le développement web, chacun ayant ses propres avantages et inconvénients.
+* Le choix d'une librairie ou d'un framework dépend des besoins du projet, des compétences de l'équipe, des contraintes techniques et des préférences personnelles.
+* Il est important de bien comprendre les concepts de base du développement web avant de se lancer dans l'utilisation d'une librairie ou d'un framework.
+* Il est également important de se tenir informé des évolutions des librairies et frameworks, car ils évoluent rapidement et de nouvelles solutions apparaissent régulièrement. 
+
+---
+
+# Librairies et Frameworks (suite)
+
+Actuellement, les librairies et frameworks les plus populaires pour le développement web sont:
+* __React__ : une librairie JavaScript développée par Facebook pour construire des interfaces utilisateurs
+* __Angular__ : un framework JavaScript développé par Google pour construire des applications web
+* __Vue.js__ : un framework JavaScript progressif pour construire des interfaces utilisateurs
 
 ---
 
 # React
 
-* librairie javascript développée par Facebook
+Sur le bassin Niortais, de nombreuses entreprises utilisent **React** pour leurs applications web. 
+
+* **librairie** javascript développée par Facebook
 * permet de construire des interfaces utilisateurs de manière déclarative et modulaire
 * très populaire, utilisée par de nombreux sites web (Facebook, Instagram, Netflix, Airbnb...)
     * maintenue par une large communauté
@@ -55,7 +134,27 @@ footer: "Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.gir
 
 ---
 
+# Métiers de développeur web
+
+
+En tant que développeur web, il est donc important de maîtriser **React** pour être compétitif sur le marché du travail, mais il faut être en capacité de travailler avec d'autres librairies et frameworks.
+
+Le métier de développeur web est en constante évolution et il est important de se tenir informé des nouvelles technologies et des bonnes pratiques.
+
+---
+
+# Métiers de développeur web (suite)
+
+Pour le développement de l'application Marvel, nous allons utiliser **React** pour construire l'interface utilisateur.
+Nous allons découvrir les concepts de base de **React** et comment les utiliser pour construire une application web moderne et performante.
+
+Nous n'irons pas dans les détails de **React** et nous ne verrons pas toutes les fonctionnalités avancées, mais nous allons nous concentrer sur les concepts de base et comment les utiliser pour construire une application web.
+
+---
+
 # React - Concepts
+
+Les principaux concepts de **React** que nous allons aborder sont:
 
 * composants
 * états
@@ -65,6 +164,16 @@ footer: "Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.gir
 ---
 
 # Composants
+
+Le concept de base de **React** est le **composant**. Un **composant** est une partie de l'interface utilisateur qui peut être réutilisée et qui encapsule son propre code HTML, CSS et JavaScript.
+
+Un **composant** peut être considéré comme une fonction qui retourne du code HTML. Il peut avoir des **propriétés** (props) et des **états** (state) qui lui sont propres.
+
+---
+
+# Composants (suite)
+
+Un **composant** peut être composé d'autres **composants**. Par exemple, l'**App** **component** peut être composé de plusieurs **composants** enfants tels que **Header**, **Main** et **Footer**.
 
 ```text
 +-----------------------+
@@ -81,6 +190,12 @@ footer: "Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.gir
 +-----------------------+
 ```
 
+---
+
+# Composants (suite)
+
+On peut le voir comme une brique de **lego** qui permet de construire l'interface utilisateur de manière modulaire et réutilisable.
+
 * éléments de base de React
 * permettent de découper l'interface en éléments indépendants
 * réutilisables
@@ -88,16 +203,7 @@ footer: "Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.gir
 
 ---
 
-# Etats
-
-* données internes à un composant
-* permettent de stocker des informations
-* modifiables
-* déclenchent le rendu du composant
-
----
-
-# Propriétés
+# Propriétés (Props)
 
 * données passées à un composant
 * permettent de personnaliser le composant
@@ -105,11 +211,49 @@ footer: "Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.gir
 
 ---
 
-# Evénements
+# Propriétés (suite)
 
-* actions déclenchées par l'utilisateur
-* permettent de modifier les états des composants
-* déclenchent le rendu du composant
+* permettent de passer des données d'un composant parent à un composant enfant
+* peuvent être utilisées pour configurer le comportement du composant
+* peuvent être de n'importe quel type (chaîne de caractères, nombre, objet, tableau, fonction...)
+
+---
+
+# Propriétés (suite)
+
+Par exemple, un composant qui afficherait "Hello {name}" d'une couleur {color} pourrait être utilisé de la manière suivante:
+
+```javascript
+<Hello name="Alexandre" color="blue" />
+```
+
+Le code du composant pourrait ressembler à ceci:
+
+```javascript
+function Hello(props) {
+  return (
+    <h1 style={{ color: props.color }}>Hello {props.name}</h1>
+  );
+}
+```
+
+--- 
+
+# Propriétés (suite)
+
+Les propriétés sont passées au composant via les **props**. Elles permettent de personnaliser le comportement du composant et de le rendre réutilisable avec différentes données.
+
+Les **props** sont immuables, c'est-à-dire qu'elles ne peuvent pas être modifiées par le composant qui les reçoit. Elles sont utilisées pour configurer le composant et lui passer des données.
+
+---
+
+# Etat (state) et Evénements (events)
+
+* Les deux autres concepts importants de **React** sont les **états** et les **événements**.
+  * Les **états** (state) permettent de stocker des données qui peuvent changer au cours de la vie du composant.
+  * Les **événements** (events) permettent de gérer les interactions de l'utilisateur avec l'interface utilisateur.
+
+* Nous verrons comment utiliser les **états** et les **événements** pour rendre l'interface utilisateur dynamique et interactive.
 
 ---
 
@@ -126,27 +270,87 @@ footer: "Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.gir
 
 # react - Installation (suite)
 
-<div class="two-columns">
-  <div class="column">
-    <ul>
-        <li>
-            L'installation de React a écrasé ou modifié les fichiers existants
-        </li>
-        <li>
-            Pour chaque modification, choisir quoi conserver, modifier ou supprimer
-        </li>
-        <li>
-            Une fois les modifications effectuées, ajouter les fichiers modifiés à l'index.
-        </li>
-        <li>
-            Créer un commit avec le message `Add React`
-        </li>
-    </ul>
-  </div>
-  <div class="column">
-    <img src="./img/marvel-app/marvel-app-0.3.0-1.png" width="100%">
-  </div>
-</div>
+Lancer l'application dans le navigateur à l'adresse `http://localhost:5173/`
+
+Vous devriez voir une page avec le message `Vite + React` et un logo React
+
+Ainsi qu'un composant de type Counter qui permet d'incrémenter et de décrémenter un compteur. Il utilise les concepts de base de React: composants, états et événements.
+
+L'état du compteur est stocké dans le composant et est mis à jour lorsque l'utilisateur clique sur les boutons (événements de clic).
+
+---
+
+# react - Installation (suite)
+
+L'installation de React a écrasé ou modifié les fichiers existants. Il est donc nécessaire de vérifier les modifications apportées par l'installation de React.
+
+**git** nous permet de voir les modifications apportées par l'installation de React. 
+
+Elle a supprimé nos fichiers `index.html`, `style.css` et `script.js`, nous allons tout de même les conserver pour les réutiliser dans la suite du projet. 
+
+Pour cela nous allons les restaurer en annulant leur suppression.
+
+---
+
+# react - Installation (suite)
+
+<img src="./img/marvel-app/marvel-app-0.3.0-1.png" width="70%">
+
+---
+
+# react - Installation (suite)
+
+Pour restaurer les fichiers supprimés, il faut utiliser la commande `git restore` suivie du nom des fichiers à restaurer. 
+
+Par exemple, pour restaurer le fichier `src/index.html`, il faut utiliser la commande suivante:
+
+```bash
+git restore src/index.html
+```
+
+ou bien via l'interface graphique de votre éditeur de code.
+
+---
+
+# react - Installation (suite)
+
+Une fois les fichiers restaurés, committer les modifications permettant d'ajouter React avec le message `Add React with vite`
+
+```bash
+git add .
+git commit -m "Add React with vite"
+```
+---
+
+# react - Structure du projet
+
+Afin de comprendre la structure d'un projet React, on peut partir du fichier `index.html` qui est le point d'entrée de l'application.
+
+```html
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + React</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
+```
+
+---
+
+# react - Structure du projet (suite)
+
+On voit que le fichier `index.html` contient une balise `<div>` avec l'id `root`. C'est dans cette balise que React va injecter l'application.
+
+Le fichier `main.jsx` est le point d'entrée de l'application React. Il est chargé par le navigateur et il est responsable de l'initialisation de l'application.
+
+On peut modifier le fichier `index.html` pour mettre le titre de la page à `Marvel App` et supprimer la balise `<link rel="icon" type="image/svg+xml" href="/vite.svg" />`.
 
 ---
 

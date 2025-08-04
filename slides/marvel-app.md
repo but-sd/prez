@@ -166,7 +166,7 @@ gitGraph
 
 # Version 0.3.1 - Objectif (suite)
 
-<img src="img/git-graph/version-0.3.1.png" alt="Version 0.3.1" style="width: 70%;">
+<img src="img/git-graph/version-0.3.1.png" alt="Version 0.3.1" style="width: 55%;">
 
 <!-- ```mermaid
 gitGraph
@@ -193,6 +193,8 @@ gitGraph
     checkout develop
     merge main
 ``` -->
+
+<a href="marvel-app-0.3.0.html" target="_blank">Voir les slides de la version 0.3.0</a>
 
 ---
 

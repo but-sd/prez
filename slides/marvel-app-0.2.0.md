@@ -65,7 +65,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
 # git - Branches (suite)
 
-Lors de la création d'une branche, celle-ci est dupliquée à partir de la branche courante. Les modifications apportées à cette branche n'impactent pas les autres branches. Une fois les modifications terminées, il est possible de fusionner la branche avec la branche courante.
+Lors de la création d'une branche, celle-ci est dupliquée à partir de la branche courante. 
+
+Les modifications apportées à cette branche n'impactent pas les autres branches. 
+
+Une fois les modifications terminées, il est possible de fusionner la branche avec la branche courante.
+
+---
+
+# git - Branches (suite)
 
 * Les branches sont des pointeurs vers un commit.
 * Créer une nouvelle branche revient à créer un nouveau pointeur sur le commit courant.
@@ -103,7 +111,7 @@ gitGraph
 ```
  -->
 
- <img src="./img/git-graph/version-0.2.0-branchs.png" width="100%">
+ <img src="./img/git-graph/version-0.2.0-branchs.png" width="80%">
 
 ---
 
@@ -147,7 +155,7 @@ Le fait de travailler sur des branches **feature** permet de travailler sur plus
 
 # gitflow - Mise en pratique (suite)
 
-Nous sommes maintenant sur les branches **feature-style** et **feature-data**. Nous pouvons travailler sur ces branches en parallèle pour ajouter les fonctionnalités de style et de données.
+Nous venons de créer deux branches de type **feature**: **feature/style** et **feature/data** et une branche de développement **develop**.
 
 <img src="./img/git-graph/version-0.2.0-flow-1.png" width="45%">
 <!-- ```mermaid
@@ -186,6 +194,18 @@ gitGraph
 
 ---
 
+# gitflow - Mise en pratique (suite)
+
+La vue **Git Graph** de **Visual Studio Code** permet aussi de visualiser les branches et les commits de manière graphique.
+
+<img src="./img/marvel-app/marvel-app-0.2.0-1-git-graph.png" width="80%">
+
+Ainsi pour l'instant nous voyons que nous avons plusieurs branches, mais qu'elles sont toutes au même niveau (même commit). 
+
+Nous voyons aussi les précédents commits de la branche principale **main**.
+
+---
+
 # Fonctionnalités - Style
 
 <div class="two-columns">
@@ -198,14 +218,49 @@ gitGraph
         <li>
             Modifier le fichier <b>src/style.css</b> pour ajouter du style à la page web
         </li>
-        <li>
-            Commiter avec le message "Modify style for characters list"
-        </li>
     </ul>
   </div>
   <div class="column">
     <img src="./img/marvel-app/marvel-app-0.2.0-2.png" width="100%">
   </div>
+
+---
+<!-- Remove header and footer for subsequent slides -->
+<!-- _header: "" -->
+<!-- _footer: "" -->
+
+```css
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    margin: 0;
+    padding: 20px;
+    background: #333;
+    color: #fff;
+    text-align: center;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+```
+
+---
+
+# Fonctionnalités - Style (suite)
+
+Commiter les modifications avec le message "Add style to the page".
 
 ---
 
@@ -231,8 +286,6 @@ gitGraph
 ---
 
 # gitflow - Mise en pratique (suite)
-
-L'extension **Git Graph** de **Visual Studio Code** permet de visualiser les branches et les commits.
 
 <img src="./img/marvel-app/marvel-app-0.2.0-3.png" width="100%">
 
@@ -296,11 +349,15 @@ gitGraph
 
 <img src="./img/marvel-app/marvel-app-0.2.0-4.png" width="100%">
 
+En basculant entre les branches **feature/style** et **feature/data**, on peut voir que les modifications apportées à chaque branche sont indépendantes.
+
+Les modifications de style n'ont pas impacté les données et vice versa.
+
 ---
 
 # git - Merge
 
-* Une fois les fonctionnalités terminées, il est possible de fusionner les branches avec la branche **develop**.
+Une fois les fonctionnalités terminées, il est possible de fusionner les branches avec la branche **develop**.
 * La fusion des branches se fait avec la commande **git merge**.
 * La fusion des branches peut générer des conflits si les mêmes fichiers ont été modifiés sur les branches à fusionner.
 * Les conflits doivent être résolus manuellement.
@@ -318,6 +375,8 @@ gitGraph
 # git - Merge (suite)
 
 <img src="./img/marvel-app/marvel-app-0.2.0-5.png" width="100%">
+
+On voit que la branche **feature/style** a été fusionnée avec la branche **develop**, elles sont maintenant au même niveau.
 
 ---
 
@@ -365,7 +424,8 @@ Nous sommes maintenant prêts à fusionner la branche **develop** avec la branch
 * Avant de fusionner la branche **develop** avec la branche **main**, il est recommandé de vérifier que tout est fonctionnel.
 * Tester l'application en local pour vérifier que les fonctionnalités ajoutées fonctionnent correctement.
 * Vérifier que les modifications sont cohérentes avec les objectifs de la version 0.2.0.
-* Modifier la version dans le fichier **package.json** pour refléter la nouvelle version de l'application et commiter la modification.
+* Modifier la version dans le fichier **package.json** pour refléter la nouvelle version de l'application 
+* Commiter la modification avec le message "Update version to 0.2.0" `git commit -m "prepare version to 0.2.0"`
 
 ---
 
@@ -397,6 +457,24 @@ Nous sommes maintenant prêts à fusionner la branche **develop** avec la branch
 # git - push
 
 * Une fois la branche **main** fusionnée avec la branche **develop**, il est possible de pousser les modifications sur le dépôt distant.
-* Pousser les modifications sur le dépôt distant avec la commande: `git push origin main`
+* Pousser les modifications sur le dépôt distant avec la commande: `git push origin main` et `git push origin develop`
 * Créer un tag pour la version 0.2.0 avec la commande: `git tag -a v0.2.0 -m "Version 0.2.0"`
 * Pousser le tag sur le dépôt distant avec la commande: `git push origin v0.2.0`
+
+---
+
+# Version 0.2.0 - Objectif
+
+L'objectif de cette version était d'améliorer l'affichage de l'application en ajoutant du style CSS et de récupérer des données depuis un fichier JSON.
+
+Ces modifications ont été réalisées en utilisant Git pour travailler sur plusieurs fonctionnalités en même temps, en créant des branches spécifiques pour chaque fonctionnalité. 
+
+On pourrait imaginer que ces 2 fonctionnalités ont été développées par 2 développeurs différents , ce qui permet de travailler en parallèle sans impacter le code de production.
+
+---
+
+# Version 0.2.0 - Objectif (suite)
+
+L'utilisation de **Git** permet de gérer les branches et de fusionner les modifications de manière efficace.
+
+Le choix de **Git Flow** permet de structurer le développement en définissant des règles pour les branches, ce qui facilitera la gestion des versions et des fonctionnalités, des correctifs et des releases à l'avenir.

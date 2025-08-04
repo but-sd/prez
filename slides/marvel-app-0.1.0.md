@@ -212,9 +212,9 @@ Exclure le répertoire `node_modules` du projet en créant un fichier `.gitignor
 
 # Scripts - Browser Sync
 
-Ajouter le script `start` dans le fichier `package.json` avant le script `test` pour lancer le serveur web local avec la commande `"start": "browser-sync start --server './src' --files '**/*.html, **/*.css'",`
+Ajouter le script `start` dans le fichier `package.json` avant le script `test` pour lancer le serveur web local avec la commande `"start": "browser-sync start --server './src' --files './src/**/*''",`
 
-Ce script permet de lancer le serveur web local avec le module `browser-sync` et de surveiller les fichiers HTML et CSS pour les recharger automatiquement en cas de modification
+Ce script permet de lancer le serveur web local avec le module `browser-sync` et de surveiller les fichiers présents dans le répertoire `src` pour les recharger automatiquement en cas de modification
 
 ---
 
