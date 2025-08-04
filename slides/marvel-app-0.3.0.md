@@ -348,9 +348,23 @@ Afin de comprendre la structure d'un projet React, on peut partir du fichier `in
 
 On voit que le fichier `index.html` contient une balise `<div>` avec l'id `root`. C'est dans cette balise que React va injecter l'application.
 
-Le fichier `main.jsx` est le point d'entrée de l'application React. Il est chargé par le navigateur et il est responsable de l'initialisation de l'application.
+On peut modifier le fichier `index.html` pour mettre le titre de la page à `Marvel App` et remplacer le logo Vite par le logo Marvel.
 
-On peut modifier le fichier `index.html` pour mettre le titre de la page à `Marvel App` et supprimer la balise `<link rel="icon" type="image/svg+xml" href="/vite.svg" />`.
+```html
+...
+<link rel="icon" type="image/png" href="/public/marvel.png" />
+...
+<title>Marvel App</title>
+...
+```
+
+Puis committer les modifications avec le message `Update index.html for Marvel App`.
+
+---
+
+# react - Structure du projet (suite)
+
+Le fichier `src/main.jsx` est le point d'entrée de l'application React. Il est chargé par le navigateur et il est responsable de l'initialisation de l'application.
 
 ---
 
