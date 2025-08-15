@@ -350,6 +350,16 @@ On voit que le fichier `index.html` contient une balise `<div>` avec l'id `root`
 
 On peut modifier le fichier `index.html` pour mettre le titre de la page à `Marvel App` et remplacer le logo Vite par le logo Marvel.
 
+Et supprimer l'ancien logo Vite qui n'est plus utilisé.
+
+---
+
+# react - Structure du projet (suite)
+
+Le logo Marvel doit être placé dans le dossier `public` du projet. 
+
+Il est disponible à l'adresse `https://but-sd.github.io/prez/marvel.png`.
+
 ```html
 ...
 <link rel="icon" type="image/png" href="/public/marvel.png" />
@@ -366,33 +376,18 @@ Puis committer les modifications avec le message `Update index.html for Marvel A
 
 Le fichier `src/main.jsx` est le point d'entrée de l'application React. Il est chargé par le navigateur et il est responsable de l'initialisation de l'application.
 
----
+Il va créer un élément React racine et le rendre dans la balise `<div id="root"></div>` du fichier `index.html`. 
 
-# react - Hello World - Syntaxe JavaScript
-
-Modifier le fichier `App.jsx` pour afficher le message `Hello World`
-
-```javascript
-import React from "react";
-
-function App() {
-  return React.createElement("h1", {}, "Hello World");
-}
-
-export default App;
-```
-
-La fonction App qui est l'élément racine de l'application retourne un élément **h1** avec le texte `Hello World`
-
-La syntaxe JavaScript est un peu verbeuse et peu lisible. React propose une syntaxe plus simple et plus lisible grâce à la syntaxe JSX
+Ce composant racine est généralement appelé `App`, c'est lui qui va contenir tous les autres composants de l'application.
 
 ---
 
 # react - Hello World - Syntaxe JSX
 
-Modifier le fichier `App.jsx` pour afficher le message `Hello World from react with JSX` en utilisant la syntaxe JSX
+Modifier le fichier `App.jsx` pour afficher le message `Hello World from react with JSX` en utilisant la syntaxe **JSX** (JavaScript Syntax Extension).
 
 ```javascript
+import './App.css'
 
 function App() {
   return (<h1>Hello World from react with JSX</h1>);
@@ -401,7 +396,7 @@ function App() {
 export default App;
 ```
 
-La syntaxe JSX est très proche de la syntaxe HTML. Elle permet de créer des composants React en utilisant des balises HTML.
+La syntaxe JSX est très proche de la syntaxe HTML. Elle permet de créer des composants React (javascript) en utilisant des balises HTML.
 
 --- 
 
@@ -412,58 +407,70 @@ Pour plus de détails sur la syntaxe JSX, consulter la documentation officielle 
 Ou le guide simplifié [https://but-sd.github.io/guide-react/](https://but-sd.github.io/guide-react/)
 
 ---
-# react - Adapter le code existant - App.jsx
+# react - Liste des personnages Marvel - version statique
 
-```html
-import './App.css'
-
-function App() {
-  return (
-    <>
-      <h1>Marvel Characters</h1>
-      <ul id="characters">
-        <li>
-          Beast
-        </li>
-        <li>
-          Captain America
-        </li>
-        <li>
-          Deadpool
-        </li>
-      </ul>
-    </>
-  )
-}
-
-export default App
-```
+Modifier le fichier `App.jsx` pour afficher une liste statique des 3 premiers personnages Marvel (Beast, Captain America, Deadpool) dans une liste HTML en respectant la syntaxe JSX.
 
 ---
 
 # react - Adapter le code existant (suite)
 
 * Copier les styles css du fichier `style.css` dans le fichier `App.css`
-* Modifier le fichier `index.html` (à la racine du projet) pour mettre le titre de la page à `Marvel App`
+* Supprimer le fichier `src/index.html` et le fichier `src/style.css` car ils ne sont plus utilisés
 * Valider que tout fonctionne correctement puis créer un commit avec le message `Use static list for characters`
+
+* Note: On aurait aussi pu séparer en 2 commits:
+  * Un commit pour ajouter la liste statique des personnages Marvel
+  * Un commit pour faire le ménage dans les fichiers inutiles (supprimer le fichier `src/index.html` et le fichier `src/style.css`)
 
 ---
 
 # react - Adapter le code existant (suite)
 
 * Modifier le fichier `App.jsx` pour afficher la liste des personnages à partir du fichier `characters.json`
-    * Utiliser la fonction `import` pour importer le fichier `characters.json`
-    * Utiliser la fonction `map` pour parcourir le tableau de personnages
+    * `import characters from './data/characters.json';` permet d'importer le fichier JSON contenant la liste des personnages dans un objet JavaScript nommé `characters`
+    * Utiliser la fonction `map` pour parcourir le tableau de personnages comme dans l'exemple présenté dans le guide React (https://but-sd.github.io/guide-react/#boucle)
 * Valider que tout fonctionne correctement puis créer un commit avec le message `Use dynamic list for characters`
+
+---
+
+# react - Premier pas vers les composants
+
+Nous allons modifier le fichier `App.jsx` pour extraire la liste des personnages dans une fonction séparée (pour l'instant, cette fonction sera définie dans le même fichier).
+
+Attention, le nom de la fonction doit commencer par une majuscule pour être reconnu comme un composant React.
+
+La fonction `CharactersList` va retourner la liste des personnages, elle prendra en paramètre la liste des personnages et utilisera la fonction `map` pour créer un élément `<li>` pour chaque personnage.
+
+---
+
+# react - Créer les premiers composants
+
+L'implémentation actuelle de la liste des personnages est dans le fichier `App.jsx`, ce qui n'est pas idéal pour la lisibilité et la maintenabilité du code (même si pour l'instant il n'y a pas beaucoup de code).
+
+Il est préférable de créer des composants pour séparer la logique et le rendu de l'interface utilisateur.
+
+De plus, cela permet de réutiliser les composants dans d'autres parties de l'application si nécessaire.
+
+Nous souhaitons aussi afficher le nombre de personnages, qui pourrait être utilisé dans d'autres parties de l'application et s'appuie sur la liste des personnages.
+
+---
+
+# react - Créer les premiers composants (suite)
+
+Notre application commence à prendre forme et l'organisation fonctionnelle du code devient importante pour la lisibilité et la maintenabilité.
+
+Nous allons donc créer des composants pour la liste des personnages et le nombre de personnages.
+
+Créer un dossier `src/components` pour y placer les composants de l'application
+
+Tous les composants de l'application seront placés dans ce dossier, ce qui permet de les organiser et de les retrouver facilement.
 
 ---
 
 # react - Créer un composant - CharactersList
 
 * Créer un composant `CharactersList.jsx` dans le dossier `src/components`
-    * Le composant doit afficher la liste des personnages
-    * Il prend en paramètre une liste de personnages
-    * Copier le code html de la liste des personnages dans le composant `CharactersList.jsx`
 * Modifier le fichier `App.jsx` pour importer le composant `CharactersList.jsx` et l'utiliser pour afficher la liste des personnages
 * Valider que tout fonctionne correctement puis créer un commit avec le message `Create CharactersList component`
 
@@ -524,6 +531,17 @@ L'état actuel de la branche `feature/react` devrait ressembler à ceci:
 
 * Créer une branche `hotfix/0.3.1` à partir de la branche `main` via la commande `git checkout -b hotfix/0.3.1 main`
 * Corriger le bug dans les composants `CharactersList` et `NumberOfCharacters` pour gérer le cas où la liste de personnages est vide
+  * La correction ici peut-être assez simple, il suffit de mettre une valeur par défaut pour la liste de personnages dans les props des composants.
+
+
+```javascript
+function CharactersList({ characters = [] }) {
+```
+  
+---
+
+# gitflow - Créer une branche de type correctif (suite)
+
 * Modifier le numéro de version dans le fichier `package.json` pour `0.3.1`
 * Valider que tout fonctionne correctement puis créer un commit avec le message `Fix bug when no characters are provided`
 * Merger la branche `hotfix/0.3.1` dans la branche `main` via la commande `git checkout main` puis `git merge hotfix/0.3.1`
@@ -554,3 +572,60 @@ L'état final des branches devrait ressembler à ceci:
 
 <img src="./img/marvel-app/marvel-app-0.3.0-5.png" width="60%">
 
+---
+
+# git - Supprimer les branches obsolètes
+
+Suite à nos modifications, il est temps de nettoyer les branches obsolètes car elles ne sont plus nécessaires (nous ne travaillons plus dessus).
+
+* Supprimer la branche `hotfix/0.3.1` via la commande `git branch -d hotfix/0.3.1`
+* Supprimer la branche `feature/react` via la commande `git branch -d feature/react`
+
+---
+
+# git - Supprimer les branches obsolètes (suite)
+
+L'état des branches après suppression devrait ressembler à ceci:
+
+<img src="./img/marvel-app/marvel-app-0.3.0-6.png" width="50%">
+
+---
+
+# Version 0.3.x - Objectif
+
+L'objectif de cette version était de mettre en place une application React, de manipuler les premiers concepts de React tels que les composants, les props et l'état, et de créer une interface utilisateur simple pour afficher des données.
+
+Nous avons aussi vu le concept `gitflow` de `hotfix` pour gérer les corrections de bugs.
+
+---
+
+# Version 0.3.1 - Objectif (suite)
+
+
+<img src="img/git-graph/version-0.3.1.png" alt="Version 0.3.1" style="width: 55%;">
+
+<!-- ```mermaid
+gitGraph
+    checkout main
+    commit tag: "v0.2.0"
+    branch develop
+    checkout develop
+    branch feature-react
+    checkout feature-react
+    commit id: "add-react"
+    commit id: "static list"
+    commit id: "dynamic list"
+    commit id: "CharactersList"
+    commit id: "NumbersOfCharacters"
+    checkout develop
+    merge feature-react
+    checkout main
+    merge develop
+    commit tag: "v0.3.0"
+    branch hot-fix
+    commit id: "fix"
+    checkout main
+    merge hot-fix
+    checkout develop
+    merge main
+``` --> 
