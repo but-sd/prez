@@ -31,7 +31,7 @@ footer: "Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.gir
 
 # Gestion de la navigation dans l'application
 
-* installation et configuration de __React Router__, librairie tierce permettant de gérer la navigation
+* Installation et configuration de __React Router__, librairie tierce permettant de gérer la navigation
 * Mise en place de la navigation dans l'application Marvel
     * définir les routes
     * définir les composants à afficher en fonction de la route
@@ -84,8 +84,8 @@ Créez le composant `AboutPage` dans le dossier `src/pages` et ajoutez le conten
 <div class="two-columns">
   <div class="column">
     <ul>
-        <li>Un système permettant de modifier le titre de la page (document.title)</li>
-        <li>Un en-tête h2</li>
+        <li>Utilisation de <b>document.title</b> permettant de redéfinir le titre de la page</li>
+        <li>Un en-tête <b>h2</b></li>
         <li>Un paragraphe</li>
     </ul>
     Pour tester cette page, modifier le fichier App.jsx pour utiliser le composant <b>AboutPage</b> (et supprimer l'affichage actuel).
@@ -104,9 +104,9 @@ Créez le composant `ContactPage` dans le dossier `src/pages` et ajoutez le cont
 <div class="two-columns">
   <div class="column">
     <ul>
-        <li>Un système permettant de modifier le titre de la page (document.title)</li>
-        <li>Un en-tête h2</li>
-        <li>Un message de contact avec un lien de type mailto</li>
+        <li>Utilisation de <b>document.title</b> permettant de redéfinir le titre de la page</li>
+        <li>Un en-tête <b>h2</b></li>
+        <li>Un message de contact avec un lien de type <b>mailto</b></li>
     </ul>
     Pour tester cette page, modifier le fichier App.jsx pour afficher la page <b>Contact</b>.
   </div>
@@ -123,7 +123,7 @@ Créez le composant `CharactersPage` dans le dossier `src/pages` et ajoutez le c
 <div class="two-columns">
   <div class="column">
     <ul>
-        <li>Un système permettant de modifier le titre de la page (document.title)</li>
+        <li>Utilisation de <b>document.title</b> permettant de redéfinir le titre de la page</li>
         <li>Le contenu qui était affiché sur la page d'accueil, attention au chemin d'accès aux imports</li>
     </ul>
     Pour tester cette page, modifier le fichier App.jsx pour afficher la page <b>Characters</b>.
@@ -151,197 +151,115 @@ Nous n'avons pas de contenu spécifique pour la page Home, nous afficherons le c
 
 # React Router
 
-* __React Router__ est une librairie tierce permettant de gérer la navigation dans une application React
-* Quelques explications sur react-router :
-    * [Guide React](https://but-sd.github.io/guide-react/react-router/) 
-    * [React Router](https://reactrouter.com/en/main/start/overview)
+**React Router** est une librairie tierce permettant de gérer la navigation dans une application React, voir [React Router](https://github.com/remix-run/react-router)
 
----
-
-# React Router - Layout
-
-Le layout de l'application permet de définir la structure de l'application, c'est-à-dire les éléments qui seront affichés sur toutes les pages de l'application.
-
-* __Header__ : en-tête de l'application
-    * navigation entre les pages
-* __Main__ : contenu principal de l'application
-* __Footer__ : pied de page de l'application
-    
----
-
-# React Router - Layout (suite)
-
-* Création du layout de l'application
-    * Création du composant `Layout` dans le dossier `src` (nommé `Layout.jsx`)
-    * Importation du composant `Layout` dans le composant `App`
-    * Utilisation du composant `Layout` dans le composant `App`
-
----
-
-# React Router - Layout (suite)
-
-```javascript
-import React from 'react';
-
-const Layout = ({ children }) => {
-    return (
-        <>
-            <header>
-                <h1>Marvel App</h1>
-                <nav>
-                    <a href="/">Home</a>
-                    <a href="/about">About</a>
-                    <a href="/contact">Contact</a>
-                </nav>
-            </header>
-            <main>
-                {children}
-            </main>
-            <footer>
-                <p>Marvel App - 2023</p>
-            </footer>
-        </>
-    );
-};
-
-export default Layout;
-```
-
----
-
-# Router - Layout (suite)
-
-Le composant `Layout` devient le composant principal de l'application. C'est lui qui va gérer l'affichage des pages de l'application.
-
-Il prend en paramètre la prop `children` qui correspond au contenu principal de l'application. C'est ici que nous allons afficher les pages de l'application. 
-
-Dans un premier temps, nous allons afficher toutes les pages de l'application dans le composant `Layout`.
-
----
-
-# Router - Layout (suite)
-
-```javascript
-import './App.css'
-
-import AboutPage from './pages/AboutPage'
-import ContactPage from './pages/ContactPage'
-import CharactersPage from './pages/CharactersPage'
-import Layout from './Layout'
-
-function App() {
-  return (
-    <Layout>
-      <AboutPage /> 
-      <ContactPage />
-      <CharactersPage />
-    </Layout>
-  )
-}
-
-export default App
-```
-
----
-
-# Router - Layout (suite)
-
-Cela n'est toujours pas la bonne solution, mais nous avançons étape par étape, nous allons maintenant utiliser __React Router__ pour gérer la navigation entre les pages.
-
-<img src="./img/marvel-app/marvel-app-0.4.0-4.png" width="40%">
+Son objectif est de permettre une navigation fluide et dynamique entre les différentes pages de l'application sans recharger la page.
 
 ---
 
 # React Router - routes
 
-* Création du composant `routes` dans le dossier `src`
-    * Importation du composant `routes` dans le composant `App`
-    * Utilisation du composant `routes` dans le composant `App`
+Nous allons utiliser __React Router__ pour définir les routes de l'application et ainsi gérer la navigation entre les pages.
+
+Pour chaque page de l'application, nous allons définir une route correspondante dans le routeur et définir le composant à afficher en fonction de la route.
 
 ---
 
-# React Router - routes (suite)
 
 ```javascript
-import Layout from "./Layout";
-import AboutPage from "./pages/AboutPage";
-import CharactersPage from "./pages/CharactersPage";
-import ContactPage from "./pages/ContactPage";
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-const routes = [
-    {
-        path: "/",
-        element: <Layout />,
-        children: [
-            { path: "/", element: <CharactersPage /> },
-            { path: "/about", element: <AboutPage /> },
-            { path: "/contact", element: <ContactPage /> },
-        ],
-    },
-];
-
-export default routes;
-```
-
----
-
-# React Router - routes - explications
-
-__path__ : chemin de la route
-__element__ : composant à afficher
-__children__ : routes enfants
-
-* Nous avons défini les routes de l'application
-    * `/` : page d'accueil, affiche la liste des personnages
-    * `/about` : page About
-    * `/contact` : page Contact
-
-* Les trois pages sont affichées dans le composant `Layout` qui contient le header, le main et le footer de l'application
-
----
-
-# React Router - App
-
-Afin d'utiliser __React Router__ dans notre application, nous devons importer les composants `RouterProvider` et `createBrowserRouter` de `react-router-dom` et envelopper l'application avec le composant `RouterProvider`.
-
-Il s'agit de la configuration de base de __React Router__. Cela permet de laisser __React Router__ gérer la navigation de l'application. La navigation pourra se faire sans recharger la page si nous utilisons les composants `Link` ou `NavLink`.
-
----
-
-```javascript
-import './App.css'
-
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import routes from './routes'
-
-// Create a router that uses the client side history strategy for
-const router = createBrowserRouter(routes)
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <CharactersPage />,
+  },
+  {
+    path: "/about",
+    element: <AboutPage />,
+  },
+  {
+    path: "/contact",
+    element: <ContactPage />,
+  },
+]);
 
 function App() {
   return (
-    <RouterProvider router={router} />
-  )
+    <>
+      <RouterProvider router={router} />
+    </>
+  );
 }
+```
 
-export default App
+--- 
+
+# React Router - routes (suite)
+
+Nous pouvons maintenant accèder à chaque page de l'application en fonction de l'URL.
+
+Nous n'avons pas encore géré le cas d'une page inexistante, mais cela peut se faire facilement en ajoutant une route correspondante.
+
+La route répondra à toutes les URL qui ne correspondent à aucune des routes définies précédemment.
+
+---
+
+```javascript
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <CharactersPage />,
+  },
+  {
+    path: "/about",
+    element: <AboutPage />,
+  },
+  {
+    path: "/contact",
+    element: <ContactPage />,
+  },
+  {
+    path: "*",
+    element: <div>404 Not Found</div>,
+  },
+]);
+
+function App() {
+  return (
+    <>
+      <RouterProvider router={router} />
+    </>
+  );
+}
 ```
 
 ---
+# React Router - Layout
 
-# React Router - App - explications
+Le layout de l'application permet de définir la structure de l'application, c'est-à-dire les éléments qui seront affichés sur toutes les pages de l'application et ainsi ne pas dupliquer le code dans chaque page.
 
-* Nous avons importé les composants `RouterProvider` et `createBrowserRouter` de `react-router-dom`
-* Nous avons importé le composant `routes` que nous avons créé précédemment
-* Nous avons créé un router avec la fonction `createBrowserRouter` en lui passant les routes de l'application
-* Nous avons enveloppé l'application avec le composant `RouterProvider` en lui passant le router que nous avons créé
+Une application est généralement composée de trois parties :
+
+- __Header__ : en-tête de l'application
+    - navigation entre les pages
+- __Main__ : contenu principal de l'application
+- __Footer__ : pied de page de l'application
 
 ---
 
-# React Router - Layout
+# React Router - Layout (suite)
+
+- Création du composant `Layout` dans le dossier `src` (nommé `Layout.jsx`)
+- Utilisation du composant `Outlet` de `react-router-dom` dans le composant `Layout`
+  - `<Outlet />` permet d'afficher le contenu de la page en fonction de la route
+
+---
 
 ```javascript
-import React from 'react';
-import { Outlet } from 'react-router';
+import { Outlet } from "react-router";
 
 const Layout = () => {
     return (
@@ -349,16 +267,16 @@ const Layout = () => {
             <header>
                 <h1>Marvel App</h1>
                 <nav>
-                    <a href="/">Home</a>
-                    <a href="/about">About</a>
-                    <a href="/contact">Contact</a>
+                    <a href="/">Home</a>-
+                    <a href="/about">About</a>-
+                    <a href="/contact">Contact</a>-
                 </nav>
             </header>
             <main>
                 <Outlet />
             </main>
             <footer>
-                <p>Marvel App - 2023</p>
+                <p>Marvel App - 2025</p>
             </footer>
         </>
     );
@@ -369,11 +287,43 @@ export default Layout;
 
 ---
 
-# React Router - Layout - explications
+# Router - Layout (suite)
 
-* Nous avons importé le composant `Outlet` de `react-router`
-* Nous avons remplacé le contenu principal de l'application qui était géré grâce à la prop `children` par le composant `Outlet`
-* Le composant `Outlet` permet d'afficher le composant correspondant à la route
+Le composant `Layout` devient le composant principal de l'application. Les pages seront affichées dans le composant `Outlet` de `react-router-dom` grâce à la prop `children`.
+
+---
+
+```javascript
+
+// routes of the application
+const routes = [
+  {
+    path: "/",
+    Component: Layout,
+    children: [
+      {
+        // main page
+        index: true,
+        element: <CharactersPage />,
+      },
+      {
+        path: "/about",
+        element: <AboutPage />,
+      },
+      {
+        path: "/contact",
+        element: <ContactPage />,
+      },
+      {
+        path: "*",
+        element: <div>Page not found</div>,
+      },
+    ],
+  },
+];
+
+export default routes;
+```
 
 ---
 
@@ -395,36 +345,6 @@ Nous avons maintenant une application avec une gestion de la navigation grâce �
     
 ---
 
-# React Router - NavLinks (suite)
-
-```javascript
-import React from 'react';
-import { Outlet } from 'react-router';
-import { NavLink } from 'react-router-dom';
-
-const Layout = () => {
-    return (
-        <>
-            <header>
-                <h1>Marvel App</h1>
-                <nav>
-                    <NavLink to="/">Home</NavLink> - <NavLink to="/about">About</NavLink> - <NavLink to="/contact">Contact</NavLink>
-                </nav>
-            </header>
-            <main>
-                <Outlet />
-            </main>
-            <footer>
-                <p>Marvel App - 2023</p>
-            </footer>
-        </>
-    );
-};
-
-export default Layout;
-```
-
----
 
 # Ajout de css pour améliorer l'affichage
 
@@ -432,7 +352,6 @@ export default Layout;
   <div class="column">
     <ul>
         <li>Remplacer le contenu du fichier `App.css` afin d'améliorer l'affichage de l'application</li>
-        <li>Commenter la ligne `import './index.css'` dans le fichier `main.jsx`</li>
         <li><a href="./assets/css/App.css" download>Télécharger le fichier App.css</a></li>
     </ul>
   </div>

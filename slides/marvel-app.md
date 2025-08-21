@@ -227,6 +227,8 @@ gitGraph
     commit tag: "V.0.4.0"
 ``` -->
 
+<a href="marvel-app-0.4.0.html" target="_blank">Voir les slides de la version 0.4.0</a>
+
 ---
 
 # Version 1.0.0 - Objectif
