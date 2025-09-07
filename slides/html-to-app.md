@@ -113,7 +113,7 @@ Par exemple, un IDE peut proposer :
 
 # Visual Studio Code
 
- **V**isual **S**tudio Code est un IDE gratuit et open-source développé par Microsoft. Il est disponible sur Windows, Linux et macOS. Il fonctionne avec un système d’extension qui permettent d'ajouter des fonctionnalités à l'IDE
+ **V**isual **S**tudio Code est un IDE gratuit et open-source développé par Microsoft. Il est disponible sur Windows, Linux et macOS. Il fonctionne avec un système d’extensions qui permettent d'ajouter des fonctionnalités à l'IDE
 
  https://code.visualstudio.com/
 
