@@ -35,27 +35,109 @@ Faite le nécessaire pour travailler sur une nouvelle fonctionnalité `Détail d
 
 ---
 
-# Api - characters
+# Conventional Commits
 
-Généralement, une application web moderne communique avec d'autres services pour récupérer des données ou effectuer des actions spécifiques (authentification, paiement, etc.) via des API.
+Les **Conventional Commits** sont une convention de nommage pour les messages de commit qui permet de rendre l'historique des modifications plus lisible et structuré. Voici les types de commits les plus courants :
 
-La communication avec ces services se fait généralement via des requêtes HTTP (GET, POST, PUT, DELETE) et des réponses JSON.
-
-L'appel à une API peut être complexe et nécessite de gérer des erreurs, des temps de réponse, des données manquantes, etc. 
-
-Cela se fait généralement dans un module dédié, qui masque la complexité de l'appel à l'API et expose des fonctions plus simples à utiliser.
-
----
-
-# Api - characters (suite)
-
-Pour simplifier notre travail, nous allons utiliser un fichier JSON qui contient les données des personnages, mais nous pourrions très bien utiliser une API REST. 
-
-L'implémentation étant "mockée", nous pourrons facilement la remplacer par de vrais appels d'API.
+- **feat** : Une nouvelle fonctionnalité
+- **fix** : Correction d'un bug
+- **docs** : Modifications de la documentation
+- **style** : Changements de style (formatage, espaces, etc.)
+- **refactor** : Refactorisation du code (sans ajout de fonctionnalité ni correction de bug)
+- **test** : Ajout ou modification de tests
+- **chore** : Tâches diverses (mise à jour des dépendances, scripts, etc.)
 
 ---
 
-# Api - characters (suite)
+# Conventional Commits (suite)
+
+Le **Conventional Commits** permet de mieux comprendre l'historique des modifications et de faciliter la collaboration au sein de l'équipe.
+
+Il permet aussi de générer automatiquement des **changelog** et de faciliter la publication de nouvelles versions. 
+
+Par exemple la présence d'un tag `feat` dans un commit peut indiquer qu'une nouvelle fonctionnalité a été ajoutée, la version mineure du projet pourrait être incrémentée automatiquement.
+
+De même la présence d'un tag `fix` pourrait indiquer qu'un bug a été corrigé, ce qui pourrait entraîner une incrémentation de la version patch.
+
+---
+
+# Conventional Commits (suite)
+
+En respectant cette convention, chaque membre de l'équipe peut rapidement identifier le type de changement apporté par un commit donné.
+
+Il est aussi possible d'automatiser le contrôle des messages de commit pour s'assurer qu'ils respectent bien la convention.
+
+---
+
+# git hooks
+
+**git** met à disposition des hooks, qui sont des scripts exécutés à des moments clés du cycle de vie de **git**. 
+
+Par exemple, on peut utiliser un hook `commit-msg` pour vérifier le message d'un commit avant qu'il ne soit enregistré.
+
+Ou encore un hook `pre-commit` pour exécuter des tests ou des vérifications de code avant qu'un commit ne soit effectué.
+
+Pour plus d'informations sur les hooks **git**, vous pouvez consulter la documentation officielle : https://git-scm.com/book/en/Customizing-Git-Git-Hooks
+
+---
+
+# husky
+
+**husky** est un outil **Node.js** qui permet de gérer les hooks **git** de manière simple et efficace. Il s'intègre facilement dans les projets **JavaScript** et **TypeScript**. 
+
+Pour installer **husky**, vous pouvez utiliser la commande suivante :
+
+```bash
+npm install --save-dev husky
+```
+
+Pour configurer **husky**, vous pouvez utiliser la commande suivante :
+
+```bash
+npx husky init
+```
+
+---
+
+# husky (suite)
+
+Par défaut cela va ajouter un hook `pre-commit` qui va exécuter les tests avant chaque commit. Nous n'avons pas encore vu la configuration des tests, nous verrons cela plus tard. Il est donc nécessaire de supprimer ce hook pour l'instant.
+
+---
+
+# API
+
+Généralement, une application web moderne communique avec d'autres services pour récupérer des données ou effectuer des actions spécifiques (authentification, paiement, etc.) via des **A**pplication **P**rogramming **I**nterfaces (**API**).
+
+
+La communication avec ces services se fait via des requêtes **HTTP** (GET, POST, PUT, DELETE) et des réponses **J**ava**S**cript **O**bject **N**otation (**JSON**).
+
+Chaque verbe **HTTP** a une signification spécifique :
+
+- **GET** : Récupérer des données
+- **POST** : Envoyer des données
+- **PUT** : Mettre à jour des données
+- **DELETE** : Supprimer des données
+
+---
+
+# API (suite)
+
+L'appel à une API peut être complexe et nécessite de gérer des erreurs, des temps de réponse, des données manquantes, du **caching** (afin d'améliorer les performances), etc.
+
+Cela se fait généralement dans un module dédié, qui masque la complexité de l'appel à l'**API** et expose des fonctions plus simples à utiliser.
+
+---
+
+# API - characters
+
+Pour simplifier notre travail, nous allons utiliser un fichier **JSON** qui contient les données des personnages, mais nous pourrions très bien utiliser une véritable **API**.
+
+L'implémentation étant **mockée** (bouchonnée), nous pourrons facilement la remplacer par de vrais appels d'API.
+
+---
+
+# API - characters (suite)
 
 Créez un fichier `characters-api.js` dans le dossier `src/api` qui expose deux fonctions:
 
@@ -70,22 +152,18 @@ en récupérant les données du fichier `characters.json`
 <!-- _header: "" -->
 <!-- _footer: "" -->
 
-# CharactersPage
-
 Modifier le fichier `CharactersPage.jsx` pour utiliser la fonction `getCharacters`
 
 ```javascript
-import React from 'react';
-import { CharactersList } from "../components/CharactersList";
-import { NumberOfCharacters } from "../components/NumberOfCharacters";
+import CharactersList from "../components/CharactersList";
 import { getCharacters } from '../api/characters-api';
-
-// import characters from '../data/characters.json';
+import NumberOfCharacters from "../components/NumberOfCharacters";
 
 const CharactersPage = () => {
     // change the title of the page
-    document.title = "Marvel App";
+    document.title = "Characters | Marvel App";
 
+    // Get the list of characters from the API
     const characters = getCharacters();
 
     return (
@@ -109,7 +187,7 @@ Cette façon de faire fonctionne, mais elle n'est pas optimale. Elle mélange la
 
 `react_router` nous permet de faire mieux en utilisant des `hooks` pour récupérer les données avant d'afficher le composant et ainsi de séparer récupération des données et affichage.
 
-Adapter le code pour utiliser `react_router` et les `hooks` comme dans l'exemple du [guide](https://but-sd.github.io/guide-react/react-router/#loader), grâce aux concepts de `loader`et `useLoaderData`. On appelera directement la fonction `getCharacters` dans le `loader` (pas de fonction `fetch`).
+Adapter le code pour utiliser `react_router` et les `hooks` comme dans l'exemple de la documentation officielle (https://reactrouter.com/start/data/data-loading)
 
 ---
 

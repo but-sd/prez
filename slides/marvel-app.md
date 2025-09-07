@@ -208,7 +208,7 @@ gitGraph
 
 # Version 0.4.0 - Objectif (suite)
 
-<img src="img/git-graph/version-0.4.0.png" alt="Version 0.4.0" style="width: 70%;">
+<img src="img/git-graph/version-0.4.0.png" alt="Version 0.4.0" style="width: 55%;">
 
 <!-- ```mermaid
 gitGraph
