@@ -93,6 +93,12 @@ git config --global user.email johndoe@example.com
 
 Ces informations seront utilisées pour chaque **commit**. Il est possible de les surcharger pour un projet spécifique en utilisant la commande `git config` sans l'option `--global`.
 
+**Note :** En cas d'erreur il peut être nécessaire de paramétrer la variable d'environnement `HOME` pour que **git** puisse trouver le fichier de configuration global. Par exemple sous Windows avec Git Bash :
+
+```bash
+export HOME="/c/Users/user-login"
+```
+
 ---
 
 # **Git** - configuration 2/3 (spécifique université de Poitiers)
