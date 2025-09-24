@@ -155,34 +155,122 @@ Nous n'avons pas de contenu spécifique pour la page Home, nous afficherons le c
 
 Son objectif est de permettre une navigation fluide et dynamique entre les différentes pages de l'application sans recharger la page.
 
+Installation de la librairie:
+
+```bash
+npm install react-router
+```
+
+---
+
+# React Router - layout
+
+**React Router** permet de définir un layout pour l'application, c'est-à-dire les éléments qui seront affichés sur toutes les pages de l'application et ainsi ne pas dupliquer le code dans chaque page.
+
+La partie principale de l'application sera affichée grâce à la propriété `children` du composant.
+
+Le layout de l'application est généralement composé de trois parties :
+- __Header__ : en-tête de l'application
+    - navigation entre les pages
+- __Main__ : contenu principal de l'application
+- __Footer__ : pied de page de l'application
+
+---
+
+```javascript
+const Layout = ({ children }) => {
+    return (
+        <>
+            <header>
+                <h1>Marvel App</h1>
+                <nav>
+                    <a href="/">Home</a>
+                    <a href="/about">About</a>
+                    <a href="/contact">Contact</a>
+                </nav>
+            </header>
+            <main>
+                {children}
+            </main>
+            <footer>
+                <p>Marvel App - 2025</p>
+            </footer>
+        </>
+    );
+};
+
+export default Layout;
+```
+
+--- 
+
+# React Router - routes
+
+
+Il est ensuite nécessaire de définir les routes de l'application, c'est-à-dire les URL qui permettront d'accéder aux différentes pages de l'application.
+
+Dans un premier temps, nous allons définir les routes directement dans le fichier `App.jsx`.
+
+Les composants **BrowserRouter**, **Routes** et **Route** de __React Router__ permettent de définir les routes de l'application.
+
+---
+
+```javascript
+import './App.css'
+import { BrowserRouter, Route, Routes } from "react-router";
+import AboutPage from './pages/AboutPage';
+import CharactersPage from './pages/CharactersPage';
+import ContactPage from './pages/ContactPage';
+import Layout from './Layout';
+
+function App() {
+  return (
+    <>
+      <Layout>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<CharactersPage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+          </Routes>
+        </BrowserRouter>
+      </Layout>
+    </>
+  );
+}
+
+export default App;
+```
+
 ---
 
 # React Router - routes
 
-Nous allons utiliser __React Router__ pour définir les routes de l'application et ainsi gérer la navigation entre les pages.
+Le problème de cette approche est que le composant `App` risque de devenir rapidement très complexe si l'on ajoute de nombreuses routes. 
 
-Pour chaque page de l'application, nous allons définir une route correspondante dans le routeur et définir le composant à afficher en fonction de la route.
+On mélange de plus des notions de navigation avec la structure de l'application.
+
+**React Router** propose une autre approche plus simple et plus propre pour définir les routes de l'application grâce au composant `RouterProvider` et à la fonction `createBrowserRouter`.
 
 ---
 
+# React Router - routes
+
+**RouterProvider** est un composant qui permet de fournir le routeur à l'application, il doit être placé au plus haut niveau de l'application. 
+
+Il va gérer la navigation entre les différentes pages de l'application et afficher le composant correspondant à la route. 
+
+Il s'appuie sur un routeur créé avec la fonction `createBrowserRouter`. Nous pouvons définir les routes dans un fichier séparé (`routes.js`) pour ne pas alourdir le composant `App`.
+
+---
 
 ```javascript
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import './App.css'
+import { createBrowserRouter, RouterProvider } from "react-router";
+import routes from './routes';
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <CharactersPage />,
-  },
-  {
-    path: "/about",
-    element: <AboutPage />,
-  },
-  {
-    path: "/contact",
-    element: <ContactPage />,
-  },
-]);
+// router to navigate through the app
+const router = createBrowserRouter(routes);
 
 function App() {
   return (
@@ -191,6 +279,44 @@ function App() {
     </>
   );
 }
+
+export default App;
+```
+
+---
+
+```javascript
+import AboutPage from './pages/AboutPage';
+import CharactersPage from './pages/CharactersPage';
+import ContactPage from './pages/ContactPage';
+import Layout from './Layout';
+
+// routes of the application
+const routes = [
+  {
+    path: "/",
+    Component: Layout,
+    children: [
+      {
+        // main page
+        index: true,
+        Component: CharactersPage
+      },
+      {
+        // about page
+        path: "/about",
+        Component: AboutPage
+      },
+      {
+        // contact page
+        path: "/contact",
+        Component: ContactPage
+      },
+    ],
+  },
+]
+
+export default routes;
 ```
 
 --- 
@@ -199,67 +325,30 @@ function App() {
 
 Nous pouvons maintenant accèder à chaque page de l'application en fonction de l'URL.
 
-Nous n'avons pas encore géré le cas d'une page inexistante, mais cela peut se faire facilement en ajoutant une route correspondante.
+Nous n'avons pas encore géré le cas d'une page inexistante, nous verrons cela plus tard.
 
-La route répondra à toutes les URL qui ne correspondent à aucune des routes définies précédemment.
+---
 
+# React Router
+
+Nous avons maintenant une application avec une gestion de la navigation grâce à __React Router__.
+
+<img src="./img/marvel-app/marvel-app-0.4.0-5.png" width="40%">
+
+
+---
+
+# React Router - NavLinks
+
+- Nous avons utilisé des balises `a` pour les liens de navigation, ce qui n'est pas optimal, on perd un des aspects de __React Router__ dans l'optimisation de la navigation et on recharge la page à chaque clic.
+- Nous allons remplacer ces balises par des composants `NavLink` de __React Router__
+    - Permet de gérer la navigation sans recharger la page
+    - Permet de gérer les classes CSS pour les liens actifs
+    
 ---
 
 ```javascript
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <CharactersPage />,
-  },
-  {
-    path: "/about",
-    element: <AboutPage />,
-  },
-  {
-    path: "/contact",
-    element: <ContactPage />,
-  },
-  {
-    path: "*",
-    element: <div>404 Not Found</div>,
-  },
-]);
-
-function App() {
-  return (
-    <>
-      <RouterProvider router={router} />
-    </>
-  );
-}
-```
-
----
-# React Router - Layout
-
-Le layout de l'application permet de définir la structure de l'application, c'est-à-dire les éléments qui seront affichés sur toutes les pages de l'application et ainsi ne pas dupliquer le code dans chaque page.
-
-Une application est généralement composée de trois parties :
-
-- __Header__ : en-tête de l'application
-    - navigation entre les pages
-- __Main__ : contenu principal de l'application
-- __Footer__ : pied de page de l'application
-
----
-
-# React Router - Layout (suite)
-
-- Création du composant `Layout` dans le dossier `src` (nommé `Layout.jsx`)
-- Utilisation du composant `Outlet` de `react-router-dom` dans le composant `Layout`
-  - `<Outlet />` permet d'afficher le contenu de la page en fonction de la route
-
----
-
-```javascript
-import { Outlet } from "react-router";
+import { NavLink, Outlet } from "react-router";
 
 const Layout = () => {
     return (
@@ -267,9 +356,9 @@ const Layout = () => {
             <header>
                 <h1>Marvel App</h1>
                 <nav>
-                    <a href="/">Home</a>-
-                    <a href="/about">About</a>-
-                    <a href="/contact">Contact</a>-
+                    <NavLink to="/">Home</NavLink>-
+                    <NavLink to="/about">About</NavLink>-
+                    <NavLink to="/contact">Contact</NavLink>-
                 </nav>
             </header>
             <main>
@@ -287,65 +376,6 @@ export default Layout;
 
 ---
 
-# Router - Layout (suite)
-
-Le composant `Layout` devient le composant principal de l'application. Les pages seront affichées dans le composant `Outlet` de `react-router-dom` grâce à la prop `children`.
-
----
-
-```javascript
-
-// routes of the application
-const routes = [
-  {
-    path: "/",
-    Component: Layout,
-    children: [
-      {
-        // main page
-        index: true,
-        element: <CharactersPage />,
-      },
-      {
-        path: "/about",
-        element: <AboutPage />,
-      },
-      {
-        path: "/contact",
-        element: <ContactPage />,
-      },
-      {
-        path: "*",
-        element: <div>Page not found</div>,
-      },
-    ],
-  },
-];
-
-export default routes;
-```
-
----
-
-# React Router
-
-Nous avons maintenant une application avec une gestion de la navigation grâce à __React Router__.
-
-<img src="./img/marvel-app/marvel-app-0.4.0-5.png" width="40%">
-
-
----
-
-# React Router - NavLinks
-
-* Nous avons utilisé des balises `a` pour les liens de navigation, ce qui n'est pas optimal, on perd le fonctionnement de __React Router__ et on recharge la page à chaque clic.
-* Nous allons remplacer ces balises par des composants `NavLink` de __React Router__
-    * Permet de gérer la navigation sans recharger la page
-    * Permet de gérer les classes CSS pour les liens actifs
-    
----
-
-
 # Ajout de css pour améliorer l'affichage
 
 <div class="two-columns">
@@ -362,13 +392,79 @@ Nous avons maintenant une application avec une gestion de la navigation grâce �
 
 ---
 
+# React Router - gestion des pages inexistantes
+
+Nous allons maintenant gérer le cas d'une page inexistante, c'est-à-dire une URL qui ne correspond à aucune route définie dans l'application.
+
+Pour cela, nous allons créer une page `NotFoundPage` qui sera affichée lorsque l'utilisateur accède à une URL non définie.
+
+---
+
+```javascript
+const NotFoundPage = () => {
+    // change the title of the page
+    document.title = "404 - Page Not Found";
+
+    return (
+        <div>
+            <h2>404 - Page Not Found</h2>
+            <p>The page you are looking for does not exist.</p>
+        </div>
+    );
+};
+
+export default NotFoundPage;
+```
+---
+
+```javascript
+import AboutPage from './pages/AboutPage';
+import CharactersPage from './pages/CharactersPage';
+import ContactPage from './pages/ContactPage';
+import Layout from './Layout';
+import NotFoundPage from './pages/NotFoundPage';
+
+// routes of the application
+const routes = [
+  {
+    path: "/",
+    Component: Layout,
+    children: [
+      {
+        // main page
+        index: true,
+        Component: CharactersPage
+      },
+      {
+        // about page
+        path: "/about",
+        Component: AboutPage
+      },
+      {
+        // contact page
+        path: "/contact",
+        Component: ContactPage
+      },
+      {
+        // 404 page
+        path: "*",
+        Component: NotFoundPage
+      }
+    ],
+  },
+]
+
+export default routes;
+```
+
+---
+
 # Fin de la version 0.4.0
 
 * Nous avons ajouté la gestion de la navigation dans l'application
 * Nous avons créé les pages de l'application
 * Nous avons créé le layout de l'application
 * Nous avons utilisé __React Router__ pour gérer la navigation
-* Nous avons utilisé le composant `Outlet` pour afficher les composants correspondant à la route
 * Nous avons utilisé les composants `NavLink` pour gérer la navigation sans recharger la page
 
 ---
@@ -377,7 +473,9 @@ Nous avons maintenant une application avec une gestion de la navigation grâce �
 
 L'application est maintenant fonctionnelle, nous avons ajouté les fonctionnalités de base pour une application web permettant de naviguer entre les différentes pages de l'application de manière fluide.
 
-Il est maintenant temps de générer une nouvelle version de l'application et de l'emmener jusqu'à la production. Faites le nécessaire pour générer la version 0.4.0 de l'application.
+Il est maintenant temps de générer une nouvelle version de l'application et de l'emmener jusqu'à la production.
+
+Faites le nécessaire pour générer la version 0.4.0 de l'application.
 
 ---
 
