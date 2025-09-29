@@ -65,7 +65,47 @@ De même la présence d'un tag `fix` pourrait indiquer qu'un bug a été corrig�
 
 En respectant cette convention, chaque membre de l'équipe peut rapidement identifier le type de changement apporté par un commit donné.
 
-Il est aussi possible d'automatiser le contrôle des messages de commit pour s'assurer qu'ils respectent bien la convention.
+---
+
+# Conventional Commits - commitlint
+
+Il est aussi possible d'automatiser le contrôle des messages de commit pour s'assurer qu'ils respectent bien la convention. 
+
+**commitlint** est un outil qui permet d'effectuer ce contrôle pour des projets **nodejs**
+
+Installation
+
+```bash
+npm install -D @commitlint/cli @commitlint/config-conventional
+```
+
+Configuration
+
+```bash
+echo "export default { extends: ['@commitlint/config-conventional'] };" > commitlint.config.js
+```
+
+---
+
+# Conventional Commits - commitlint
+
+Il est ensuite possible par exemple de vérifier le dernier message de commit
+
+```bash
+npx commitlint --from HEAD~1 --to HEAD --verbose
+```
+
+La commande permet de voir si le commit est valide et si ce n'est pas le cas, d'avoir des indications sur les erreurs.
+
+<img src="img//commit-lint-terminal.png" alt="commit-lint" style="width: 100%">
+
+---
+
+# Conventional Commits - commitlint (suite)
+
+Ce contrôle devrait être effectué avant chaque commit pour s'assurer que le message de commit est valide.
+
+Afin d'automatiser ce contrôle, il est possible d'utiliser des **git hooks**.
 
 ---
 
@@ -103,6 +143,79 @@ npx husky init
 
 Par défaut cela va ajouter un hook `pre-commit` qui va exécuter les tests avant chaque commit. Nous n'avons pas encore vu la configuration des tests, nous verrons cela plus tard. Il est donc nécessaire de supprimer ce hook pour l'instant.
 
+```bash
+rm .husky/pre-commit
+```
+
+Pour ajouter un hook `commit-msg` qui va vérifier le message de commit avec **commitlint**, vous pouvez utiliser la commande suivante :
+
+```bash
+echo "npx --no -- commitlint --edit \$1" > .husky/commit-msg
+```
+
+---
+
+# husky (suite)
+
+Vérifions que le hook fonctionne correctement en essayant de faire un commit avec un message invalide.
+
+```bash
+git add .
+git commit -m "foo: this will fail"
+```
+
+Le commit doit échouer avec un message d'erreur indiquant que le message de commit ne respecte pas la convention.
+
+Commiter de nouveau avec un message valide.
+
+```bash
+git commit -m "chore: add husky for commit message linting and prepare script"
+```
+
+---
+
+# Conventional Commits - Devmoji
+
+Nous avons maintenant un contrôle automatique des messages de commit pour s'assurer qu'ils respectent bien la convention.
+
+Nous allons améliorer l'expérience de l'utilisateur en utilisant des emojis pour représenter les types de commits. Cela permet de rendre les messages de commit plus visuels et plus faciles à comprendre.
+
+Pour cela, nous allons utiliser **Devmoji**. **Devmoji** est une liste d'emojis spécialement conçue pour les développeurs. Chaque emoji représente un type de commit spécifique. Pour plus d'informations, vous pouvez consulter le site officiel : https://github.com/folke/devmoji
+
+---
+
+# Conventional Commits - Devmoji (suite)
+<!-- _footer: "" -->
+
+Installation
+
+```bash
+npm install --dev devmoji
+```
+
+Configuration
+
+```bash
+echo "npx devmoji -e --lint" > .husky/prepare-commit-msg
+```
+
+Utilisation
+
+```
+git add .
+git commit -m "feat: add devmoji dependency and configure commit message linting"
+```
+
+<img src="img/devmoji-terminal.png" alt="devmoji" style="width: 100%">
+
+---
+
+# Conventionnal Commits
+
+Nous aurons à présent des messages de commit plus visuels et plus faciles à comprendre.
+
+<img src="img/devmoji-github.png" alt="devmoji" style="width: 80%">
+
 ---
 
 # API
@@ -110,7 +223,11 @@ Par défaut cela va ajouter un hook `pre-commit` qui va exécuter les tests avan
 Généralement, une application web moderne communique avec d'autres services pour récupérer des données ou effectuer des actions spécifiques (authentification, paiement, etc.) via des **A**pplication **P**rogramming **I**nterfaces (**API**).
 
 
-La communication avec ces services se fait via des requêtes **HTTP** (GET, POST, PUT, DELETE) et des réponses **J**ava**S**cript **O**bject **N**otation (**JSON**).
+La communication avec ces services se fait via des requêtes **HTTP** (GET, POST, PUT, DELETE) et des réponses généralement au format **J**ava**S**cript **O**bject **N**otation (**JSON**).
+
+---
+
+# API (suite)
 
 Chaque verbe **HTTP** a une signification spécifique :
 
@@ -133,7 +250,7 @@ Cela se fait généralement dans un module dédié, qui masque la complexité de
 
 Pour simplifier notre travail, nous allons utiliser un fichier **JSON** qui contient les données des personnages, mais nous pourrions très bien utiliser une véritable **API**.
 
-L'implémentation étant **mockée** (bouchonnée), nous pourrons facilement la remplacer par de vrais appels d'API.
+L'implémentation étant **mockée** (bouchonnée), nous pourrions facilement la remplacer par de vrais appels d'API.
 
 ---
 
@@ -373,6 +490,7 @@ Une fois que tout les `checks` sont passés, il est possible de valider la **pul
 
 Il est possible de supprimer la branche source après l'intégration des modifications en cochant la case **Delete branch**. Cela permet de garder un historique propre et de ne pas encombrer le repository avec des branches inutiles.
 
+<!-- TODO
 ---
 
 # Deployment - Netifly
@@ -535,3 +653,5 @@ Le `|` permet de chaîner les commandes, le `&&` permet de chaîner les commande
 Attention cette commande supprime toutes les branches locales qui n'ont pas de correspondance avec les branches distantes, il est donc important de vérifier que les branches locales à supprimer ne sont pas des branches de fonctionnalités ou de corrections de bugs en cours de développement. 
 
 A utiliser avec précaution pour ne pas perdre de travail uniquement présent en local.
+
+-->
