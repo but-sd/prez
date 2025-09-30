@@ -490,7 +490,6 @@ Une fois que tout les `checks` sont passés, il est possible de valider la **pul
 
 Il est possible de supprimer la branche source après l'intégration des modifications en cochant la case **Delete branch**. Cela permet de garder un historique propre et de ne pas encombrer le repository avec des branches inutiles.
 
-<!-- TODO
 ---
 
 # Deployment - Netifly
@@ -653,5 +652,3 @@ Le `|` permet de chaîner les commandes, le `&&` permet de chaîner les commande
 Attention cette commande supprime toutes les branches locales qui n'ont pas de correspondance avec les branches distantes, il est donc important de vérifier que les branches locales à supprimer ne sont pas des branches de fonctionnalités ou de corrections de bugs en cours de développement. 
 
 A utiliser avec précaution pour ne pas perdre de travail uniquement présent en local.
-
--->
