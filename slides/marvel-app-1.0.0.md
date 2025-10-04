@@ -502,9 +502,15 @@ Créer un compte sur [netlify](https://app.netlify.com/signup) et se connecter a
 
 # Deployment - Netifly (suite)
 
-Dans la partie `Site Configuration/Build & Deploy/Continuous Deployment`, dans la section `Branches and deploy contexts` cliquer sur configure. La Production branch doit être `main` et `Any pull request again your production branch` doit être cochée.
+Cliquer sur le bouton **Import an existing project** puis sur **GitHub**. Sélectionner le repository du projet.
 
-Cela va nous permettre d'avoir un déploiement automatique de l'application à chaque push sur la branche main et à chaque pull request sur la branche main. Nous pourrons ainsi avoir en parallèle la branche de production et les branches de "recette".
+---
+
+# Deployment - Netifly (suite)
+
+Dans la partie `Project configuration`, dans la section `Branches and deploy contexts` la configuration par défaut est de déployer la branche `main` et propose aussi de déployer en `preview` les **pull request** vers la branche `main`.
+
+Cela va nous permettre d'avoir un déploiement automatique de l'application à chaque push sur la branche **main** et à chaque **pull request** vers la branche **main**. Nous pourrons ainsi avoir en parallèle la branche de production et les branches de "recette".
 
 ---
 
@@ -520,11 +526,17 @@ Pour rappel, le workflow git flow est le suivant:
 
 # git flow - release  
 
-Pour préparer une nouvelle version du projet, il est possible de créer une branche `release/*` à partir de la branche `develop`. Cette branche va permettre de préparer la nouvelle version du projet en effectuant les dernières modifications avant de la déployer en production.
-
-Cela permet de geler les fonctionnalités en cours de développement et de se concentrer sur la préparation de la nouvelle version du projet. Pour par exemple, mettre à jour la documentation, les dépendances, etc.
+Pour préparer une nouvelle version du projet, il est possible de créer une branche `release/*` à partir de la branche `develop`. 
 
 C'est cette branche **release** qui va être déployée en production après validation. C'est l'occasion par exemple d'effectuer une recette utilisateur avant de déployer la nouvelle version en production.
+
+---
+
+# git flow - release (suite)
+
+Cette branche va permettre de préparer la nouvelle version du projet en effectuant les dernières modifications (documentation, préparation de la version) avant de la déployer en production et corriger les bugs éventuels découverts lors de la recette.
+
+Cela permet de geler les fonctionnalités terminées et validées en phase de développement, de ne pas intégrer de nouvelles fonctionnalités qui sont en cours de développement et de se concentrer sur la préparation de la nouvelle version du projet. 
 
 ---
 
@@ -601,11 +613,38 @@ Le point d'entrée de l'application est le fichier `index.html` situé à la rac
 
 --- 
 
+# git flow - release (suite)
+
+Une fois la version testée et validée, nous allons modifier le fichier package.json pour mettre à jour la version du projet, nous allons passer de la version 1.0.0.rc1 à la version 1.0.0.
+
+```json
+{
+  "version": "1.0.0"
+}
+```
+
+Puis nous allons intégrer les modifications de la branche `release/*` sur la branche `main` via la validation de la **pull request**.
+
+---
+
+# git flow - release (suite)
+
+Une fois la version intégrée sur la branche `main`, nous allons créer un tag `v1.0.0` pour marquer la version de production.
+
+```bash
+git checkout main
+git pull origin main
+git tag v1.0.0
+git push origin v1.0.0
+```
+
+---
+
 # git - nettoyage des branches 
 
-Une fois la version déployée en production, il est possible de nettoyer les branches de fonctionnalités et de corrections de bugs.
+Une fois la version déployée en production, il est possible de nettoyer les branches de fonctionnalités et de corrections de bugs. 
 
-Il est possible de supprimer les branches de fonctionnalités qui ont été intégrées dans la branche `develop` et les branches de corrections de bugs qui ont été intégrées dans la branche `release/*`.
+En effet, les branches de fonctionnalités (liées à la version 1.0.0) ont été intégrées dans la branche `develop` et les branches de corrections de bugs qui ont été intégrées dans la branche `release/*` ne sont plus utiles.
 
 ---
 
@@ -613,7 +652,9 @@ Il est possible de supprimer les branches de fonctionnalités qui ont été int�
 
 Il est possible de supprimer les branches de fonctionnalités et de corrections de bugs directement sur GitHub en cliquant sur le bouton **Delete branch** dans la page des branches du repository.
 
-L'interface `branches` de GitHub permet de voir les branches qui ont été intégrées et celles qui ne le sont pas. Les branches de `feature/*` et de `bugfix/*` qui ont été intégrées peuvent être supprimées. Celà permet de garder un historique propre et de ne pas encombrer le repository avec des branches inutiles.
+L'interface `branches` de GitHub permet de voir les branches qui ont été intégrées et celles qui ne le sont pas. 
+
+Cela permet de garder un historique propre et de ne pas encombrer le repository avec des branches inutiles.
 
 Note : Cela ne supprime pas les branches en local.
 
@@ -625,7 +666,7 @@ Afin de supprimer les branches en local, il est possible d'utiliser la commande 
 
 Pour mettre à jour les branches en local, il est possible de récupérer les branches distantes avec la commande `git fetch --prune`.
 
-Puis via la commande `git branch -vv` il est possible de voir les branches locales qui n'ont pas de correspondance avec les branches distantes. Il est possible de supprimer les branches locales qui n'ont pas de correspondance avec les branches distantes avec la commande `git branch -d <branch>`.
+Puis via la commande `git branch -vv` il est possible de voir les branches locales qui n'ont pas de correspondance avec les branches distantes. 
 
 ---
 
@@ -652,3 +693,25 @@ Le `|` permet de chaîner les commandes, le `&&` permet de chaîner les commande
 Attention cette commande supprime toutes les branches locales qui n'ont pas de correspondance avec les branches distantes, il est donc important de vérifier que les branches locales à supprimer ne sont pas des branches de fonctionnalités ou de corrections de bugs en cours de développement. 
 
 A utiliser avec précaution pour ne pas perdre de travail uniquement présent en local.
+
+---
+
+# Mise à jour de la branche develop
+
+Une fois la version déployée en production, il est important de mettre à jour la branche `develop` avec les modifications de la branche `main` qui contient la version de production avec les évolutions et les corrections de bugs de la phase de recette.
+
+Cette étape peut être faite via une **pull request** de la branche `main` vers la branche `develop`.
+
+Une fois cette **pull request** validée, la branche `develop` contient les dernières modifications de la version de production et est prête à accueillir les nouvelles fonctionnalités en cours de développement.
+
+---
+
+# Fin de la version 1.0.0
+
+Nous avons vu comment mettre en place un workflow de développement avec git flow, comment sécuriser le projet avec des contrôles automatiques et la revue de code, comment déployer l'application sur netlify et comment préparer une nouvelle version du projet.
+
+---
+
+# git - Etat final
+
+<img src="img/marvel-app/marvel-app-1.0.0.png" alt="Version 1.0.0" style="width: 70%;">
