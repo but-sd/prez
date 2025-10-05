@@ -176,41 +176,76 @@ module.exports = {
 
 # Tests unitaires - Ajout de tests pour la partie API
 
-Nous allons utiliser **Github Copilot** pour générer les tests unitaires afin d'avoir une base de travail. Nous verrons qu'il est possible de les améliorer.
+**Github Copilot** pourra nous aider à générer les tests unitaires, mais il est important de comprendre ce qui est généré. Nous allons donc dans un premier temps écrire les tests manuellement.
 
-Ouvrir le fichier `src/api/characters-api.js` et demander à **Github Copilot** de générer les tests unitaires, par exemple en tapant `/tests` dans la partie **Chat**.
-
-Les tests générés devraient ressembler au slide suivant.
+Ouvrir le fichier `src/api/characters-api.js` et créer le fichier `src/api/characters-api.test.js` à côté.
 
 ---
 
 ```javascript
-import { getCharacters, getCharacterById } from './characters-api';
-import characters from '../data/characters.json';
+
+// src/api/characters-api.js
+
+import characters from '../data/characters.json'
+
+/**
+ * returns the list of characters
+ * @returns 
+ */
+export const getCharacters = () => {
+  return characters;
+}
+
+/**
+ * returns a character by id
+ * @param {*} id 
+ * @returns 
+ */
+export const getCharacterById = (id) => {
+  return characters.find(character => character.id === id);
+}
+
+```
+
+---
+
+```javascript
 
 // src/api/characters-api.test.js
 
+import { describe, expect, jest, test } from '@jest/globals'
+
+import { getCharacters, getCharacterById } from './characters-api';
+import characters from '../data/characters.json';
+
+// Mock the characters data for testing purposes
 jest.mock('../data/characters.json', () => [
     { id: 1, name: 'Character One' },
     { id: 2, name: 'Character Two' },
 ]);
 
-describe('getCharacters', () => {
-    test('should return the list of characters', () => {
-        const result = getCharacters();
-        expect(result).toEqual(characters);
-    });
-});
+// Test suite for characters-api.js
+describe('characters-api', () => {
 
-describe('getCharacterById', () => {
-    test('should return the correct character when a valid ID is provided', () => {
-        const result = getCharacterById(1);
-        expect(result).toEqual({ id: 1, name: 'Character One' });
+    // Test for getCharacters function
+    describe('getCharacters', () => {
+
+        // Test to check if the function returns the full list of characters
+        test('should return the list of characters', () => {
+            const result = getCharacters();
+            expect(result).toEqual(characters);
+        });
     });
 
-    test('should throw an error when an invalid ID is provided', () => {
-        expect(() => getCharacterById(999)).toThrow('Character with id 999 not found');
+    // Test for getCharacterById function
+    describe('getCharacterById', () => {
+        // Test to check if the function returns the correct character for a valid ID
+        test('should return the correct character when a valid ID is provided', () => {
+            const result = getCharacterById(1);
+            expect(result).toEqual({ id: 1, name: 'Character One' });
+        });
     });
+
 });
 ```
 
@@ -249,6 +284,21 @@ Cela signifie qu'au lieu de lire le fichier `characters.json`, on va utiliser le
 Ici on **mock** le fichier `characters.json` pour ne pas dépendre de son contenu. 
 
 **Rappel:** Nous avons volontairement utilisé un fichier `characters.json` pour simuler un appel à une API, mais dans un vrai projet, on utiliserait une vraie API, c'est elle qu'il faudrait mocker.
+
+---
+
+# Test unitaires - extension Jest
+
+<div class="two-columns">
+  <div class="column">
+    vs-code propose une extension qui permet de lancer les tests de manière unitaire directement depuis le fichier de test. Il est même possible de debugger un test.
+    <br/><br/>
+    Pour installer l'extension, il suffit de la rechercher (Jest) dans le marketplace de vs-code et de l'installer.
+  </div>
+  <div class="column">
+    <img src="./img/unit-test/unit-test-extension.png" width="100%">
+  </div>
+</div>
 
 ---
 
@@ -295,7 +345,17 @@ La couverture de code est affichée en pourcentage pour chaque fichier.
 
 On peut voir que le fichier `characters-api.js` est couvert à 100%, ce qui signifie que toutes les lignes de code sont testées.  
 
-Nous verrons plus tard des cas où la couverture de code est moins bonne et comment l'améliorer.
+Attention, la configuration actuelle ne présente les résultats que sur les fichiers testés. Nous verrons plus tard comment avoir une vue d'ensemble de la couverture de code du projet.
+
+---
+
+# Tests unitaires - Couverture de code (suite)
+
+Nous allons maintenant modifier le fichier `characters-api.js` pour ajouter un cas non testé et voir l'impact sur la couverture de code.
+
+Nous allons modifier la fonction `getCharacterById` pour lever une erreur si il n'y a pas de personnage avec l'ID fourni. 
+
+Par conséquent, nous n'avons pas de test pour ce cas. La couverture de code devrait donc diminuer. Nous allons donc aussi ajouter un test pour ce cas. **Github Copilot** pourra nous aider à générer ce test.
 
 ---
 
@@ -336,7 +396,7 @@ Etant donné qu'il s'agit de composants React écrit en **JSX**, il est nécessa
 Installer les dépendances nécessaires :
 
 ```bash
-npm install --save-dev jest-environment-jsdom @testing-library/react @testing-library/jest-dom @babel/plugin-syntax-jsx @babel/preset-react
+npm install --save-dev jest-environment-jsdom jest-fixed-jsdom @testing-library/react @testing-library/jest-dom @babel/plugin-syntax-jsx @babel/preset-react
 ```
 
 ---
@@ -347,7 +407,7 @@ Modifier le fichier `jest.config.cjs` pour ajouter la configuration nécessaire 
 
 ```javascript
 module.exports = {
-  testEnvironment: "jsdom",
+  testEnvironment: "jest-fixed-jsdom", // Use jsdom environment for testing React components
   transform: {
     "^.+\\.jsx?$": "babel-jest",
   },
@@ -372,30 +432,56 @@ module.exports = {
 
 ---
 
-# Tests unitaires - Ajout de tests pour les composants (suite)
+# Tests unitaires - NumberOfCharacters.jsx
 
-Comme pour la partie API, nous allons utiliser **Github Copilot** pour générer les tests unitaires pour les composants.
+Le composant `NumberOfCharacters` est un composant simple qui affiche le nombre de personnages passés en paramètre.
 
-Ouvrir le fichier `src/components/NumberOfCharacters.jsx` et demander à **Github Copilot** de générer les tests unitaires, par exemple en tapant `/test` dans la partie **Chat**.
-
-Les tests générés devraient ressembler au slide suivant.
+Il gère deux cas :
+- Si le tableau de personnages est vide, il affiche "There is no character"
+- Si le tableau de personnages contient des personnages, il affiche "There is X characters" où X est le nombre de personnages dans le tableau.
 
 ---
 
 ```javascript
+// src/components/NumberOfCharacters.jsx 
+
+/**
+ * NumberOfCharacters component
+ * @param {*} Array of characters, default is an empty array
+ * @returns 
+ */
+export default function NumberOfCharacters({ characters = [] }) {
+    // If no characters are provided or the array is empty
+    if (characters.length === 0) {
+      return <p>There is no character</p>;
+    }
+
+    // If there are characters in the array
+    return <p>There is {characters.length} characters</p>;
+}
+```
+---
+
+```javascript
+// src/components/NumberOfCharacters.test.jsx
+
+import { describe, expect, test } from '@jest/globals'
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
-import { NumberOfCharacters } from './NumberOfCharacters';
+import NumberOfCharacters from './NumberOfCharacters';
 
-test('renders "There is no character" when characters array is empty', () => {
-  render(<NumberOfCharacters characters={[]} />);
-  expect(screen.getByText('There is no character')).toBeInTheDocument();
-});
+describe('NumberOfCharacters component', () => {
 
-test('renders the correct number of characters when characters array is not empty', () => {
-  const characters = ['Character 1', 'Character 2', 'Character 3'];
-  render(<NumberOfCharacters characters={characters} />);
-  expect(screen.getByText('There is 3 characters')).toBeInTheDocument();
+    test('renders "There is no character" when characters array is empty', () => {
+        render(<NumberOfCharacters characters={[]} />);
+        expect(screen.getByText('There is no character')).toBeInTheDocument();
+    });
+
+    test('renders "There is 1 character" when characters array has one character', () => {
+        const characters = ['Character 1'];
+        render(<NumberOfCharacters characters={characters} />);
+        expect(screen.getByText('There is 1 characters')).toBeInTheDocument();
+    });
 });
 ```
 
@@ -464,7 +550,33 @@ test('renders "There is no character" when no characters are provided', () => {
 
 ---
 
-Faire un second commit pour les tests unitaires des composants.
+# Tests unitaires - Ajout de tests pour les composants (suite)
+
+L'implémentation des tests unitaires permet ici de se rendre compte que l'on a un bug dans le composant `NumberOfCharacters`, le texte affiché est `There is 1 characters` au lieu de `There is 1 character` (sans le "s") lorsqu'il y a un seul personnage dans le tableau.
+
+---
+
+# Tests unitaires - Ajout de tests pour les composants (suite)
+
+Afin de corriger ce bug, deux possibilités :
+- Modifier le composant pour gérer le cas où il y a un seul personnage puis ajouter un test pour ce cas
+- Modifier le test pour ajouter ce cas de test, qui sera forcément en échec, puis modifier le composant pour que le test passe. Cette approche est celle du **T**est **D**riven **D**evelopment.
+
+---
+
+# **T**est **D**riven **D**evelopment
+
+Le **T**est **D**riven **D**evelopment (TDD) est une approche de développement logiciel qui consiste à écrire les tests avant d'écrire le code.
+
+L'idée est de commencer par écrire un test qui échoue, puis d'écrire le code nécessaire pour que le test passe, et enfin de refactoriser le code si nécessaire.
+
+Cette approche permet de s'assurer que le code est toujours testé et que les tests sont pertinents.
+
+Elle permet aussi de mieux comprendre les besoins et les fonctionnalités à implémenter.
+
+---
+
+Faire un second commit pour les tests unitaires du composant `NumberOfCharacters`.
 
 ---
 
@@ -472,9 +584,10 @@ Faire un second commit pour les tests unitaires des composants.
 
 Les tests unitaires permettent de vérifier que le code est toujours fonctionnel après une modification.
 
-Si l'on a une couverture de code suffisante, on peut faire évoluer le code en toute confiance. 
+Si les tests passent, c'est que le code est toujours fonctionnel, sinon cela signifie qu'il y a une régression. Il peut s'agir d'un bug introduit par la modification du code, d'un test qui n'est plus pertinent ou d'un test qui n'est plus à jour suite à une modification du code (refactorisation, changement de fonctionnalité, etc.).
 
-Si les tests passent, c'est que le code est toujours fonctionnel, sinon cela signifie qu'il y a une régression.
+Si l'on a une couverture de code suffisante, on peut faire évoluer le code en toute confiance. 
+Cela permet de réduire le risque de régression et de garantir la qualité du code.
 
 ---
 
@@ -492,13 +605,13 @@ Modifier le fichier `jest.config.cjs` pour ajouter la configuration nécessaire 
 
 ```javascript
 module.exports = {
-  testEnvironment: "jsdom",
+  testEnvironment: "jsdom", // Use jsdom environment for testing React components
+  // Transform jsx files using babel-jest
   transform: {
     "^.+\\.jsx?$": "babel-jest",
   },
   collectCoverageFrom: [
     "src/**/*.{js,jsx}", // Collect coverage from all js or jsx files in src folder
-    "!src/**/*.test.{js,jsx}", // Exclude test files from coverage
   ],
 };
 ```
@@ -521,21 +634,18 @@ Nous allons maintenant commencer à tester un composant de type **Page** et voir
 
 Nous allons tester le composant `CharactersPage`.
 
-Pour tester ce composant, nous allons devoir mocker le hook `useLoaderData` qui est utilisé pour récupérer les données des personnages.
-
-Nous devons aussi mocker le composant `BrowserRouter` pour éviter une erreur lors de l'exécution des tests.
-
-Il n'est pas nécessaire de comprendre comment mocker ces éléments, mais il est nécessaire de le faire pour que les tests fonctionnent.
+Pour tester ce composant, nous allons devoir simuler le chargement des données, le composant **createRoutesStub** permet de redéfinir la route pour simuler le chargement des données.
 
 ---
 
 ```javascript
-import '@testing-library/jest-dom';
+import { expect, test } from '@jest/globals'
+import '@testing-library/jest-dom'
+import { render, screen } from '@testing-library/react'
+import { createRoutesStub } from 'react-router'
+import CharactersPage from './CharactersPage'
 
-import { render, screen } from '@testing-library/react';
-import CharactersPage from './CharactersPage';
-import { BrowserRouter } from 'react-router-dom';
-
+// Mock data for characters
 const characters = [
     {
         id: "1",
@@ -547,27 +657,26 @@ const characters = [
     }
 ];
 
-// mock the useLoaderData hook, so that we can test the CharactersPage component
-jest.mock('react-router', () => ({
-    ...jest.requireActual('react-router'), // use actual for all non-hook parts
-    useLoaderData: () => {
-        return characters;
-    },
-}));
+test('render CharactersPage component', async () => {
+    // Create a stub for the routes to include CharactersPage
+    const Stub = createRoutesStub([
+        {
+            path: '/characters',
+            Component: CharactersPage,
+            HydrateFallback: () => null, // No fallback needed for this test
+            loader: () => ({ characters: characters }),
+        },
+    ])
 
-test('render CharactersPage component', () => {
-    // when
+    // Render the CharactersPage component within the routing context
+    render(<Stub initialEntries={['/characters']} />)
 
-    // then
-    render(<CharactersPage />, { wrapper: BrowserRouter });
+    // Wait for the heading to appear to ensure routing/render updates are settled
+    const heading = await screen.findByRole('heading', { level: 2, name: 'Marvel Characters' })
+    expect(heading).toBeInTheDocument()
 
-    // expect the document title to be "Marvel App"
-    expect(document.title).toBe('Marvel App');
-
-
-    // expect the heading 'Marvel Characters' to be in the document
-    const h2Element = screen.getByRole('heading', { level: 2, name: "Marvel Characters" });
-    expect(h2Element).toBeInTheDocument();
+    // expect the document title to be "Characters | Marvel App"
+    expect(document.title).toBe('Characters | Marvel App')
 
     // expect the character Thor to be in the document
     const thorElement = screen.getByText(characters[0].name);
@@ -576,13 +685,33 @@ test('render CharactersPage component', () => {
     // expect the charater Captain America to be in the document
     const captainAmericaElement = screen.getByText(characters[1].name);
     expect(captainAmericaElement).toBeInTheDocument();
-
+    
     // expect the number of characters to be in the document
-    const numberOfCharactersElement = screen.getByText(`There is ${characters.length} characters`);
+    const numberOfCharactersElement = screen.getByText(`There are ${characters.length} characters`);
     expect(numberOfCharactersElement).toBeInTheDocument();
-});
+
+    // uncomment to see the full DOM output
+    // screen.debug()
+})
 
 ```
+---
+
+# # Tests unitaires - Tests du composant **CharactersPage**
+
+L'appel à la fonction `createRoutesStub` permet de simuler le chargement des données pour le composant `CharactersPage`. On redéfinit la route `/characters` pour qu'elle utilise le composant `CharactersPage` et qu'elle charge les données mockées.
+
+Nous pouvons ensuite rendre le composant dans le contexte de routage avec la fonction `render` et vérifier que les éléments attendus sont bien présents dans le DOM.
+
+---
+
+# Tests unitaires - Tests d'un composant de type **Page** (suite)
+
+La fonction `findByRole` permet d'attendre qu'un élément soit présent dans le DOM avant de continuer le test. Cela est utile pour les composants qui effectuent des opérations asynchrones, comme le chargement de données.
+
+La fonction `getByText` permet de récupérer un élément du DOM contenant le texte spécifié. Si l'élément n'est pas trouvé, une erreur est levée.
+
+La fonction `debug` permet d'afficher le DOM dans la console pour vérifier que le composant est bien rendu et que les éléments attendus sont bien présents et ainsi faciliter le débogage.
 
 ---
 
@@ -685,37 +814,15 @@ Notre première Pull Request est toujours bloquée, car elle dépend de quelque 
 
 Il faudrait mettre à jour la branche `feature/add-version-number` avec les modifications de la branche **develop** pour que la Pull Request puisse être validée. 
 
-Ce qui est possible grâce aux commandes `git rebase` ou `git merge`.
-
 ---
 
 # Pull Request (suite)
 
-Le **rebase** permet de réécrire l'historique de la branche `feature/add-version-number` pour y inclure les modifications de la branche **develop**.
-
-Le **merge** permet de fusionner les modifications de la branche **develop** dans la branche `feature/add-version-number` et de créer un commit de fusion.
-
-Le **rebase** est plus propre, car il permet de garder un historique linéaire, mais il est plus risqué, car il peut modifier l'historique de la branche.
-
-Gardez à l'esprit que le **rebase** est une opération destructive, il est préférable de le faire sur une branche de feature et non sur une branche partagée.
-
----
-
-# Pull Request (suite)
-
-**Github** propose une fonctionnalité pour mettre à jour une branche avec les modifications d'une autre branche, c'est le bouton `Update branch` qui permet de fusionner les modifications de la branche **develop** dans la branche `feature/add-version-number` soit par un **rebase** soit par un **merge**.
+**Github** propose une fonctionnalité pour mettre à jour une branche avec les modifications d'une autre branche, c'est le bouton `Update branch` qui permet de fusionner les modifications de la branche **develop** dans la branche `feature/add-version-number`.
 
 Dans la protection de branche, il est possible de définir que la branche doit être mise à jour avant de pouvoir être fusionnée (option `Require status checks to pass / Require branches to be up to date before merging`).
 
----
-
-# Pull Request (suite)
-
-La branche `feature/add-version-number` étant une branche de feature, il est possible de faire un **rebase** pour garder un historique linéaire.
-
-Dans le **git graph**, on peut voir que la branche `feature/add-version-number` est maintenant à jour avec la branche **develop**, la Pull Request devrait pouvoir être validée. 
-
-Nous verrons plus tard une autre utilisation du **rebase** interractif pour nettoyer l'historique des commits et réécrire l'historique de la branche.
+Une fois la branche mise à jour, le workflow de tests unitaires est exécuté et la Pull Request peut être validée.
 
 ---
 
