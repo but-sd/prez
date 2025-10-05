@@ -89,7 +89,7 @@ import { version } from '../package.json';
 
 # Ajout du numéro de version (suite)
 
-Créer une Pull Request vers **develop**, sans la valider. Nous verons ainsi comment prendre en compte les modifications venant d'une autre branche.
+Créer une Pull Request vers **develop**, sans la valider. Nous verrons ainsi comment prendre en compte les modifications venant d'une autre branche.
 
 ---
 
@@ -159,10 +159,10 @@ Contenu du fichier `jest.config.cjs` à créer à la racine du projet :
 
 ```javascript
 module.exports = {
-    transform: {
-      "^.+\\.jsx?$": "babel-jest",
-    },
-  };
+  transform: {
+    "^.+\\.jsx?$": "babel-jest",
+  },
+};
 ```
 
 Contenu du fichier `babel.config.cjs` à créer à la racine du projet :
@@ -356,6 +356,30 @@ Nous allons maintenant modifier le fichier `characters-api.js` pour ajouter un c
 Nous allons modifier la fonction `getCharacterById` pour lever une erreur si il n'y a pas de personnage avec l'ID fourni. 
 
 Par conséquent, nous n'avons pas de test pour ce cas. La couverture de code devrait donc diminuer. Nous allons donc aussi ajouter un test pour ce cas. **Github Copilot** pourra nous aider à générer ce test.
+
+---
+
+# Tests unitaires - Couverture de code (suite)
+
+Une fois le fichier `characters-api.js` modifié, sauvegarder le fichier et exécuter la commande `npm run test:coverage`.
+
+La couverture de code devrait diminuer, car nous n'avons pas de test pour le cas où il n'y a pas de personnage avec l'ID fourni.
+
+<img src="./img/unit-test/coverage-1-1.png" width="50%">
+
+---
+
+# Tests unitaires - Couverture de code (suite)
+
+L'extension **Jest** de vs-code permet aussi de voir la couverture de code directement dans l'éditeur.
+
+<img src="./img/unit-test/coverage-vs-code.png" width="70%">
+
+---
+
+# Tests unitaires - Couverture de code (suite)
+
+Ajoutez un test pour le cas où il n'y a pas de personnage avec l'ID fourni afin de faire passer la couverture de code à 100%.
 
 ---
 
@@ -576,7 +600,9 @@ Elle permet aussi de mieux comprendre les besoins et les fonctionnalités à imp
 
 ---
 
-Faire un second commit pour les tests unitaires du composant `NumberOfCharacters`.
+Corriger le bug dans le composant `NumberOfCharacters` en utilisant l'approche du **T**est **D**riven **D**evelopment.
+
+Puis faire un second commit pour les tests unitaires du composant `NumberOfCharacters`.
 
 ---
 
@@ -584,10 +610,11 @@ Faire un second commit pour les tests unitaires du composant `NumberOfCharacters
 
 Les tests unitaires permettent de vérifier que le code est toujours fonctionnel après une modification.
 
-Si les tests passent, c'est que le code est toujours fonctionnel, sinon cela signifie qu'il y a une régression. Il peut s'agir d'un bug introduit par la modification du code, d'un test qui n'est plus pertinent ou d'un test qui n'est plus à jour suite à une modification du code (refactorisation, changement de fonctionnalité, etc.).
+Si les tests passent, c'est que le code est toujours fonctionnel, sinon cela signifie qu'il y a une régression ou une évolution.
 
-Si l'on a une couverture de code suffisante, on peut faire évoluer le code en toute confiance. 
-Cela permet de réduire le risque de régression et de garantir la qualité du code.
+Il peut s'agir d'un bug introduit par la modification du code, d'un test qui n'est plus pertinent ou d'un test qui n'est plus à jour suite à une modification du code (refactorisation, changement de fonctionnalité, etc.).
+
+Si l'on a une couverture de code suffisante, on peut faire évoluer le code en toute confiance. Cela permet de réduire le risque de régression et de garantir la qualité du code.
 
 ---
 
@@ -639,6 +666,8 @@ Pour tester ce composant, nous allons devoir simuler le chargement des données,
 ---
 
 ```javascript
+// src/pages/CharactersPage.test.jsx
+
 import { expect, test } from '@jest/globals'
 import '@testing-library/jest-dom'
 import { render, screen } from '@testing-library/react'
