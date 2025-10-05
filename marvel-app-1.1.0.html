@@ -137,44 +137,80 @@
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="12" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <header>BUT SD - Marvel App</header>
 <h1 id="tests-unitaires---ajout-de-tests-pour-la-partie-api">Tests unitaires - Ajout de tests pour la partie API</h1>
-<p>Nous allons utiliser <strong>Github Copilot</strong> pour générer les tests unitaires afin d'avoir une base de travail. Nous verrons qu'il est possible de les améliorer.</p>
-<p>Ouvrir le fichier <code>src/api/characters-api.js</code> et demander à <strong>Github Copilot</strong> de générer les tests unitaires, par exemple en tapant <code>/tests</code> dans la partie <strong>Chat</strong>.</p>
-<p>Les tests générés devraient ressembler au slide suivant.</p>
+<p><strong>Github Copilot</strong> pourra nous aider à générer les tests unitaires, mais il est important de comprendre ce qui est généré. Nous allons donc dans un premier temps écrire les tests manuellement.</p>
+<p>Ouvrir le fichier <code>src/api/characters-api.js</code> et créer le fichier <code>src/api/characters-api.test.js</code> à côté.</p>
 <footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="13" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <header>BUT SD - Marvel App</header>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-javascript"><span class="hljs-keyword">import</span> { getCharacters, getCharacterById } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./characters-api&#x27;</span>;
-<span class="hljs-keyword">import</span> characters <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;../data/characters.json&#x27;</span>;
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-javascript">
+<span class="hljs-comment">// src/api/characters-api.js</span>
 
+<span class="hljs-keyword">import</span> characters <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;../data/characters.json&#x27;</span>
+
+<span class="hljs-comment">/**
+ * returns the list of characters
+ * <span class="hljs-doctag">@returns</span> 
+ */</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> <span class="hljs-title function_">getCharacters</span> = (<span class="hljs-params"></span>) =&gt; {
+  <span class="hljs-keyword">return</span> characters;
+}
+
+<span class="hljs-comment">/**
+ * returns a character by id
+ * <span class="hljs-doctag">@param</span> {<span class="hljs-type">*</span>} id 
+ * <span class="hljs-doctag">@returns</span> 
+ */</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> <span class="hljs-title function_">getCharacterById</span> = (<span class="hljs-params">id</span>) =&gt; {
+  <span class="hljs-keyword">return</span> characters.<span class="hljs-title function_">find</span>(<span class="hljs-function"><span class="hljs-params">character</span> =&gt;</span> character.<span class="hljs-property">id</span> === id);
+}
+
+</code></pre>
+<footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="14" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+<header>BUT SD - Marvel App</header>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-javascript">
 <span class="hljs-comment">// src/api/characters-api.test.js</span>
 
+<span class="hljs-keyword">import</span> { describe, expect, jest, test } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@jest/globals&#x27;</span>
+
+<span class="hljs-keyword">import</span> { getCharacters, getCharacterById } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./characters-api&#x27;</span>;
+<span class="hljs-keyword">import</span> characters <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;../data/characters.json&#x27;</span>;
+
+<span class="hljs-comment">// Mock the characters data for testing purposes</span>
 jest.<span class="hljs-title function_">mock</span>(<span class="hljs-string">&#x27;../data/characters.json&#x27;</span>, <span class="hljs-function">() =&gt;</span> [
     { <span class="hljs-attr">id</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Character One&#x27;</span> },
     { <span class="hljs-attr">id</span>: <span class="hljs-number">2</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Character Two&#x27;</span> },
 ]);
 
-<span class="hljs-title function_">describe</span>(<span class="hljs-string">&#x27;getCharacters&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
-    <span class="hljs-title function_">test</span>(<span class="hljs-string">&#x27;should return the list of characters&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
-        <span class="hljs-keyword">const</span> result = <span class="hljs-title function_">getCharacters</span>();
-        <span class="hljs-title function_">expect</span>(result).<span class="hljs-title function_">toEqual</span>(characters);
-    });
-});
+<span class="hljs-comment">// Test suite for characters-api.js</span>
+<span class="hljs-title function_">describe</span>(<span class="hljs-string">&#x27;characters-api&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
 
-<span class="hljs-title function_">describe</span>(<span class="hljs-string">&#x27;getCharacterById&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
-    <span class="hljs-title function_">test</span>(<span class="hljs-string">&#x27;should return the correct character when a valid ID is provided&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
-        <span class="hljs-keyword">const</span> result = <span class="hljs-title function_">getCharacterById</span>(<span class="hljs-number">1</span>);
-        <span class="hljs-title function_">expect</span>(result).<span class="hljs-title function_">toEqual</span>({ <span class="hljs-attr">id</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Character One&#x27;</span> });
+    <span class="hljs-comment">// Test for getCharacters function</span>
+    <span class="hljs-title function_">describe</span>(<span class="hljs-string">&#x27;getCharacters&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+
+        <span class="hljs-comment">// Test to check if the function returns the full list of characters</span>
+        <span class="hljs-title function_">test</span>(<span class="hljs-string">&#x27;should return the list of characters&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+            <span class="hljs-keyword">const</span> result = <span class="hljs-title function_">getCharacters</span>();
+            <span class="hljs-title function_">expect</span>(result).<span class="hljs-title function_">toEqual</span>(characters);
+        });
     });
 
-    <span class="hljs-title function_">test</span>(<span class="hljs-string">&#x27;should throw an error when an invalid ID is provided&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
-        <span class="hljs-title function_">expect</span>(<span class="hljs-function">() =&gt;</span> <span class="hljs-title function_">getCharacterById</span>(<span class="hljs-number">999</span>)).<span class="hljs-title function_">toThrow</span>(<span class="hljs-string">&#x27;Character with id 999 not found&#x27;</span>);
+    <span class="hljs-comment">// Test for getCharacterById function</span>
+    <span class="hljs-title function_">describe</span>(<span class="hljs-string">&#x27;getCharacterById&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+        <span class="hljs-comment">// Test to check if the function returns the correct character for a valid ID</span>
+        <span class="hljs-title function_">test</span>(<span class="hljs-string">&#x27;should return the correct character when a valid ID is provided&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+            <span class="hljs-keyword">const</span> result = <span class="hljs-title function_">getCharacterById</span>(<span class="hljs-number">1</span>);
+            <span class="hljs-title function_">expect</span>(result).<span class="hljs-title function_">toEqual</span>({ <span class="hljs-attr">id</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Character One&#x27;</span> });
+        });
     });
+
 });
 </code></pre>
 <footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="14" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="15" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <header>BUT SD - Marvel App</header>
 <h1 id="tests-unitaires---ajout-de-tests-pour-la-partie-api-suite">Tests unitaires - Ajout de tests pour la partie API (suite)</h1>
 <p>Sauvegarder le fichier <code>src/api/characters-api.test.js</code> et exécuter les tests avec la commande <code>npm test</code>.</p>
@@ -188,7 +224,7 @@ jest.<span class="hljs-title function_">mock</span>(<span class="hljs-string">&#
 </div>
 <footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="15" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="16" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <header>BUT SD - Marvel App</header>
 <h1 id="tests-unitaires---ajout-de-tests-pour-la-partie-api-suite-1">Tests unitaires - Ajout de tests pour la partie API (suite)</h1>
 <p>Dans le résultat des tests, une ligne est affichée par <code>describe</code> et une sous-ligne par <code>test</code> avec le résultat du test. Cette organisation permet de savoir rapidement où se trouve le problème en cas d'échec.</p>
@@ -196,7 +232,7 @@ jest.<span class="hljs-title function_">mock</span>(<span class="hljs-string">&#
 En nommant correctement les <code>describe</code> et les <code>test</code>, on peut rapidement comprendre ce qui est testé.</p>
 <footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="16" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="17" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <header>BUT SD - Marvel App</header>
 <h1 id="tests-unitaires---ajout-de-tests-pour-la-partie-api-suite-2">Tests unitaires - Ajout de tests pour la partie API (suite)</h1>
 <p>La partie <code>jest.mock</code> permet de mocker le fichier <code>characters.json</code> pour simuler un appel à une API.</p>
@@ -205,14 +241,29 @@ En nommant correctement les <code>describe</code> et les <code>test</code>, on p
 <p><strong>Rappel:</strong> Nous avons volontairement utilisé un fichier <code>characters.json</code> pour simuler un appel à une API, mais dans un vrai projet, on utiliserait une vraie API, c'est elle qu'il faudrait mocker.</p>
 <footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="17" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="18" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+<header>BUT SD - Marvel App</header>
+<h1 id="test-unitaires---extension-jest">Test unitaires - extension Jest</h1>
+<div class="two-columns">
+  <div class="column">
+    vs-code propose une extension qui permet de lancer les tests de manière unitaire directement depuis le fichier de test. Il est même possible de debugger un test.
+    <br /><br />
+    Pour installer l'extension, il suffit de la rechercher (Jest) dans le marketplace de vs-code et de l'installer.
+  </div>
+  <div class="column">
+    <img src="./img/unit-test/unit-test-extension.png" width="100%" />
+  </div>
+</div>
+<footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="19" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <header>BUT SD - Marvel App</header>
 <h1 id="tests-unitaires---couverture-de-code">Tests unitaires - Couverture de code</h1>
 <p>Savoir que nos tests passent est une chose, mais il est important de savoir quelle partie du code est testé. Pour cela, on utilise la couverture de code qui permet de savoir quelles parties de notre code sont testées et quelles parties ne le sont pas.</p>
 <p>Pour afficher la couverture de code, il suffit d'exécuter la commande <code>npm test -- --coverage</code>.</p>
 <footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="18" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="20" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <header>BUT SD - Marvel App</header>
 <h1 id="tests-unitaires---couverture-de-code-suite">Tests unitaires - Couverture de code (suite)</h1>
 <p>Il est aussi possible d'ajouter un script dans le fichier <code>package.json</code> pour exécuter cette commande plus simplement.</p>
@@ -224,28 +275,36 @@ En nommant correctement les <code>describe</code> et les <code>test</code>, on p
 <p>Puis d'exécuter la commande <code>npm run test:coverage</code>.</p>
 <footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="19" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="21" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <header>BUT SD - Marvel App</header>
 <h1 id="tests-unitaires---couverture-de-code-suite-1">Tests unitaires - Couverture de code (suite)</h1>
 <p>La couverture de code est affichée dans la console et un rapport est généré dans le dossier <code>coverage</code> à la racine du projet, permettant de visualiser la couverture de code dans un navigateur.</p>
 <p><strong>Note:</strong> il faut ignore le dossier <code>coverage</code> dans le fichier <code>.gitignore</code> pour ne pas le versionner.</p>
 <footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="20" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="22" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <header>BUT SD - Marvel App</header>
 <h1 id="tests-unitaires---couverture-de-code-suite-2">Tests unitaires - Couverture de code (suite)</h1>
 <img src="./img/unit-test/coverage-1.png" width="90%" />
 <footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="21" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="23" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <header>BUT SD - Marvel App</header>
 <h1 id="tests-unitaires---couverture-de-code-suite-3">Tests unitaires - Couverture de code (suite)</h1>
 <p>La couverture de code est affichée en pourcentage pour chaque fichier.</p>
 <p>On peut voir que le fichier <code>characters-api.js</code> est couvert à 100%, ce qui signifie que toutes les lignes de code sont testées.</p>
-<p>Nous verrons plus tard des cas où la couverture de code est moins bonne et comment l'améliorer.</p>
+<p>Attention, la configuration actuelle ne présente les résultats que sur les fichiers testés. Nous verrons plus tard comment avoir une vue d'ensemble de la couverture de code du projet.</p>
 <footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="22" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="24" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+<header>BUT SD - Marvel App</header>
+<h1 id="tests-unitaires---couverture-de-code-suite-4">Tests unitaires - Couverture de code (suite)</h1>
+<p>Nous allons maintenant modifier le fichier <code>characters-api.js</code> pour ajouter un cas non testé et voir l'impact sur la couverture de code.</p>
+<p>Nous allons modifier la fonction <code>getCharacterById</code> pour lever une erreur si il n'y a pas de personnage avec l'ID fourni.</p>
+<p>Par conséquent, nous n'avons pas de test pour ce cas. La couverture de code devrait donc diminuer. Nous allons donc aussi ajouter un test pour ce cas. <strong>Github Copilot</strong> pourra nous aider à générer ce test.</p>
+<footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="25" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <header>BUT SD - Marvel App</header>
 <h1 id="tests-unitaires---bonnes-pratiques">Tests unitaires - Bonnes pratiques</h1>
 <p>Le découpage des tests en <strong>describe</strong> et <strong>test</strong> permet de mieux organiser les tests et de les rendre plus lisibles.</p>
@@ -255,7 +314,7 @@ En nommant correctement les <code>describe</code> et les <code>test</code>, on p
 <p>Le nombre de <strong>test</strong> correspond généralement aux différentes valeurs possibles des paramètres d'une fonction et aux différents cas possibles traités</p>
 <footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="23" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="26" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <header>BUT SD - Marvel App</header>
 <h1 id="tests-unitaires---bonnes-pratiques-suite">Tests unitaires - Bonnes pratiques (suite)</h1>
 <p>Il est important de tester les cas normaux, les cas limites et les cas d'erreurs pour s'assurer que le code fonctionne dans toutes les situations.</p>
@@ -263,27 +322,27 @@ En nommant correctement les <code>describe</code> et les <code>test</code>, on p
 <p>Le découpage du code en petites fonctions permet de faciliter les tests unitaires, car il est plus facile de tester une petite fonction qu'une grande fonction. Cela permet aussi de rendre le code plus lisible et plus maintenable.</p>
 <footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="24" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="27" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <header>BUT SD - Marvel App</header>
 <p>Faire un premier commit pour les tests unitaires de la partie API.</p>
 <footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="25" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="28" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <header>BUT SD - Marvel App</header>
 <h1 id="tests-unitaires---ajout-de-tests-pour-les-composants">Tests unitaires - Ajout de tests pour les composants</h1>
 <p>Nous allons maintenant ajouter des tests pour les composants.</p>
 <p>Etant donné qu'il s'agit de composants React écrit en <strong>JSX</strong>, il est nécessaire d'ajouter une configuration pour <code>Jest</code> afin de pouvoir les exécuter.</p>
 <p>Installer les dépendances nécessaires :</p>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-bash">npm install --save-dev jest-environment-jsdom @testing-library/react @testing-library/jest-dom @babel/plugin-syntax-jsx @babel/preset-react
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-bash">npm install --save-dev jest-environment-jsdom jest-fixed-jsdom @testing-library/react @testing-library/jest-dom @babel/plugin-syntax-jsx @babel/preset-react
 </code></pre>
 <footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="26" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="29" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <header>BUT SD - Marvel App</header>
 <h1 id="tests-unitaires---ajout-de-tests-pour-les-composants-suite">Tests unitaires - Ajout de tests pour les composants (suite)</h1>
 <p>Modifier le fichier <code>jest.config.cjs</code> pour ajouter la configuration nécessaire pour les tests de composants.</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-javascript"><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = {
-  <span class="hljs-attr">testEnvironment</span>: <span class="hljs-string">&quot;jsdom&quot;</span>,
+  <span class="hljs-attr">testEnvironment</span>: <span class="hljs-string">&quot;jest-fixed-jsdom&quot;</span>, <span class="hljs-comment">// Use jsdom environment for testing React components</span>
   <span class="hljs-attr">transform</span>: {
     <span class="hljs-string">&quot;^.+\\.jsx?$&quot;</span>: <span class="hljs-string">&quot;babel-jest&quot;</span>,
   },
@@ -292,7 +351,7 @@ En nommant correctement les <code>describe</code> et les <code>test</code>, on p
 </code></pre>
 <footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="27" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="30" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <header>BUT SD - Marvel App</header>
 <h1 id="tests-unitaires---ajout-de-tests-pour-les-composants-suite-1">Tests unitaires - Ajout de tests pour les composants (suite)</h1>
 <p>Modifier le fichier <code>babel.config.cjs</code> pour ajouter la configuration nécessaire pour les tests de composants.</p>
@@ -305,36 +364,66 @@ En nommant correctement les <code>describe</code> et les <code>test</code>, on p
 </code></pre>
 <footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="28" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="31" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <header>BUT SD - Marvel App</header>
-<h1 id="tests-unitaires---ajout-de-tests-pour-les-composants-suite-2">Tests unitaires - Ajout de tests pour les composants (suite)</h1>
-<p>Comme pour la partie API, nous allons utiliser <strong>Github Copilot</strong> pour générer les tests unitaires pour les composants.</p>
-<p>Ouvrir le fichier <code>src/components/NumberOfCharacters.jsx</code> et demander à <strong>Github Copilot</strong> de générer les tests unitaires, par exemple en tapant <code>/test</code> dans la partie <strong>Chat</strong>.</p>
-<p>Les tests générés devraient ressembler au slide suivant.</p>
+<h1 id="tests-unitaires---numberofcharactersjsx">Tests unitaires - NumberOfCharacters.jsx</h1>
+<p>Le composant <code>NumberOfCharacters</code> est un composant simple qui affiche le nombre de personnages passés en paramètre.</p>
+<p>Il gère deux cas :</p>
+<ul>
+<li>Si le tableau de personnages est vide, il affiche &quot;There is no character&quot;</li>
+<li>Si le tableau de personnages contient des personnages, il affiche &quot;There is X characters&quot; où X est le nombre de personnages dans le tableau.</li>
+</ul>
 <footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="29" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="32" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <header>BUT SD - Marvel App</header>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-javascript"><span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;@testing-library/jest-dom&#x27;</span>;
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-javascript"><span class="hljs-comment">// src/components/NumberOfCharacters.jsx </span>
+
+<span class="hljs-comment">/**
+ * NumberOfCharacters component
+ * <span class="hljs-doctag">@param</span> {<span class="hljs-type">*</span>} Array of characters, default is an empty array
+ * <span class="hljs-doctag">@returns</span> 
+ */</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">NumberOfCharacters</span>(<span class="hljs-params">{ characters = [] }</span>) {
+    <span class="hljs-comment">// If no characters are provided or the array is empty</span>
+    <span class="hljs-keyword">if</span> (characters.<span class="hljs-property">length</span> === <span class="hljs-number">0</span>) {
+      <span class="hljs-keyword">return</span> <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>There is no character<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span>;
+    }
+
+    <span class="hljs-comment">// If there are characters in the array</span>
+    <span class="hljs-keyword">return</span> <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>There is {characters.length} characters<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span>;
+}
+</code></pre>
+<footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="33" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+<header>BUT SD - Marvel App</header>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-javascript"><span class="hljs-comment">// src/components/NumberOfCharacters.test.jsx</span>
+
+<span class="hljs-keyword">import</span> { describe, expect, test } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@jest/globals&#x27;</span>
+<span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;@testing-library/jest-dom&#x27;</span>;
 <span class="hljs-keyword">import</span> { render, screen } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@testing-library/react&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">NumberOfCharacters</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./NumberOfCharacters&#x27;</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">NumberOfCharacters</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./NumberOfCharacters&#x27;</span>;
 
-<span class="hljs-title function_">test</span>(<span class="hljs-string">&#x27;renders &quot;There is no character&quot; when characters array is empty&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
-  <span class="hljs-title function_">render</span>(<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">NumberOfCharacters</span> <span class="hljs-attr">characters</span>=<span class="hljs-string">{[]}</span> /&gt;</span></span>);
-  <span class="hljs-title function_">expect</span>(screen.<span class="hljs-title function_">getByText</span>(<span class="hljs-string">&#x27;There is no character&#x27;</span>)).<span class="hljs-title function_">toBeInTheDocument</span>();
-});
+<span class="hljs-title function_">describe</span>(<span class="hljs-string">&#x27;NumberOfCharacters component&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
 
-<span class="hljs-title function_">test</span>(<span class="hljs-string">&#x27;renders the correct number of characters when characters array is not empty&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
-  <span class="hljs-keyword">const</span> characters = [<span class="hljs-string">&#x27;Character 1&#x27;</span>, <span class="hljs-string">&#x27;Character 2&#x27;</span>, <span class="hljs-string">&#x27;Character 3&#x27;</span>];
-  <span class="hljs-title function_">render</span>(<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">NumberOfCharacters</span> <span class="hljs-attr">characters</span>=<span class="hljs-string">{characters}</span> /&gt;</span></span>);
-  <span class="hljs-title function_">expect</span>(screen.<span class="hljs-title function_">getByText</span>(<span class="hljs-string">&#x27;There is 3 characters&#x27;</span>)).<span class="hljs-title function_">toBeInTheDocument</span>();
+    <span class="hljs-title function_">test</span>(<span class="hljs-string">&#x27;renders &quot;There is no character&quot; when characters array is empty&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+        <span class="hljs-title function_">render</span>(<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">NumberOfCharacters</span> <span class="hljs-attr">characters</span>=<span class="hljs-string">{[]}</span> /&gt;</span></span>);
+        <span class="hljs-title function_">expect</span>(screen.<span class="hljs-title function_">getByText</span>(<span class="hljs-string">&#x27;There is no character&#x27;</span>)).<span class="hljs-title function_">toBeInTheDocument</span>();
+    });
+
+    <span class="hljs-title function_">test</span>(<span class="hljs-string">&#x27;renders &quot;There is 1 character&quot; when characters array has one character&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+        <span class="hljs-keyword">const</span> characters = [<span class="hljs-string">&#x27;Character 1&#x27;</span>];
+        <span class="hljs-title function_">render</span>(<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">NumberOfCharacters</span> <span class="hljs-attr">characters</span>=<span class="hljs-string">{characters}</span> /&gt;</span></span>);
+        <span class="hljs-title function_">expect</span>(screen.<span class="hljs-title function_">getByText</span>(<span class="hljs-string">&#x27;There is 1 characters&#x27;</span>)).<span class="hljs-title function_">toBeInTheDocument</span>();
+    });
 });
 </code></pre>
 <footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="30" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="34" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <header>BUT SD - Marvel App</header>
-<h1 id="tests-unitaires---ajout-de-tests-pour-les-composants-suite-3">Tests unitaires - Ajout de tests pour les composants (suite)</h1>
+<h1 id="tests-unitaires---ajout-de-tests-pour-les-composants-suite-2">Tests unitaires - Ajout de tests pour les composants (suite)</h1>
 <p>Sauvegarder le fichier <code>src/components/NumberOfCharacters.test.jsx</code> et exécuter les tests avec la commande <code>npm test</code>.</p>
 <div class="two-columns">
   <div class="column">
@@ -345,16 +434,16 @@ En nommant correctement les <code>describe</code> et les <code>test</code>, on p
   </div>
 <footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="31" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="35" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <header>BUT SD - Marvel App</header>
-<h1 id="tests-unitaires---ajout-de-tests-pour-les-composants-suite-4">Tests unitaires - Ajout de tests pour les composants (suite)</h1>
+<h1 id="tests-unitaires---ajout-de-tests-pour-les-composants-suite-3">Tests unitaires - Ajout de tests pour les composants (suite)</h1>
 <p>On constate que la couverture de code est de 100% pour le fichier <code>NumberOfCharacters.jsx</code> sur les lignes de code testées, mais uniquement de 66,66% sur les branches de code testées, avec la ligne 1 en  <strong>Uncovered Line</strong>.</p>
 <p>Ce qui signifie que la ligne 1 n'est pas complètement testée, il y a un cas non testé. Il s'agit du cas où l'on ne passe pas de paramètre <code>characters</code> à notre composant.</p>
 <footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="32" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="36" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <header>BUT SD - Marvel App</header>
-<h1 id="tests-unitaires---ajout-de-tests-pour-les-composants-suite-5">Tests unitaires - Ajout de tests pour les composants (suite)</h1>
+<h1 id="tests-unitaires---ajout-de-tests-pour-les-composants-suite-4">Tests unitaires - Ajout de tests pour les composants (suite)</h1>
 <p>Pour corriger ce problème, il suffit d'ajouter un test pour ce cas.</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-javascript"><span class="hljs-title function_">test</span>(<span class="hljs-string">&#x27;renders &quot;There is no character&quot; when no characters are provided&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
   <span class="hljs-title function_">render</span>(<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">NumberOfCharacters</span> /&gt;</span></span>);
@@ -364,17 +453,17 @@ En nommant correctement les <code>describe</code> et les <code>test</code>, on p
 <p><strong>Note:</strong> Il est possible de tester uniquement un fichier en ajoutant le nom du fichier à la commande <code>npm test</code>, par exemple <code>npm run test:coverage NumberOfCharacters</code>.</p>
 <footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="33" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="37" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <header>BUT SD - Marvel App</header>
-<h1 id="tests-unitaires---ajout-de-tests-pour-les-composants-suite-6">Tests unitaires - Ajout de tests pour les composants (suite)</h1>
+<h1 id="tests-unitaires---ajout-de-tests-pour-les-composants-suite-5">Tests unitaires - Ajout de tests pour les composants (suite)</h1>
 <p>Pour les tests de composants, on utilise la librairie <code>@testing-library/react</code> qui permet de tester les composants React de manière simple et efficace.</p>
 <p>On utilise la fonction <code>render</code> pour afficher le composant et la fonction <code>screen.getByText</code> pour récupérer un élément du DOM et vérifier qu'il est bien présent.</p>
 <p>Pour plus d'informations, voir la <a href="https://testing-library.com/docs/queries/about">documentation</a>.</p>
 <footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="34" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="38" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <header>BUT SD - Marvel App</header>
-<h1 id="tests-unitaires---ajout-de-tests-pour-les-composants-suite-7">Tests unitaires - Ajout de tests pour les composants (suite)</h1>
+<h1 id="tests-unitaires---ajout-de-tests-pour-les-composants-suite-6">Tests unitaires - Ajout de tests pour les composants (suite)</h1>
 <p>Par exemple, <code>screen.getByText('There is no character')</code> permet de récupérer un élément du DOM contenant le texte <code>There is no character</code>.</p>
 <p>Durant la phase de mise en oeuvre du test, il est possible de voir le composant s'afficher dans la console pour vérifier qu'il est bien rendu grâce à la fonction <code>debug</code>.</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-javascript"><span class="hljs-title function_">test</span>(<span class="hljs-string">&#x27;renders &quot;There is no character&quot; when no characters are provided&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
@@ -385,72 +474,97 @@ En nommant correctement les <code>describe</code> et les <code>test</code>, on p
 </code></pre>
 <footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="35" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="39" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <header>BUT SD - Marvel App</header>
-<p>Faire un second commit pour les tests unitaires des composants.</p>
+<h1 id="tests-unitaires---ajout-de-tests-pour-les-composants-suite-7">Tests unitaires - Ajout de tests pour les composants (suite)</h1>
+<p>L'implémentation des tests unitaires permet ici de se rendre compte que l'on a un bug dans le composant <code>NumberOfCharacters</code>, le texte affiché est <code>There is 1 characters</code> au lieu de <code>There is 1 character</code> (sans le &quot;s&quot;) lorsqu'il y a un seul personnage dans le tableau.</p>
 <footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="36" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="40" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+<header>BUT SD - Marvel App</header>
+<h1 id="tests-unitaires---ajout-de-tests-pour-les-composants-suite-8">Tests unitaires - Ajout de tests pour les composants (suite)</h1>
+<p>Afin de corriger ce bug, deux possibilités :</p>
+<ul>
+<li>Modifier le composant pour gérer le cas où il y a un seul personnage puis ajouter un test pour ce cas</li>
+<li>Modifier le test pour ajouter ce cas de test, qui sera forcément en échec, puis modifier le composant pour que le test passe. Cette approche est celle du <strong>T</strong>est <strong>D</strong>riven <strong>D</strong>evelopment.</li>
+</ul>
+<footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="41" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+<header>BUT SD - Marvel App</header>
+<h1 id="test-driven-development"><strong>T</strong>est <strong>D</strong>riven <strong>D</strong>evelopment</h1>
+<p>Le <strong>T</strong>est <strong>D</strong>riven <strong>D</strong>evelopment (TDD) est une approche de développement logiciel qui consiste à écrire les tests avant d'écrire le code.</p>
+<p>L'idée est de commencer par écrire un test qui échoue, puis d'écrire le code nécessaire pour que le test passe, et enfin de refactoriser le code si nécessaire.</p>
+<p>Cette approche permet de s'assurer que le code est toujours testé et que les tests sont pertinents.</p>
+<p>Elle permet aussi de mieux comprendre les besoins et les fonctionnalités à implémenter.</p>
+<footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="42" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+<header>BUT SD - Marvel App</header>
+<p>Faire un second commit pour les tests unitaires du composant <code>NumberOfCharacters</code>.</p>
+<footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="43" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <header>BUT SD - Marvel App</header>
 <h1 id="tests-unitaires---non-r%C3%A9gression">Tests unitaires - Non régression</h1>
 <p>Les tests unitaires permettent de vérifier que le code est toujours fonctionnel après une modification.</p>
-<p>Si l'on a une couverture de code suffisante, on peut faire évoluer le code en toute confiance.</p>
-<p>Si les tests passent, c'est que le code est toujours fonctionnel, sinon cela signifie qu'il y a une régression.</p>
+<p>Si les tests passent, c'est que le code est toujours fonctionnel, sinon cela signifie qu'il y a une régression. Il peut s'agir d'un bug introduit par la modification du code, d'un test qui n'est plus pertinent ou d'un test qui n'est plus à jour suite à une modification du code (refactorisation, changement de fonctionnalité, etc.).</p>
+<p>Si l'on a une couverture de code suffisante, on peut faire évoluer le code en toute confiance.<br />
+Cela permet de réduire le risque de régression et de garantir la qualité du code.</p>
 <footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="37" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="44" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <header>BUT SD - Marvel App</header>
 <h1 id="tests-unitaires---couverture-de-code-de-lensemble-du-projet">Tests unitaires - Couverture de code de l'ensemble du projet</h1>
 <p>La configuration actuelle ne présente les résultats que sur les fichiers testés.</p>
 <p>Pour avoir une vue d'ensemble de la couverture de code du projet, il est possible de modifier la configuration de <strong>Jest</strong> pour afficher la couverture de code de l'ensemble du projet.</p>
 <footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="38" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="45" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <header>BUT SD - Marvel App</header>
 <h1 id="tests-unitaires---couverture-de-code-de-lensemble-du-projet-suite">Tests unitaires - Couverture de code de l'ensemble du projet (suite)</h1>
 <p>Modifier le fichier <code>jest.config.cjs</code> pour ajouter la configuration nécessaire pour afficher la couverture de code de l'ensemble du projet.</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-javascript"><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = {
-  <span class="hljs-attr">testEnvironment</span>: <span class="hljs-string">&quot;jsdom&quot;</span>,
+  <span class="hljs-attr">testEnvironment</span>: <span class="hljs-string">&quot;jsdom&quot;</span>, <span class="hljs-comment">// Use jsdom environment for testing React components</span>
+  <span class="hljs-comment">// Transform jsx files using babel-jest</span>
   <span class="hljs-attr">transform</span>: {
     <span class="hljs-string">&quot;^.+\\.jsx?$&quot;</span>: <span class="hljs-string">&quot;babel-jest&quot;</span>,
   },
   <span class="hljs-attr">collectCoverageFrom</span>: [
     <span class="hljs-string">&quot;src/**/*.{js,jsx}&quot;</span>, <span class="hljs-comment">// Collect coverage from all js or jsx files in src folder</span>
-    <span class="hljs-string">&quot;!src/**/*.test.{js,jsx}&quot;</span>, <span class="hljs-comment">// Exclude test files from coverage</span>
   ],
 };
 </code></pre>
 <footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="39" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="46" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <header>BUT SD - Marvel App</header>
 <img src="./img/unit-test/coverage-3.png" width="80%" />
 <footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="40" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="47" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <header>BUT SD - Marvel App</header>
 <h1 id="tests-unitaires---couverture-de-code-de-lensemble-du-projet-suite-1">Tests unitaires - Couverture de code de l'ensemble du projet (suite)</h1>
 <p>Nous avons maintenant une vue d'ensemble de la couverture de code du projet et pouvons voir les fichiers qui ne sont pas testés.</p>
 <p>Nous allons maintenant commencer à tester un composant de type <strong>Page</strong> et voir l'incidence sur la couverture de code et le bonnes pratiques à suivre.</p>
 <footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="41" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="48" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <header>BUT SD - Marvel App</header>
 <h1 id="tests-unitaires---tests-dun-composant-de-type-page">Tests unitaires - Tests d'un composant de type <strong>Page</strong></h1>
 <p>Nous allons tester le composant <code>CharactersPage</code>.</p>
-<p>Pour tester ce composant, nous allons devoir mocker le hook <code>useLoaderData</code> qui est utilisé pour récupérer les données des personnages.</p>
-<p>Nous devons aussi mocker le composant <code>BrowserRouter</code> pour éviter une erreur lors de l'exécution des tests.</p>
-<p>Il n'est pas nécessaire de comprendre comment mocker ces éléments, mais il est nécessaire de le faire pour que les tests fonctionnent.</p>
+<p>Pour tester ce composant, nous allons devoir simuler le chargement des données, le composant <strong>createRoutesStub</strong> permet de redéfinir la route pour simuler le chargement des données.</p>
 <footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="42" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="49" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <header>BUT SD - Marvel App</header>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-javascript"><span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;@testing-library/jest-dom&#x27;</span>;
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-javascript"><span class="hljs-keyword">import</span> { expect, test } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@jest/globals&#x27;</span>
+<span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;@testing-library/jest-dom&#x27;</span>
+<span class="hljs-keyword">import</span> { render, screen } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@testing-library/react&#x27;</span>
+<span class="hljs-keyword">import</span> { createRoutesStub } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;react-router&#x27;</span>
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">CharactersPage</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./CharactersPage&#x27;</span>
 
-<span class="hljs-keyword">import</span> { render, screen } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@testing-library/react&#x27;</span>;
-<span class="hljs-keyword">import</span> <span class="hljs-title class_">CharactersPage</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./CharactersPage&#x27;</span>;
-<span class="hljs-keyword">import</span> { <span class="hljs-title class_">BrowserRouter</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;react-router-dom&#x27;</span>;
-
+<span class="hljs-comment">// Mock data for characters</span>
 <span class="hljs-keyword">const</span> characters = [
     {
         <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;1&quot;</span>,
@@ -462,27 +576,26 @@ En nommant correctement les <code>describe</code> et les <code>test</code>, on p
     }
 ];
 
-<span class="hljs-comment">// mock the useLoaderData hook, so that we can test the CharactersPage component</span>
-jest.<span class="hljs-title function_">mock</span>(<span class="hljs-string">&#x27;react-router&#x27;</span>, <span class="hljs-function">() =&gt;</span> ({
-    ...jest.requireActual(<span class="hljs-string">&#x27;react-router&#x27;</span>), <span class="hljs-comment">// use actual for all non-hook parts</span>
-    <span class="hljs-attr">useLoaderData</span>: <span class="hljs-function">() =&gt;</span> {
-        <span class="hljs-keyword">return</span> characters;
-    },
-}));
+<span class="hljs-title function_">test</span>(<span class="hljs-string">&#x27;render CharactersPage component&#x27;</span>, <span class="hljs-keyword">async</span> () =&gt; {
+    <span class="hljs-comment">// Create a stub for the routes to include CharactersPage</span>
+    <span class="hljs-keyword">const</span> <span class="hljs-title class_">Stub</span> = <span class="hljs-title function_">createRoutesStub</span>([
+        {
+            <span class="hljs-attr">path</span>: <span class="hljs-string">&#x27;/characters&#x27;</span>,
+            <span class="hljs-title class_">Component</span>: <span class="hljs-title class_">CharactersPage</span>,
+            <span class="hljs-title class_">HydrateFallback</span>: <span class="hljs-function">() =&gt;</span> <span class="hljs-literal">null</span>, <span class="hljs-comment">// No fallback needed for this test</span>
+            <span class="hljs-attr">loader</span>: <span class="hljs-function">() =&gt;</span> ({ <span class="hljs-attr">characters</span>: characters }),
+        },
+    ])
 
-<span class="hljs-title function_">test</span>(<span class="hljs-string">&#x27;render CharactersPage component&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
-    <span class="hljs-comment">// when</span>
+    <span class="hljs-comment">// Render the CharactersPage component within the routing context</span>
+    <span class="hljs-title function_">render</span>(<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">Stub</span> <span class="hljs-attr">initialEntries</span>=<span class="hljs-string">{[</span>&#x27;/<span class="hljs-attr">characters</span>&#x27;]} /&gt;</span></span>)
 
-    <span class="hljs-comment">// then</span>
-    <span class="hljs-title function_">render</span>(<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">CharactersPage</span> /&gt;</span></span>, { <span class="hljs-attr">wrapper</span>: <span class="hljs-title class_">BrowserRouter</span> });
+    <span class="hljs-comment">// Wait for the heading to appear to ensure routing/render updates are settled</span>
+    <span class="hljs-keyword">const</span> heading = <span class="hljs-keyword">await</span> screen.<span class="hljs-title function_">findByRole</span>(<span class="hljs-string">&#x27;heading&#x27;</span>, { <span class="hljs-attr">level</span>: <span class="hljs-number">2</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Marvel Characters&#x27;</span> })
+    <span class="hljs-title function_">expect</span>(heading).<span class="hljs-title function_">toBeInTheDocument</span>()
 
-    <span class="hljs-comment">// expect the document title to be &quot;Marvel App&quot;</span>
-    <span class="hljs-title function_">expect</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-property">title</span>).<span class="hljs-title function_">toBe</span>(<span class="hljs-string">&#x27;Marvel App&#x27;</span>);
-
-
-    <span class="hljs-comment">// expect the heading &#x27;Marvel Characters&#x27; to be in the document</span>
-    <span class="hljs-keyword">const</span> h2Element = screen.<span class="hljs-title function_">getByRole</span>(<span class="hljs-string">&#x27;heading&#x27;</span>, { <span class="hljs-attr">level</span>: <span class="hljs-number">2</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Marvel Characters&quot;</span> });
-    <span class="hljs-title function_">expect</span>(h2Element).<span class="hljs-title function_">toBeInTheDocument</span>();
+    <span class="hljs-comment">// expect the document title to be &quot;Characters | Marvel App&quot;</span>
+    <span class="hljs-title function_">expect</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-property">title</span>).<span class="hljs-title function_">toBe</span>(<span class="hljs-string">&#x27;Characters | Marvel App&#x27;</span>)
 
     <span class="hljs-comment">// expect the character Thor to be in the document</span>
     <span class="hljs-keyword">const</span> thorElement = screen.<span class="hljs-title function_">getByText</span>(characters[<span class="hljs-number">0</span>].<span class="hljs-property">name</span>);
@@ -491,45 +604,63 @@ jest.<span class="hljs-title function_">mock</span>(<span class="hljs-string">&#
     <span class="hljs-comment">// expect the charater Captain America to be in the document</span>
     <span class="hljs-keyword">const</span> captainAmericaElement = screen.<span class="hljs-title function_">getByText</span>(characters[<span class="hljs-number">1</span>].<span class="hljs-property">name</span>);
     <span class="hljs-title function_">expect</span>(captainAmericaElement).<span class="hljs-title function_">toBeInTheDocument</span>();
-
+    
     <span class="hljs-comment">// expect the number of characters to be in the document</span>
-    <span class="hljs-keyword">const</span> numberOfCharactersElement = screen.<span class="hljs-title function_">getByText</span>(<span class="hljs-string">`There is <span class="hljs-subst">${characters.length}</span> characters`</span>);
+    <span class="hljs-keyword">const</span> numberOfCharactersElement = screen.<span class="hljs-title function_">getByText</span>(<span class="hljs-string">`There are <span class="hljs-subst">${characters.length}</span> characters`</span>);
     <span class="hljs-title function_">expect</span>(numberOfCharactersElement).<span class="hljs-title function_">toBeInTheDocument</span>();
-});
+
+    <span class="hljs-comment">// uncomment to see the full DOM output</span>
+    <span class="hljs-comment">// screen.debug()</span>
+})
 
 </code></pre>
 <footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="43" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="50" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+<header>BUT SD - Marvel App</header>
+<h1 id="tests-unitaires---tests-du-composant-characterspage"># Tests unitaires - Tests du composant <strong>CharactersPage</strong></h1>
+<p>L'appel à la fonction <code>createRoutesStub</code> permet de simuler le chargement des données pour le composant <code>CharactersPage</code>. On redéfinit la route <code>/characters</code> pour qu'elle utilise le composant <code>CharactersPage</code> et qu'elle charge les données mockées.</p>
+<p>Nous pouvons ensuite rendre le composant dans le contexte de routage avec la fonction <code>render</code> et vérifier que les éléments attendus sont bien présents dans le DOM.</p>
+<footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="51" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <header>BUT SD - Marvel App</header>
 <h1 id="tests-unitaires---tests-dun-composant-de-type-page-suite">Tests unitaires - Tests d'un composant de type <strong>Page</strong> (suite)</h1>
+<p>La fonction <code>findByRole</code> permet d'attendre qu'un élément soit présent dans le DOM avant de continuer le test. Cela est utile pour les composants qui effectuent des opérations asynchrones, comme le chargement de données.</p>
+<p>La fonction <code>getByText</code> permet de récupérer un élément du DOM contenant le texte spécifié. Si l'élément n'est pas trouvé, une erreur est levée.</p>
+<p>La fonction <code>debug</code> permet d'afficher le DOM dans la console pour vérifier que le composant est bien rendu et que les éléments attendus sont bien présents et ainsi faciliter le débogage.</p>
+<footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="52" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+<header>BUT SD - Marvel App</header>
+<h1 id="tests-unitaires---tests-dun-composant-de-type-page-suite-1">Tests unitaires - Tests d'un composant de type <strong>Page</strong> (suite)</h1>
 <p>Sauvegarder le fichier <code>src/pages/CharactersPage.test.jsx</code> et exécuter les tests avec la commande <code>npm test</code>.</p>
 <p>Nous testons ici que le composant <code>CharactersPage</code> est bien rendu et que les éléments attendus sont bien présents dans le DOM.</p>
 <p>Nous devons ici faire attention à la portée de nos tests, devons-nous tester tout les cas possibles ?</p>
 <footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="44" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="53" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <header>BUT SD - Marvel App</header>
-<h1 id="tests-unitaires---tests-dun-composant-de-type-page-suite-1">Tests unitaires - Tests d'un composant de type <strong>Page</strong> (suite)</h1>
+<h1 id="tests-unitaires---tests-dun-composant-de-type-page-suite-2">Tests unitaires - Tests d'un composant de type <strong>Page</strong> (suite)</h1>
 <p>Si nous exécutons la commande <code> npm run test:coverage CharactersPage</code>, nous pouvons voir que la couverture de code est de 100% pour le fichier <code>CharactersPage.jsx</code> mais couvre d'autres composants, tel que <code>NumberOfCharacters.jsx</code> ou <code>CharactersList.jsx</code>.</p>
 <p>Doit-on donc tester tous les cas possibles pour avoir une couverture de code de 100% des composants <code>NumberOfCharacters</code> et <code>CharactersList</code> ?</p>
 <footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="45" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="54" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <header>BUT SD - Marvel App</header>
-<h1 id="tests-unitaires---tests-dun-composant-de-type-page-suite-2">Tests unitaires - Tests d'un composant de type <strong>Page</strong> (suite)</h1>
+<h1 id="tests-unitaires---tests-dun-composant-de-type-page-suite-3">Tests unitaires - Tests d'un composant de type <strong>Page</strong> (suite)</h1>
 <p>La réponse est non, il est inutile de tester tous les cas possibles pour ces composants, car ils sont déjà testés (ou devrait être testé) dans leur propre fichier de test.</p>
 <p>Il est important de tester les cas spécifiques à chaque composant, mais il n'est pas nécessaire (voir déconseiller) de tester tout les cas possible des composants inclus.</p>
 <p>Sinon, on risque de tester plusieurs fois la même chose, mais surtout si le composant inclus change, il faudra changer les tests de tous les composants qui l'utilisent.</p>
 <p>Il faut voir le composant inclu comme une boîte noire, on teste ce qu'il fait, pas comment il le fait.</p>
 <footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="46" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="55" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <header>BUT SD - Marvel App</header>
 <p>Faire un troisième commit pour les tests unitaires de la page <code>CharactersPage</code>.</p>
 <footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="47" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="56" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <header>BUT SD - Marvel App</header>
 <h1 id="tests-unitaires---int%C3%A9gration-continue">Tests unitaires - Intégration continue</h1>
 <p>Les tests unitaires sont exécutés localement, mais il est important de les exécuter automatiquement à chaque modification du code afin de détecter rapidement une régression.</p>
@@ -537,7 +668,7 @@ jest.<span class="hljs-title function_">mock</span>(<span class="hljs-string">&#
 <p>Créer le fichier <code>.github/workflows/unit-tests.yml</code> à la racine du projet avec le contenu présent sur le slide suivant.</p>
 <footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="48" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="57" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <header>BUT SD - Marvel App</header>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-yaml"><span class="hljs-attr">name:</span> <span class="hljs-string">Unit</span> <span class="hljs-string">Tests</span>
 
@@ -561,7 +692,7 @@ jest.<span class="hljs-title function_">mock</span>(<span class="hljs-string">&#
 </code></pre>
 <footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="49" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="58" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <header>BUT SD - Marvel App</header>
 <h1 id="tests-unitaires---int%C3%A9gration-continue-suite">Tests unitaires - Intégration continue (suite)</h1>
 <p>Faire un dernier commit pour ajouter le workflow de tests unitaires et pousser les modifications sur le dépôt distant.</p>
@@ -570,7 +701,7 @@ jest.<span class="hljs-title function_">mock</span>(<span class="hljs-string">&#
 <p>Ajouter la protection de branche pour empêcher la fusion de la branche <code>feature/add-unit-tests</code> si les tests unitaires ne passent pas (option <code>Require status checks to pass</code>).</p>
 <footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="50" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="59" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <header>BUT SD - Marvel App</header>
 <h1 id="pull-request">Pull Request</h1>
 <p>Nous avons maintenant 2 Pull Request en attente de validation :</p>
@@ -582,39 +713,22 @@ jest.<span class="hljs-title function_">mock</span>(<span class="hljs-string">&#
 <p>La seconde Pull Request, quant à elle, peut-être validée et fusionnée vers <strong>develop</strong>.</p>
 <footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="51" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="60" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <header>BUT SD - Marvel App</header>
 <h1 id="pull-request-suite">Pull Request (suite)</h1>
 <p>Notre première Pull Request est toujours bloquée, car elle dépend de quelque chose (le workflow de tests unitaires) qui n'est pas présent dans la branche <code>feature/add-version-number</code>, mais maintenant présent dans la branche <strong>develop</strong>.</p>
 <p>Il faudrait mettre à jour la branche <code>feature/add-version-number</code> avec les modifications de la branche <strong>develop</strong> pour que la Pull Request puisse être validée.</p>
-<p>Ce qui est possible grâce aux commandes <code>git rebase</code> ou <code>git merge</code>.</p>
 <footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="52" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="61" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <header>BUT SD - Marvel App</header>
 <h1 id="pull-request-suite-1">Pull Request (suite)</h1>
-<p>Le <strong>rebase</strong> permet de réécrire l'historique de la branche <code>feature/add-version-number</code> pour y inclure les modifications de la branche <strong>develop</strong>.</p>
-<p>Le <strong>merge</strong> permet de fusionner les modifications de la branche <strong>develop</strong> dans la branche <code>feature/add-version-number</code> et de créer un commit de fusion.</p>
-<p>Le <strong>rebase</strong> est plus propre, car il permet de garder un historique linéaire, mais il est plus risqué, car il peut modifier l'historique de la branche.</p>
-<p>Gardez à l'esprit que le <strong>rebase</strong> est une opération destructive, il est préférable de le faire sur une branche de feature et non sur une branche partagée.</p>
-<footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
-</section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="53" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
-<header>BUT SD - Marvel App</header>
-<h1 id="pull-request-suite-2">Pull Request (suite)</h1>
-<p><strong>Github</strong> propose une fonctionnalité pour mettre à jour une branche avec les modifications d'une autre branche, c'est le bouton <code>Update branch</code> qui permet de fusionner les modifications de la branche <strong>develop</strong> dans la branche <code>feature/add-version-number</code> soit par un <strong>rebase</strong> soit par un <strong>merge</strong>.</p>
+<p><strong>Github</strong> propose une fonctionnalité pour mettre à jour une branche avec les modifications d'une autre branche, c'est le bouton <code>Update branch</code> qui permet de fusionner les modifications de la branche <strong>develop</strong> dans la branche <code>feature/add-version-number</code>.</p>
 <p>Dans la protection de branche, il est possible de définir que la branche doit être mise à jour avant de pouvoir être fusionnée (option <code>Require status checks to pass / Require branches to be up to date before merging</code>).</p>
+<p>Une fois la branche mise à jour, le workflow de tests unitaires est exécuté et la Pull Request peut être validée.</p>
 <footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="54" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
-<header>BUT SD - Marvel App</header>
-<h1 id="pull-request-suite-3">Pull Request (suite)</h1>
-<p>La branche <code>feature/add-version-number</code> étant une branche de feature, il est possible de faire un <strong>rebase</strong> pour garder un historique linéaire.</p>
-<p>Dans le <strong>git graph</strong>, on peut voir que la branche <code>feature/add-version-number</code> est maintenant à jour avec la branche <strong>develop</strong>, la Pull Request devrait pouvoir être validée.</p>
-<p>Nous verrons plus tard une autre utilisation du <strong>rebase</strong> interractif pour nettoyer l'historique des commits et réécrire l'historique de la branche.</p>
-<footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
-</section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="55" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="62" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <header>BUT SD - Marvel App</header>
 <h1 id="release-110">Release 1.1.0</h1>
 <p>Faire le nécessaire pour créer une version 1.1.0 de l'application :</p>
@@ -630,7 +744,7 @@ jest.<span class="hljs-title function_">mock</span>(<span class="hljs-string">&#
 </ul>
 <footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="56" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="63" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <header>BUT SD - Marvel App</header>
 <h1 id="conclusion">Conclusion</h1>
 <p>La mise en oeuvre des tests unitaires permet de fiabiliser l'application, de vérifier que le code source est valide et que les fonctionnalités de l'application fonctionnent correctement.</p>
@@ -638,7 +752,7 @@ jest.<span class="hljs-title function_">mock</span>(<span class="hljs-string">&#
 <p>Selon les applications, le langage utilisé, la complexité... il n'est pas toujours possible d'atteindre une couverture de code de 100%. Cependant, il est important d'atteindre une couverture de code la plus élevée possible. Cela permet de fiabiliser l'application et de détecter les bugs le plus tôt possible.</p>
 <footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="57" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="64" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <header>BUT SD - Marvel App</header>
 <h1 id="conclusion-suite">Conclusion (suite)</h1>
 <p>Attention toutefois à ne pas chercher à atteindre une couverture de code de 100% à tout prix.</p>
@@ -646,7 +760,7 @@ jest.<span class="hljs-title function_">mock</span>(<span class="hljs-string">&#
 <p>De plus ce qui ne peut pas être testé (ou difficillement) par des tests unitaires peut être testé par d'autres types de tests, comme les tests d'intégration ou les tests end-to-end. Nous verrons cela dans les prochaines versions de l'application.</p>
 <footer>Alexandre GIRARD - Conseiller en Nouvelles Technologies - <a href="mailto:alexandre.girard@maif.fr">alexandre.girard@maif.fr</a></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="58" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="65" data-background-image="url('img/background/fond-blanc.avif')" data-header="BUT SD - Marvel App" data-footer="Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr" style="--background-image:url('img/background/fond-blanc.avif');--header:BUT SD - Marvel App;--footer:Alexandre GIRARD - Conseiller en Nouvelles Technologies - alexandre.girard@maif.fr;background-image:url('img/background/fond-blanc.avif');background-position:center;background-repeat:no-repeat;background-size:cover;" data-size="16:9">
 <header>BUT SD - Marvel App</header>
 <h1 id="conclusion-suite-1">Conclusion (suite)</h1>
 <p>Attention aussi, une couverture de code à 100% ne veut pas dire que l'application est sans bug.</p>
