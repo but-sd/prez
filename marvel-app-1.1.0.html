@@ -547,7 +547,7 @@ En nommant correctement les <code>describe</code> et les <code>test</code>, on p
 <h1 id="tests-unitaires---couverture-de-code-de-lensemble-du-projet-suite">Tests unitaires - Couverture de code de l'ensemble du projet (suite)</h1>
 <p>Modifier le fichier <code>jest.config.cjs</code> pour ajouter la configuration nécessaire pour afficher la couverture de code de l'ensemble du projet.</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-javascript"><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = {
-  <span class="hljs-attr">testEnvironment</span>: <span class="hljs-string">&quot;jsdom&quot;</span>, <span class="hljs-comment">// Use jsdom environment for testing React components</span>
+  <span class="hljs-attr">testEnvironment</span>: <span class="hljs-string">&quot;jest-fixed-jsdom&quot;</span>, <span class="hljs-comment">// Use jsdom environment for testing React components</span>
   <span class="hljs-comment">// Transform jsx files using babel-jest</span>
   <span class="hljs-attr">transform</span>: {
     <span class="hljs-string">&quot;^.+\\.jsx?$&quot;</span>: <span class="hljs-string">&quot;babel-jest&quot;</span>,
