@@ -92,7 +92,7 @@ Il existe de nombreux outils pour mesurer la qualité du code. Dans le cadre de 
 
 # Qualimétrie du code (suite)
 
-Créer un compte sur [SonarCloud](https://sonarcloud.io/), puis y ajouter le projet **Marvel App**.
+Créer un compte sur [SonarCloud](https://sonarcloud.io/), puis y ajouter le projet **Marvel App**. Sélectionner l'option **Previous version** pour la partie **New Code definition for this project**.
 
 ---
 
@@ -119,12 +119,12 @@ jobs:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
       - uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 22
           cache: 'npm'
       - run: npm ci
       - run: npm run test:coverage
       - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@master
+        uses: SonarSource/sonarqube-scan-action@v6
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
@@ -174,18 +174,47 @@ Il faut aussi décocher la case Automatic Analysis dans Administration > Analysi
 Afin de faire le lien entre projet **GitHub** et projet **SonarCloud**, il faut ajouter un fichier `sonar-project.properties` à la racine du projet avec le contenu suivant :
 
 ```properties
+# Project identification
 sonar.projectKey=nom-du-projet
 sonar.organization=nom-de-compte-github
 
+sonar.sources=src
+sonar.tests=src
+sonar.test.inclusions=**/*.test.js,**/*.spec.js,**/*.test.jsx,**/*.spec.jsx
 sonar.javascript.lcov.reportPaths=./coverage/lcov.info
-sonar.coverage.exclusions=**/*.test.js
-```
 
-Ce fichier définit les propriétés du projet **SonarCloud** :
+# Exclude test files and specific files from coverage
+sonar.coverage.exclusions=**/*.test.js,src/routes.js,src/main.jsx,src/App.jsx
+
+# exclude javascript:S6774 
+sonar.issue.ignore.multicriteria=e1
+sonar.issue.ignore.multicriteria.e1.ruleKey=javascript:S6774
+sonar.issue.ignore.multicriteria.e1.resourceKey=**/*.jsx
+```
+---
+
+Ce fichier définit entre autres les propriétés du projet **SonarCloud** :
 - sonar.projectKey : identifiant du projet **SonarCloud**
 - sonar.organization : organisation **SonarCloud**
+
+---
+
+Il définit aussi les dossiers et fichiers à analyser :
+- sonar.sources : dossier contenant le code source
+- sonar.tests : dossier contenant les tests unitaires
+- sonar.test.inclusions : fichiers à inclure dans les tests unitaires
 - sonar.javascript.lcov.reportPaths : chemin vers le fichier de couverture de code
+
+---
+
+Il définit aussi les fichiers à exclure de l'analyse :
+
 - sonar.coverage.exclusions : fichiers à exclure de la couverture de code
+- sonar.issue.ignore.multicriteria : permet d'ignorer des règles spécifiques pour des fichiers
+
+Ici on exclut certain fichiers de la couverture de code car ils ne contiennent pas de logique métier (fichiers de configuration, routes, point d'entrée de l'application).
+
+On ignore la règle `javascript:S6774` pour les fichiers `.jsx` car cette règle n'est pas adaptée dans notre cas.
 
 ---
 
@@ -199,13 +228,17 @@ Il faut ensuite ajouter le plugin dans le fichier de configuration de **Jest** (
 
 ```javascript
 module.exports = {
-  testEnvironment: "jsdom",
+  testEnvironment: "jest-fixed-jsdom", // Use jsdom environment for testing React components
+  // Transform jsx files using babel-jest
   transform: {
     "^.+\\.jsx?$": "babel-jest",
   },
   collectCoverageFrom: [
     "src/**/*.{js,jsx}", // Collect coverage from all js or jsx files in src folder
-    "!src/**/*.test.{js,jsx}", // Exclude test files from coverage
+    "!src/routes.js", // Exclude routes.js from coverage
+    "!src/main.jsx", // Exclude main.jsx from coverage
+    "!src/App.jsx", // Exclude App.jsx from coverage
+
   ],
   testResultsProcessor: 'jest-sonar-reporter',
 };
@@ -237,11 +270,10 @@ Une fois la configuration de **SonarCloud** terminée, nous pouvons merger la br
 
 Créer une branche `feature/increase-coverage` à partir de la branche `develop`.
 
-Faire le nécessaire pour augmenter la couverture de tests unitaires pour les composants React (components, pages), puis merger la branche `feature/increase-coverage` dans la branche `develop`.
-
-En vous aidant des exemples déjà présents dans le projet, de **github copilot** ou de la documentation **React Testing Library**, ajouter des tests unitaires pour les composants React (components, pages) qui n'en ont pas.
+En vous aidant des exemples déjà présents dans le projet, de **github copilot** ou de la documentation **React Testing Library**, ajouter des tests unitaires pour les composants React (components, pages) qui n'en ont pas et ainsi augmenter la couverture de tests unitaires. 
 
 ---
+
 # Augmentation de la couverture de tests unitaires - **CharactersList**
 
 Vérifier que le composant est une liste vide lorsque la liste de personnages est vide ou non passée en paramètre.
@@ -252,9 +284,18 @@ Vérifier que le composant est une liste vide lorsque la liste de personnages es
 
 # Augmentation de la couverture de tests unitaires - **CharactersList**
 
-Vérifier que le composant affiche correctement tout les personnages passés en paramètre, pour ce cas le composant doit être instancier de cette manière `render(<CharactersList characters={[]} />, { wrapper: BrowserRouter });`.
-  - `screen.getAllByRole('listitem')` permet de récupérer tout les éléments de la liste.
-  - `screen.getByText('text')` permet de récupérer un élément par son texte.
+Vérifier que le composant affiche correctement tout les personnages passés en paramètre, pour ce cas le composant doit être instancier de cette manière:
+
+```jsx
+render(
+  <MemoryRouter>
+    <CharactersList characters={characters}/>
+  </MemoryRouter>
+);
+```
+
+`screen.getAllByRole('listitem')` permet de récupérer tout les éléments de la liste.
+`screen.getByText('text')` permet de récupérer un élément par son texte.
 
 ---
 
@@ -262,7 +303,7 @@ Vérifier que le composant affiche correctement tout les personnages passés en 
 
 Vérifier que le composant affiche correctement les informations du personnage passé en paramètre lorsque l'image existe.
   - `screen.getByText('text')` permet de récupérer un élément par son texte.
-  - `screen.getByRole('img'), { name: character.name });` permet de récupérer l'image ayant pour nom le nom du personnage mais lève une erreur si elle n'existe pas.
+  - `screen.queryAllByRole('img')` permet de récupérer tout les éléments de type image. Il ne devrait pas y avoir d'image.
 
 ---
 
